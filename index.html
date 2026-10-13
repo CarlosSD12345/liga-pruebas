@@ -1347,13 +1347,12 @@ function renderizarClasificacionReal() {
         html += '<td>' + eq.pp + '</td>';
         html += '<td>' + eq.ptsDeportivos + '</td>';
         html += '<td>🟡' + eq.amarillas + '</td>';
-        html += '<td>🔴' + eq.rojas + '</td>';
+        html += '<td>' + eq.rojas + '</td>';
         html += '<td style="font-weight:bold; color:#2ecc71;">' + eq.ptsAjustados + '</td>';
         html += '</tr>';
     }
     tbody.innerHTML = html;
 }
-
         function calcularFairPlay() {
     var stats = {}; equipos.forEach(function(eq) { stats[eq.nombreCompleto] = { nombre: eq.nombre, img: eq.img, pj: 0, amarillas: 0, rojas: 0, total: 0 }; });
     for (var j = 0; j < calendario.length; j++) {
