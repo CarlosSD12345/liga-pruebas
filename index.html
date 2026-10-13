@@ -1212,13 +1212,14 @@ function procesarWhatsApp() {
             });
             document.getElementById('tabla').innerHTML = html;
         }
-        function renderizarClasificacionReal() {
+function renderizarClasificacionReal() {
     var tbody = document.getElementById('tabla-cr');
     if (!tbody) return;
     
+    // Usar nombreCompleto como clave (igual que calcularClasificacion)
     var stats = {};
     equipos.forEach(function(eq) {
-        stats[eq.nombre] = { nombre: eq.nombre, img: eq.img, pj: 0, pts: 0, gf: 0, gc: 0, pg: 0, pe: 0, pp: 0, forma: [] };
+        stats[eq.nombreCompleto] = { nombre: eq.nombre, img: eq.img, pj: 0, pts: 0, gf: 0, gc: 0, pg: 0, pe: 0, pp: 0, forma: [] };
     });
     
     var ultimaJornada = 0;
@@ -1259,28 +1260,23 @@ function procesarWhatsApp() {
                 stats[local].pts += 3;
                 stats[local].pg++;
                 stats[visitante].pp++;
-                stats[local].forma.push('G');
-                stats[visitante].forma.push('P');
             } else if (gl < gv) {
                 stats[visitante].pts += 3;
                 stats[visitante].pg++;
                 stats[local].pp++;
-                stats[local].forma.push('P');
-                stats[visitante].forma.push('G');
             } else {
                 stats[local].pts += 1;
                 stats[visitante].pts += 1;
                 stats[local].pe++;
                 stats[visitante].pe++;
-                stats[local].forma.push('E');
-                stats[visitante].forma.push('E');
             }
         }
     }
     
+    // Calcular tarjetas desde jornada 5
     var tarjetas = {};
     equipos.forEach(function(eq) {
-        tarjetas[eq.nombre] = { amarillas: 0, rojas: 0 };
+        tarjetas[eq.nombreCompleto] = { amarillas: 0, rojas: 0 };
     });
     
     for (var j = 0; j < calendario.length; j++) {
@@ -1309,11 +1305,11 @@ function procesarWhatsApp() {
     }
     
     var equiposConPuntos = [];
-    for (var nombre in stats) {
-        var eq = stats[nombre];
+    for (var nombreCompleto in stats) {
+        var eq = stats[nombreCompleto];
         var dif = eq.gf - eq.gc;
-        var amarillas = tarjetas[nombre] ? tarjetas[nombre].amarillas : 0;
-        var rojas = tarjetas[nombre] ? tarjetas[nombre].rojas : 0;
+        var amarillas = tarjetas[nombreCompleto] ? tarjetas[nombreCompleto].amarillas : 0;
+        var rojas = tarjetas[nombreCompleto] ? tarjetas[nombreCompleto].rojas : 0;
         var ptsAjustados = eq.pts - (amarillas * 1) - (rojas * 3);
         equiposConPuntos.push({
             nombre: eq.nombre,
