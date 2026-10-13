@@ -1,0 +1,45 @@
+{
+  "1": {
+    "5": [
+      {
+        "equipo": "U.E. Castellar",
+        "jugador": "Jaime Perales",
+        "goles": 3,
+        "estado": "aprobado",
+        "fecha": "2026-10-13"
+      },
+      {
+        "equipo": "U.E. Castellar",
+        "jugador": "Jose antonio Alfaro",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-13"
+      },
+      {
+        "equipo": "U.E. Castellar",
+        "jugador": "Xavi Herrero",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-13"
+      }
+    ]
+  },
+  "2": {
+    "5": [
+      {
+        "equipo": "U.E. Castellar",
+        "jugador": "Jaime Perales",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-10-13"
+      },
+      {
+        "equipo": "U.E. Castellar",
+        "jugador": "Xavi Herrero",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-13"
+      }
+    ]
+  }
+}
