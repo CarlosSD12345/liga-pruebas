@@ -1334,7 +1334,7 @@ function renderizarClasificacionReal() {
         var posicion = i + 1;
         html += '<tr>';
         html += '<td>' + posicion + '</td>';
-        html += '<td class="team"><img src="escudos/' + eq.img + '" class="team-logo" onerror="this.style.display=\'none\'"><span>' + eq.nombre + '</span></td>';
+        html += '<td class="team"><div class="team-info"><img src="escudos/' + eq.img + '" class="team-logo" alt="' + eq.nombre + '">' + eq.nombre + '</div></td>';
         html += '<td>' + eq.pj + '</td>';
         html += '<td>' + eq.pg + '</td>';
         html += '<td>' + eq.pe + '</td>';
