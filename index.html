@@ -1349,6 +1349,33 @@ function renderizarClasificacionReal() {
         html += '<td>' + eq.pe + '</td>';
         html += '<td>' + eq.pp + '</td>';
         html += '<td>' + eq.ptsDeportivos + '</td>';
+        html += '<td>🟡' + eq.amarillas + '</td>';
+        html += '<td>🔴' + eq.rojas + '</td>';
+        html += '<td style="font-weight:bold; color:#2ecc71;">' + eq.ptsAjustados + '</td>';
+        html += '</tr>';
+    }
+    tbody.innerHTML = html;
+}
+    
+    equiposConPuntos.sort(function(a, b) {
+        if (b.ptsAjustados !== a.ptsAjustados) return b.ptsAjustados - a.ptsAjustados;
+        if (b.dif !== a.dif) return b.dif - a.dif;
+        if (b.gf !== a.gf) return b.gf - a.gf;
+        return a.nombre.localeCompare(b.nombre);
+    });
+    
+    var html = '';
+    for (var i = 0; i < equiposConPuntos.length; i++) {
+        var eq = equiposConPuntos[i];
+        var posicion = i + 1;
+        html += '<tr>';
+        html += '<td>' + posicion + '</td>';
+        html += '<td class="team"><img src="escudos/' + eq.img + '" class="team-logo" onerror="this.style.display=\'none\'"><span>' + eq.nombre + '</span></td>';
+        html += '<td>' + eq.pj + '</td>';
+        html += '<td>' + eq.pg + '</td>';
+        html += '<td>' + eq.pe + '</td>';
+        html += '<td>' + eq.pp + '</td>';
+        html += '<td>' + eq.ptsDeportivos + '</td>';
         html += '<td>' + eq.amarillas + '</td>';
         html += '<td>🔴' + eq.rojas + '</td>';
         html += '<td style="font-weight:bold; color:#2ecc71;">' + eq.ptsAjustados + '</td>';
