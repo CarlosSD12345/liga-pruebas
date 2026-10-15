@@ -1216,10 +1216,9 @@ function renderizarClasificacionReal() {
     var tbody = document.getElementById('tabla-cr');
     if (!tbody) return;
     
-    // CORRECCIÓN 1: Usar nombreCompleto como clave
     var stats = {};
     equipos.forEach(function(eq) {
-        stats[eq.nombreCompleto] = { nombre: eq.nombre, img: eq.img, pj: 0, pts: 0, gf: 0, gc: 0, pg: 0, pe: 0, pp: 0, forma: [] };
+        stats[eq.nombreCompleto] = { nombre: eq.nombre, img: eq.img, pj: 0, pts: 0, gf: 0, gc: 0, pg: 0, pe: 0, pp: 0 };
     });
     
     var ultimaJornada = 0;
@@ -1250,6 +1249,8 @@ function renderizarClasificacionReal() {
             if (gl === null || gv === null) continue;
             var local = jornada.partidos[i].local;
             var visitante = jornada.partidos[i].visitante;
+            if (!stats[local]) continue;
+            if (!stats[visitante]) continue;
             stats[local].pj++;
             stats[visitante].pj++;
             stats[local].gf += gl;
@@ -1260,26 +1261,19 @@ function renderizarClasificacionReal() {
                 stats[local].pts += 3;
                 stats[local].pg++;
                 stats[visitante].pp++;
-                stats[local].forma.push('G');
-                stats[visitante].forma.push('P');
             } else if (gl < gv) {
                 stats[visitante].pts += 3;
                 stats[visitante].pg++;
                 stats[local].pp++;
-                stats[local].forma.push('P');
-                stats[visitante].forma.push('G');
             } else {
                 stats[local].pts += 1;
                 stats[visitante].pts += 1;
                 stats[local].pe++;
                 stats[visitante].pe++;
-                stats[local].forma.push('E');
-                stats[visitante].forma.push('E');
             }
         }
     }
     
-    // CORRECCIÓN 2: Usar nombreCompleto para tarjetas
     var tarjetas = {};
     equipos.forEach(function(eq) {
         tarjetas[eq.nombreCompleto] = { amarillas: 0, rojas: 0 };
@@ -1287,13 +1281,12 @@ function renderizarClasificacionReal() {
     
     for (var j = 0; j < calendario.length; j++) {
         var jornada = calendario[j];
-        if (jornada.jornada < 5) continue;  // CORRECCIÓN 3: Saltar jornadas 1-4
+        if (jornada.jornada < 5) continue;
         if (jornada.jornada > ultimaJornada) break;
         if (jornada.suspendida === true) continue;
         var resJ = resultados[String(jornada.jornada)] || {};
         for (var i = 0; i < jornada.partidos.length; i++) {
             var resP = resJ[String(i)] || {};
-            // CORRECCIÓN 4: Usar amarillasLocal/Visitante en lugar de tarjetasLocal
             var amL = (resP.amarillasLocal !== undefined && resP.amarillasLocal !== null) ? resP.amarillasLocal : 0;
             var amV = (resP.amarillasVisitante !== undefined && resP.amarillasVisitante !== null) ? resP.amarillasVisitante : 0;
             var roL = (resP.rojasLocal !== undefined && resP.rojasLocal !== null) ? resP.rojasLocal : 0;
