@@ -961,7 +961,7 @@ var linea = lineas[i].trim();
 if (linea.indexOf('•') !== -1) {
 var matchGoleador = linea.match(/[•\-\*]\s*(.+?)\s*[-–]\s*(\d+)\s*gol/i);
 if (matchGoleador) {
-var nombreLimpio = matchGoleador[1].trim().replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.-]/g, '');
+var nombreLimpio = matchGoleador[1].trim().normalize('NFC').replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.-]/gu, '');
 goleadores.push({ jugador: nombreLimpio, goles: parseInt(matchGoleador[2]) });
 }
 }
