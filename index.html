@@ -1533,22 +1533,26 @@ else { break; }
 }
 if (ultimaJornada > 0) { document.getElementById('badge-jornada').textContent = 'JORNADA ' + ultimaJornada; }
 }
-fetch('resultados.json?t=' + Date.now()).then(function(r) { 
-    if (r.status === 404) return {}; 
-    return r.json(); 
-}).then(function(data) { 
-    resultados = data || {}; 
-    renderizarClasificacion(); 
-    renderizarClasificacionReal(); 
-    actualizarBadgeJornada();
-    initCalendario();
-}).catch(function(e) { 
-    console.error('Error:', e); 
-    resultados = {}; 
-    renderizarClasificacion(); 
-    renderizarClasificacionReal(); 
-    actualizarBadgeJornada();
-    initCalendario();
-});
+// Carga inicial de datos al abrir la web
+fetch('resultados.json?t=' + Date.now())
+    .then(function(r) { 
+        if (r.status === 404) return {}; 
+        return r.json(); 
+    })
+    .then(function(data) { 
+        resultados = data || {}; 
+        renderizarClasificacion(); 
+        renderizarClasificacionReal(); 
+        actualizarBadgeJornada();
+        initCalendario(); // Cargamos el calendario al final
+    })
+    .catch(function(e) { 
+        console.error('Error al cargar resultados:', e); 
+        resultados = {}; 
+        renderizarClasificacion(); 
+        renderizarClasificacionReal(); 
+        actualizarBadgeJornada();
+        initCalendario();
+    });
 </body>
 </html>
