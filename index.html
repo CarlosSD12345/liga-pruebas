@@ -1441,13 +1441,22 @@ function getImgEquipo(nc) { for (var i = 0; i < equipos.length; i++) { if (equip
 function getNombreCorto(nc) {
     if (!nc) return nc;
     var ncNorm = nc.normalize('NFC').toLowerCase();
+    // 1. Búsqueda exacta normalizada
     for (var i = 0; i < equipos.length; i++) {
-        var nombreCompletoNorm = equipos[i].nombreCompleto.normalize('NFC').toLowerCase();
-        if (nombreCompletoNorm === ncNorm) return equipos[i].nombre;
+        if (equipos[i].nombreCompleto.normalize('NFC').toLowerCase() === ncNorm) return equipos[i].nombre;
     }
-    // Búsqueda parcial por si acaso
+    // 2. Búsqueda parcial: si el nombre corto está contenido en el nombre largo
     for (var i = 0; i < equipos.length; i++) {
         if (ncNorm.indexOf(equipos[i].nombre.toLowerCase()) !== -1) return equipos[i].nombre;
+    }
+    // 3. Búsqueda inversa: si el nombre largo está contenido en nc
+    for (var i = 0; i < equipos.length; i++) {
+        if (equipos[i].nombreCompleto.normalize('NFC').toLowerCase().indexOf(ncNorm) !== -1) return equipos[i].nombre;
+    }
+    // 4. Búsqueda por palabras clave (ignora "C.E.", "U.E.", etc.)
+    for (var i = 0; i < equipos.length; i++) {
+        var nombreLimpio = equipos[i].nombreCompleto.replace(/^(C\.F\.|U\.E\.|A\.V\.|C\.E\.|U\.D\.A\.|E\.F\.B|V\.C\.F\.)\s*/i, '').toLowerCase();
+        if (ncNorm.indexOf(nombreLimpio) !== -1 || nombreLimpio.indexOf(ncNorm) !== -1) return equipos[i].nombre;
     }
     return nc;
 }
