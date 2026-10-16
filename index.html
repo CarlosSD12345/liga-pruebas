@@ -1438,7 +1438,19 @@ document.getElementById('tabla-arb').innerHTML = html;
 }
 
 function getImgEquipo(nc) { for (var i = 0; i < equipos.length; i++) { if (equipos[i].nombreCompleto === nc) return equipos[i].img; } return ''; }
-function getNombreCorto(nc) { for (var i = 0; i < equipos.length; i++) { if (equipos[i].nombreCompleto === nc) return equipos[i].nombre; } return nc; }
+function getNombreCorto(nc) {
+    if (!nc) return nc;
+    var ncNorm = nc.normalize('NFC').toLowerCase();
+    for (var i = 0; i < equipos.length; i++) {
+        var nombreCompletoNorm = equipos[i].nombreCompleto.normalize('NFC').toLowerCase();
+        if (nombreCompletoNorm === ncNorm) return equipos[i].nombre;
+    }
+    // Búsqueda parcial por si acaso
+    for (var i = 0; i < equipos.length; i++) {
+        if (ncNorm.indexOf(equipos[i].nombre.toLowerCase()) !== -1) return equipos[i].nombre;
+    }
+    return nc;
+}
 function initCalendario() { var selector = document.getElementById('selector-jornada'); if (selector.options.length > 0) return; calendario.forEach(function(j) { var opt = document.createElement('option'); opt.value = j.jornada; opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')'; selector.appendChild(opt); }); cargarJornada(); }
 function cargarJornada() {
 var numJornada = parseInt(document.getElementById('selector-jornada').value); var jornada = calendario.find(function(j) { return j.jornada === numJornada; }); if (!jornada) return;
