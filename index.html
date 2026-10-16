@@ -1466,7 +1466,8 @@ function getNombreCorto(nc) {
     
     return nc;
 }
-function initCalendario() { 
+function initCalendario() {
+   alert('DEBUG: ' + (typeof calendario !== 'undefined' ? calendario.length : 'NO EXISTE'));
     var selector = document.getElementById('selector-jornada'); 
     if (selector.options.length > 0) return; 
     calendario.forEach(function(j) { 
