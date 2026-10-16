@@ -1467,19 +1467,28 @@ function getNombreCorto(nc) {
     return nc;
 }
 function initCalendario() {
-   alert('DEBUG: ' + (typeof calendario !== 'undefined' ? calendario.length : 'NO EXISTE'));
     var selector = document.getElementById('selector-jornada'); 
+    if (!selector) {
+        console.error("No se encontró el selector de jornada en el HTML");
+        return;
+    }
     if (selector.options.length > 0) return; 
+    
+    if (typeof calendario === 'undefined' || !Array.isArray(calendario)) {
+        console.error("El array calendario no está definido");
+        return;
+    }
+
     calendario.forEach(function(j) { 
         var opt = document.createElement('option'); 
         opt.value = j.jornada; 
         opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')'; 
         selector.appendChild(opt); 
     }); 
+    
     selector.selectedIndex = 0; 
     cargarJornada(); 
 }
-
 function cargarJornada() {
 var numJornada = parseInt(document.getElementById('selector-jornada').value); var jornada = calendario.find(function(j) { return j.jornada === numJornada; }); if (!jornada) return;
 var resJ = resultados[String(numJornada)] || {}; var contenedor = document.getElementById('contenedor-partidos'); var html = '';
