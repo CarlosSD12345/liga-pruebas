@@ -279,22 +279,3 @@
       }
     ]
   },
-  "5": {
-    "0": [
-      {
-        "equipo": "A.V. L'Ametlla del Vallés",
-        "jugador": "Kaña",
-        "goles": 2,
-        "estado": "aprobado",
-        "fecha": "2026-10-16"
-      },
-      {
-        "equipo": "A.V. L'Ametlla del Vallés",
-        "jugador": "L'Ametlla",
-        "goles": 1,
-        "estado": "aprobado",
-        "fecha": "2026-10-16"
-      }
-    ]
-  }
-}
