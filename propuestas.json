@@ -278,5 +278,23 @@
         "fecha": "2026-10-14"
       }
     ]
+  },
+  "5": {
+    "0": [
+      {
+        "equipo": "A.V. L'Ametlla del Vallés",
+        "jugador": "Kaña",
+        "goles": 2,
+        "estado": "pendiente",
+        "fecha": "2026-10-16"
+      },
+      {
+        "equipo": "A.V. L'Ametlla del Vallés",
+        "jugador": "L'Ametlla",
+        "goles": 1,
+        "estado": "pendiente",
+        "fecha": "2026-10-16"
+      }
+    ]
   }
 }
