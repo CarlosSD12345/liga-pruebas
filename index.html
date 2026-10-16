@@ -120,7 +120,13 @@ header { justify-content: center; }
 <!-- OCULTO TEMPORALMENTE - Activar cuando Jaume lo autorice -->
 <!-- <button class="tab-btn active" onclick="cambiarPestana('clasificacion-real', this)">Clasificación Real</button> -->
 <button class="tab-btn active" onclick="cambiarPestana('calendario', this)">Calendario</button>
-<button class="tab-btn" onclick="cambiarPestana('calendario', this)">Calendario</button>
+<!-- OCULTO TEMPORALMENTE - Activar cuando Jaume lo autorice -->
+<!-- <button class="tab-btn active" onclick="cambiarPestana('clasificacion-real', this)">Clasificación Real</button> -->
+<button class="tab-btn active" onclick="cambiarPestana('calendario', this)">Calendario</button>
+<button class="tab-btn" onclick="cambiarPestana('fairplay', this)">Fair Play</button>
+<button class="tab-btn" onclick="cambiarPestana('clasificacion', this)">Clasificación</button>
+<button class="tab-btn" onclick="cambiarPestana('arbitros', this)">Árbitros</button>
+<button class="tab-btn" onclick="cambiarPestana('goleadores', this)">Goleadores</button>
 <button class="tab-btn" onclick="cambiarPestana('fairplay', this)">Fair Play</button>
 <button class="tab-btn" onclick="cambiarPestana('clasificacion', this)">Clasificación</button>
 <button class="tab-btn" onclick="cambiarPestana('arbitros', this)">Árbitros</button>
@@ -138,7 +144,7 @@ header { justify-content: center; }
 </table>
 </div>
 
-<div id="clasificacion" class="section active">
+<div id="clasificacion" class="section">
 <table>
 <thead>
 <tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>PTS</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DIF</th><th>3 ÚLTIMOS</th></tr>
@@ -147,7 +153,7 @@ header { justify-content: center; }
 </table>
 </div>
 
-<div id="calendario" class="section">
+<div id="calendario" class="section active">
 <div class="selector-container">
 <select id="selector-jornada" onchange="cargarJornada()"></select>
 </div>
