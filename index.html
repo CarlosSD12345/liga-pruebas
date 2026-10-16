@@ -1478,7 +1478,7 @@ function initCalendario() {
     selector.selectedIndex = 0; 
     cargarJornada(); 
 }
-   
+
 function cargarJornada() {
 var numJornada = parseInt(document.getElementById('selector-jornada').value); var jornada = calendario.find(function(j) { return j.jornada === numJornada; }); if (!jornada) return;
 var resJ = resultados[String(numJornada)] || {}; var contenedor = document.getElementById('contenedor-partidos'); var html = '';
