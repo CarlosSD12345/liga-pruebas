@@ -1466,7 +1466,19 @@ function getNombreCorto(nc) {
     
     return nc;
 }
-function initCalendario() { var selector = document.getElementById('selector-jornada'); if (selector.options.length > 0) return; calendario.forEach(function(j) { var opt = document.createElement('option'); opt.value = j.jornada; opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')'; selector.appendChild(opt); }); cargarJornada(); }
+function initCalendario() { 
+    var selector = document.getElementById('selector-jornada'); 
+    if (selector.options.length > 0) return; 
+    calendario.forEach(function(j) { 
+        var opt = document.createElement('option'); 
+        opt.value = j.jornada; 
+        opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')'; 
+        selector.appendChild(opt); 
+    }); 
+    selector.selectedIndex = 0; 
+    cargarJornada(); 
+}
+   
 function cargarJornada() {
 var numJornada = parseInt(document.getElementById('selector-jornada').value); var jornada = calendario.find(function(j) { return j.jornada === numJornada; }); if (!jornada) return;
 var resJ = resultados[String(numJornada)] || {}; var contenedor = document.getElementById('contenedor-partidos'); var html = '';
