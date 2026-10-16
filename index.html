@@ -1511,8 +1511,22 @@ else { break; }
 }
 if (ultimaJornada > 0) { document.getElementById('badge-jornada').textContent = 'JORNADA ' + ultimaJornada; }
 }
-
-fetch('resultados.json?t=' + Date.now()).then(function(r) { if (r.status === 404) return {}; return r.json(); }).then(function(data) { resultados = data || {}; renderizarClasificacion(); renderizarClasificacionReal(); actualizarBadgeJornada(); }).catch(function(e) { console.error('Error:', e); resultados = {}; renderizarClasificacion(); renderizarClasificacionReal(); actualizarBadgeJornada(); });
-</script>
+fetch('resultados.json?t=' + Date.now()).then(function(r) { 
+    if (r.status === 404) return {}; 
+    return r.json(); 
+}).then(function(data) { 
+    resultados = data || {}; 
+    renderizarClasificacion(); 
+    renderizarClasificacionReal(); 
+    actualizarBadgeJornada();
+    initCalendario();
+}).catch(function(e) { 
+    console.error('Error:', e); 
+    resultados = {}; 
+    renderizarClasificacion(); 
+    renderizarClasificacionReal(); 
+    actualizarBadgeJornada();
+    initCalendario();
+});
 </body>
 </html>
