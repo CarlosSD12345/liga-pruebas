@@ -945,7 +945,7 @@ var visitante = bloquePartido.substring(idxVs + 4).trim();
 var textoPartido = local + ' vs ' + visitante;
 var matchEquipo = texto.match(/Equipo:\s*(.+?)(?:\n|$)/);
 if (!matchEquipo) { alert('No se encontró el equipo'); return; }
-var equipo = matchEquipo[1].trim().replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.-]/g, '');
+var equipo = matchEquipo[1].trim().normalize('NFC').replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.-]/gu, '');
 var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
 if (!jornada) { alert('Jornada ' + numJornada + ' no encontrada'); return; }
 var idxPartido = -1;
