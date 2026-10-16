@@ -1440,24 +1440,29 @@ document.getElementById('tabla-arb').innerHTML = html;
 function getImgEquipo(nc) { for (var i = 0; i < equipos.length; i++) { if (equipos[i].nombreCompleto === nc) return equipos[i].img; } return ''; }
 function getNombreCorto(nc) {
     if (!nc) return nc;
-    var ncNorm = nc.normalize('NFC').toLowerCase();
-    // 1. Búsqueda exacta normalizada
-    for (var i = 0; i < equipos.length; i++) {
-        if (equipos[i].nombreCompleto.normalize('NFC').toLowerCase() === ncNorm) return equipos[i].nombre;
+    
+    // Función auxiliar para eliminar acentos
+    function sinAcentos(str) {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     }
+    
+    var ncNorm = sinAcentos(nc);
+    
+    // 1. Búsqueda exacta sin acentos
+    for (var i = 0; i < equipos.length; i++) {
+        if (sinAcentos(equipos[i].nombreCompleto) === ncNorm) return equipos[i].nombre;
+    }
+    
     // 2. Búsqueda parcial: si el nombre corto está contenido en el nombre largo
     for (var i = 0; i < equipos.length; i++) {
-        if (ncNorm.indexOf(equipos[i].nombre.toLowerCase()) !== -1) return equipos[i].nombre;
+        if (ncNorm.indexOf(sinAcentos(equipos[i].nombre)) !== -1) return equipos[i].nombre;
     }
-    // 3. Búsqueda inversa: si el nombre largo está contenido en nc
+    
+    // 3. Búsqueda inversa
     for (var i = 0; i < equipos.length; i++) {
-        if (equipos[i].nombreCompleto.normalize('NFC').toLowerCase().indexOf(ncNorm) !== -1) return equipos[i].nombre;
+        if (sinAcentos(equipos[i].nombreCompleto).indexOf(ncNorm) !== -1) return equipos[i].nombre;
     }
-    // 4. Búsqueda por palabras clave (ignora "C.E.", "U.E.", etc.)
-    for (var i = 0; i < equipos.length; i++) {
-        var nombreLimpio = equipos[i].nombreCompleto.replace(/^(C\.F\.|U\.E\.|A\.V\.|C\.E\.|U\.D\.A\.|E\.F\.B|V\.C\.F\.)\s*/i, '').toLowerCase();
-        if (ncNorm.indexOf(nombreLimpio) !== -1 || nombreLimpio.indexOf(ncNorm) !== -1) return equipos[i].nombre;
-    }
+    
     return nc;
 }
 function initCalendario() { var selector = document.getElementById('selector-jornada'); if (selector.options.length > 0) return; calendario.forEach(function(j) { var opt = document.createElement('option'); opt.value = j.jornada; opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')'; selector.appendChild(opt); }); cargarJornada(); }
