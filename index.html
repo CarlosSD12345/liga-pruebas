@@ -922,10 +922,16 @@ if (!matchEquipo) { alert('No se encontró el equipo'); return; }
 var equipo = matchEquipo[1].trim().normalize('NFC').replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.-]/gu, '');
 var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
 if (!jornada) { alert('Jornada ' + numJornada + ' no encontrada'); return; }
+// Función auxiliar para normalizar texto (eliminar acentos)
+function normalizarTexto(str) {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
 var idxPartido = -1;
 jornada.partidos.forEach(function(p, idx) {
-var textoPartidoCal = p.local + ' vs ' + p.visitante;
-if (textoPartidoCal === textoPartido) { idxPartido = idx; }
+    var textoPartidoCal = normalizarTexto(p.local + ' vs ' + p.visitante);
+    var textoPartidoNorm = normalizarTexto(textoPartido);
+    if (textoPartidoCal === textoPartidoNorm) { idxPartido = idx; }
 });
 if (idxPartido === -1) { alert('Partido no encontrado: "' + textoPartido + '"\nRevisa que los nombres coincidan.'); return; }
 var goleadores = [];
