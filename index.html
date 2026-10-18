@@ -927,11 +927,37 @@ function normalizarTexto(str) {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 }
 
+function normalizarTexto(str) {
+    return str
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/l·l/gi, 'l')
+        .replace(/ç/gi, 'c')
+        .replace(/[^a-z0-9\s]/g, '')
+        .toLowerCase()
+        .trim();
+}
+
 var idxPartido = -1;
 jornada.partidos.forEach(function(p, idx) {
     var textoPartidoCal = normalizarTexto(p.local + ' vs ' + p.visitante);
     var textoPartidoNorm = normalizarTexto(textoPartido);
+    // Comparación exacta primero
     if (textoPartidoCal === textoPartidoNorm) { idxPartido = idx; }
+    // Si no, buscar por coincidencia de equipos
+    else {
+        var localNorm = normalizarTexto(p.local);
+        var visitNorm = normalizarTexto(p.visitante);
+        var partes = textoPartidoNorm.split(' vs ');
+        if (partes.length === 2) {
+            var localMsg = partes[0].trim();
+            var visitMsg = partes[1].trim();
+            if ((localMsg.includes(localNorm) || localNorm.includes(localMsg)) && 
+                (visitMsg.includes(visitNorm) || visitNorm.includes(visitMsg))) {
+                idxPartido = idx;
+            }
+        }
+    }
 });
 if (idxPartido === -1) { alert('Partido no encontrado: "' + textoPartido + '"\nRevisa que los nombres coincidan.'); return; }
 var goleadores = [];
