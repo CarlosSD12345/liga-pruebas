@@ -332,34 +332,5 @@
         "estado": "rechazado",
         "fecha": "2026-10-18"
       },
-      {
-        "equipo": "C.E. Santa Eullia de Ronana",
-        "jugador": "Edu",
-        "goles": 1,
-        "estado": "rechazado",
-        "fecha": "2026-10-18"
-      },
-      {
-        "equipo": "C.E. Sentmenat",
-        "jugador": "Edu",
-        "goles": 1,
-        "estado": "rechazado",
-        "fecha": "2026-10-18"
-      },
-      {
-        "equipo": "C.E. Sentmenat",
-        "jugador": "Edu",
-        "goles": 1,
-        "estado": "rechazado",
-        "fecha": "2026-10-18"
-      },
-      {
-        "equipo": "C.E. Santa Eulàlia de Ronçana",
-        "jugador": "Edu",
-        "goles": 1,
-        "estado": "aprobado",
-        "fecha": "2026-10-18"
-      }
-    ]
-  }
+      {     
 }
