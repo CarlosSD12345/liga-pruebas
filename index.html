@@ -910,7 +910,8 @@ var numJornada = parseInt(matchJornada[1]);
 var matchBloque = texto.match(/Jornada\s+\d+\s*([\s\S]*?)Equipo:/i);
 if (!matchBloque) { alert('No se encontró el bloque del partido'); return; }
 var bloquePartido = matchBloque[1].trim();
-bloquePartido = bloquePartido.replace(/\p{Emoji}/gu, '').replace(/[\u{FE00}-\u{FE0F}\u{200B}-\u{200D}\u{2060}\u{FEFF}]/gu, '').replace(/\s+/g, ' ').trim();
+bloquePartido = bloquePartido.replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.\-]/gu, '').trim();
+bloquePartido = bloquePartido.replace(/\s+/g, ' ');
 var idxVs = bloquePartido.indexOf(' vs ');
 if (idxVs === -1) { alert('No se encontró " vs " en el partido'); return; }
 var local = bloquePartido.substring(0, idxVs).trim();
