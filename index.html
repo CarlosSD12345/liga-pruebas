@@ -980,9 +980,19 @@ var keyPartido = String(idxPartido);
 if (!propuestas[keyJornada]) propuestas[keyJornada] = {};
 if (!propuestas[keyJornada][keyPartido]) propuestas[keyJornada][keyPartido] = [];
 var partidoOrig = jornada.partidos[idxPartido];
-var equipoNorm = equipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-var localNorm = partidoOrig.local.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-var equipoOriginal = (equipoNorm === localNorm) ? partidoOrig.local : partidoOrig.visitante;
+var equipoNorm = equipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '');
+var localNorm = partidoOrig.local.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '');
+var visitNorm = partidoOrig.visitante.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '');
+var esLocal = (localNorm.includes(equipoNorm) || equipoNorm.includes(localNorm));
+var esVisitante = (visitNorm.includes(equipoNorm) || equipoNorm.includes(visitNorm));
+var equipoOriginal;
+if (esLocal && !esVisitante) {
+    equipoOriginal = partidoOrig.local;
+} else if (esVisitante && !esLocal) {
+    equipoOriginal = partidoOrig.visitante;
+} else {
+    equipoOriginal = (equipoNorm === localNorm) ? partidoOrig.local : partidoOrig.visitante;
+}
 goleadores.forEach(function(g) {
 propuestas[keyJornada][keyPartido].push({
 equipo: equipoOriginal, jugador: g.jugador, goles: g.goles,
