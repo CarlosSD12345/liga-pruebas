@@ -799,7 +799,7 @@ for (var j in propuestas) {
 for (var p in propuestas[j]) {
 propuestas[j][p].forEach(function(prop) {
 if (prop.estado === 'aprobado') {
-var key = prop.jugador + '|' + prop.equipo;
+var key = prop.jugador.toLowerCase().trim() + '|' + prop.equipo.toLowerCase().trim();
 if (!stats[key]) stats[key] = { jugador: prop.jugador, equipo: prop.equipo, goles: 0 };
 stats[key].goles += prop.goles;
 }
