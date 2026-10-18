@@ -910,7 +910,9 @@ var numJornada = parseInt(matchJornada[1]);
 var matchBloque = texto.match(/Jornada\s+\d+\s*([\s\S]*?)Equipo:/i);
 if (!matchBloque) { alert('No se encontró el bloque del partido'); return; }
 var bloquePartido = matchBloque[1].trim();
-bloquePartido = bloquePartido.replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.\-]/gu, '').trim();
+// Eliminar solo emojis y símbolos especiales, pero preservar TODAS las letras (incluida ç, l·l, etc.)
+bloquePartido = bloquePartido.replace(/[\p{Emoji}\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '').trim();
+bloquePartido = bloquePartido.replace(/[\u{200B}-\u{200D}\u{FEFF}]/gu, '');
 bloquePartido = bloquePartido.replace(/\s+/g, ' ');
 var idxVs = bloquePartido.indexOf(' vs ');
 if (idxVs === -1) { alert('No se encontró " vs " en el partido'); return; }
