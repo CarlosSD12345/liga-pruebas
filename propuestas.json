@@ -345,6 +345,13 @@
         "goles": 1,
         "estado": "pendiente",
         "fecha": "2026-10-18"
+      },
+      {
+        "equipo": "C.E. Sentmenat",
+        "jugador": "Edu",
+        "goles": 1,
+        "estado": "pendiente",
+        "fecha": "2026-10-18"
       }
     ]
   }
