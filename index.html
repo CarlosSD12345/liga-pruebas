@@ -13,9 +13,9 @@
 <style>
 body { background-color: #0b1d15; color: white; padding: 20px; font-family: Arial, sans-serif; }
 .container { max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-header { display: flex; justify-content: center; margin-bottom: 20px; }
+header { display: flex; justify-content: center; margin-bottom: 20px; position: sticky; top: 0; z-index: 100; background-color: #0b1d15; padding: 10px 0; }
 .header-logo { width: 400px; max-width: 100%; height: auto; object-fit: contain; }
-.tabs-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 25px; }
+.tabs-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 25px; position: sticky; top: 80px; z-index: 100; background-color: #0b1d15; padding: 10px 0; }
 .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
 .tab-btn { background-color: #11291e; color: #a3b8af; border: 1px solid #1f4733; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; white-space: nowrap; }
 .tab-btn.active { background-color: #2ecc71; color: #0b1d15; border-color: #2ecc71; }
