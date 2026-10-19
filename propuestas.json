@@ -141,6 +141,20 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-10-14"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Sergio Hermoso",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Denis",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
       }
     ]
   },
@@ -242,6 +256,43 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-10-14"
+      }
+    ],
+    "7": [
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Sergio Hermoso",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Eze",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Baena",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Monki",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Jose",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
       }
     ]
   },
@@ -411,6 +462,52 @@
       {
         "equipo": "U.E. Castellar",
         "jugador": "Jaime Perales",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-18"
+      }
+    ],
+    "5": [
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Baena",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Monki",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Chus",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-19"
+      }
+    ],
+    "6": [
+      {
+        "equipo": "C.F. Cerdanyola",
+        "jugador": "Nico Ruiz",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-10-18"
+      },
+      {
+        "equipo": "C.F. Cerdanyola",
+        "jugador": "Pepelu",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-10-18"
+      },
+      {
+        "equipo": "C.F. Cerdanyola",
+        "jugador": "Juan",
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-10-18"
