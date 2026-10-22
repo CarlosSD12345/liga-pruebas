@@ -730,18 +730,6 @@ document.getElementById('goleadores-form-delegados').style.display = 'none';
 initSelectorEquipoLoginDelegados();
 }
 }
-
-function initSelectorEquipoLoginDelegados() {
-var select = document.getElementById('login-equipo-delegados');
-if (select.options.length > 1) return;
-Object.keys(contraseñasEquipos).forEach(function(eq) {
-var opt = document.createElement('option');
-opt.value = eq;
-opt.text = eq;
-select.appendChild(opt);
-});
-}
-
 function loginGoleadoresDelegados() {
 var equipo = document.getElementById('login-equipo-delegados').value;
 var pass = document.getElementById('login-password-delegados').value;
@@ -754,19 +742,6 @@ initGoleadoresDelegados();
 alert('Contraseña incorrecta');
 }
 }
-
-function cerrarSesionGoleadoresDelegados() {
-equipoLogueado = null;
-document.getElementById('goleador-jornada-delegados').value = '';
-document.getElementById('goleador-partido-delegados').innerHTML = '<option value="">Selecciona Partido...</option>';
-document.getElementById('goleadores-lista-delegados').innerHTML = '';
-initGoleadoresDelegados();
-}
-
-function verRankingGoleadoresDesdeDelegados() {
-cambiarPestana('goleadores', document.querySelectorAll('.tab-btn')[4]);
-}
-
 function initSelectorJornadaGoleadorDelegados() {
 var select = document.getElementById('goleador-jornada-delegados');
 if (select.options.length > 1) return;
@@ -777,7 +752,6 @@ opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')';
 select.appendChild(opt);
 });
 }
-
 function cargarPartidosGoleadorDelegados() {
 var numJornada = parseInt(document.getElementById('goleador-jornada-delegados').value);
 var selectPartido = document.getElementById('goleador-partido-delegados');
