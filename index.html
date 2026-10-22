@@ -11,8 +11,10 @@
 <meta name="apple-mobile-web-app-title" content="Liga Veteranos">
 <link rel="apple-touch-icon" href="escudos/icono_512.png">
 <style>
-body { background-color: #0b1d15; color: white; padding: 20px; font-family: Arial, sans-serif; }
-.container { max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background-color: #0b1d15; color: white; font-family: Arial, sans-serif; }
+.container { max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 20px; }
+.sticky-header { position: sticky; top: 0; z-index: 100; background-color: #0b1d15; }
 header { display: flex; justify-content: center; margin-bottom: 20px; }
 .header-logo { width: 400px; max-width: 100%; height: auto; object-fit: contain; }
 .tabs-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 25px; }
@@ -42,7 +44,7 @@ td { padding: 12px; border-bottom: 1px solid #1f4733; text-align: center; }
 .rest { background-color: #9b59b6; }
 .col-forma { white-space: nowrap; min-width: 90px; }
 .selector-container { margin-bottom: 20px; text-align: center; }
-#selector-jornada, #admin-selector-jornada, #goleador-jornada, #goleador-partido, #login-equipo { background-color: #11291e; color: white; border: 1px solid #2ecc71; padding: 12px 20px; border-radius: 8px; font-size: 1rem; font-weight: bold; width: 100%; max-width: 350px; cursor: pointer; }
+#selector-jornada, #admin-selector-jornada, #goleador-jornada, #goleador-partido, #login-equipo, #login-equipo-delegados { background-color: #11291e; color: white; border: 1px solid #2ecc71; padding: 12px 20px; border-radius: 8px; font-size: 1rem; font-weight: bold; width: 100%; max-width: 350px; cursor: pointer; }
 .match-card { background-color: #11291e; border: 1px solid #1f4733; border-radius: 10px; padding: 15px; margin-bottom: 10px; }
 .match-teams { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
 .match-team { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
@@ -90,8 +92,8 @@ footer { display: flex; flex-direction: column; align-items: center; padding: 30
 .medalla-plata { background-color: #bdc3c7; color: #0b1d15; }
 .medalla-bronce { background-color: #e67e22; color: #0b1d15; }
 @media (max-width: 600px) {
-body { padding: 8px; }
-.container { width: 100%; }
+body { padding: 0; }
+.container { width: 100%; padding: 8px; }
 header { justify-content: center; }
 .header-logo { width: 260px; margin-left: 20px; }
 .tabs-row { gap: 6px; flex-wrap: nowrap; }
@@ -112,13 +114,12 @@ header { justify-content: center; }
 </head>
 <body>
 <div class="container">
+<div class="sticky-header">
 <header>
 <img src="escudos/logo_liga.png" alt="Liga Veteranos Vallès" class="header-logo">
 </header>
 <div class="tabs-row">
 <div class="tabs">
-<!-- OCULTO TEMPORALMENTE - Activar cuando Jaume lo autorice -->
-<!-- <button class="tab-btn active" onclick="cambiarPestana('clasificacion-real', this)">Clasificación Real</button> -->
 <button class="tab-btn active" onclick="cambiarPestana('calendario', this)">Calendario</button>
 <button class="tab-btn" onclick="cambiarPestana('fairplay', this)">Fair Play</button>
 <button class="tab-btn" onclick="cambiarPestana('clasificacion', this)">Clasificación</button>
@@ -127,6 +128,7 @@ header { justify-content: center; }
 <button class="tab-btn" onclick="cambiarPestana('acceso-delegados', this)">Acceso Delegados</button>
 </div>
 <div class="badge" id="badge-jornada">JORNADA 3</div>
+</div>
 </div>
 <div id="clasificacion-real" class="section">
 <table>
@@ -167,50 +169,14 @@ header { justify-content: center; }
 </table>
 </div>
 <div id="goleadores" class="section">
-<div id="goleadores-login">
-<div class="login-box">
-<h2>⚽ Acceso Goleadores</h2>
-<p style="color:#a3b8af; margin-bottom:15px; font-size:0.9rem;">Solo responsables de equipo</p>
-<button onclick="var g=document.getElementById('guia-goleadores'); g.style.display = g.style.display==='none'?'block':'none';" style="width:100%; padding:10px; background-color:#1f4733; color:#2ecc71; border:1px solid #2ecc71; border-radius:8px; font-weight:bold; cursor:pointer; margin-bottom:10px;">📋 Ver guía rápida</button>
-<div id="guia-goleadores" style="display:none; background-color:#1f4733; padding:15px; border-radius:8px; margin-bottom:15px; font-size:0.85rem; color:white;">
-<p style="margin:0 0 8px 0;">🔑 <b>Contraseña:</b> Se facilita en privado a cada responsable de equipo.</p>
-<a href="https://wa.me/34617417827?text=Hola,%20soy%20el%20responsable%20de%20mi%20equipo%20y%20necesito%20mi%20contrase%C3%B1a%20para%20enviar%20los%20goleadores.%20%C2%A1Gracias!" target="_blank" style="display:block; width:100%; padding:12px; background-color:#25D366; color:white; text-align:center; border-radius:8px; font-weight:bold; text-decoration:none; margin-bottom:12px;"> Solicitar contraseña por WhatsApp</a>
-<p style="margin:0 0 8px 0;"> <b>Cómo enviar:</b> Selecciona tu equipo → introduce contraseña → elige Jornada y Partido → escribe jugador y goles → "Enviar propuesta".</p>
-<p style="margin:0 0 8px 0; color:#f39c12;">⚠️ <b>IMPORTANTE:</b> Usa siempre el mismo nombre exacto para cada jugador. Si escribes "Javi" un día y "Javier" otro, no sumará al ser nombres diferentes.</p>
-<p style="margin:0;">✅ Se abrirá WhatsApp con el mensaje listo. Envíalo y el admin lo aprobará.</p>
-</div>
-<select id="login-equipo">
-<option value="">Selecciona tu equipo...</option>
-</select>
-<input type="password" id="login-password" placeholder="Contraseña del equipo">
-<button class="btn-primary" onclick="loginGoleadores()">Entrar</button>
-<button class="btn-secondary" onclick="verRankingGoleadores()">Ver ranking público</button>
-</div>
-</div>
-<div id="goleadores-form" style="display:none;">
-<div class="propuesta-box">
-<h2>⚽ Enviar Goleadores</h2>
-<p style="color:#a3b8af; margin-bottom:10px;">Equipo: <strong id="equipo-actual" style="color:#2ecc71;"></strong></p>
-<button class="btn-secondary" onclick="cerrarSesionGoleadores()" style="margin-bottom:15px; font-size:0.85rem; padding:8px;">Cerrar sesión</button>
-<select id="goleador-jornada" onchange="cargarPartidosGoleador()">
-<option value="">Selecciona Jornada...</option>
-</select>
-<select id="goleador-partido">
-<option value="">Selecciona Partido...</option>
-</select>
-<div id="goleadores-lista" style="margin-top:15px;"></div>
-<button class="btn-add" onclick="addGoleadorRow()" style="margin-top:10px; width:100%;">➕ Añadir goleador</button>
-<button class="btn-primary" onclick="enviarPropuestaGoleadores()" style="margin-top:15px;">📲 Enviar propuesta</button>
-</div>
-</div>
-<div id="goleadores-ranking" style="display:none;">
+<div id="goleadores-ranking">
 <table>
 <thead>
 <tr><th>#</th><th class="team">Jugador</th><th>Equipo</th><th style="color:#2ecc71;">⚽ GOLES</th></tr>
 </thead>
 <tbody id="tabla-goleadores"></tbody>
 </table>
-<button class="btn-primary" onclick="volverLoginGoleadores()" style="max-width:300px; margin:20px auto; display:block;">⬅️ Volver al login</button>
+<button class="btn-primary" onclick="cambiarPestana('acceso-delegados', document.querySelectorAll('.tab-btn')[5])" style="max-width:300px; margin:20px auto; display:block;"> Acceso Delegados</button>
 </div>
 </div>
 <div id="acceso-delegados" class="section">
@@ -218,11 +184,11 @@ header { justify-content: center; }
 <div class="login-box">
 <h2>⚽ Acceso Goleadores</h2>
 <p style="color:#a3b8af; margin-bottom:15px; font-size:0.9rem;">Solo responsables de equipo</p>
-<button onclick="var g=document.getElementById('guia-goleadores-delegados'); g.style.display = g.style.display==='none'?'block':'none';" style="width:100%; padding:10px; background-color:#1f4733; color:#2ecc71; border:1px solid #2ecc71; border-radius:8px; font-weight:bold; cursor:pointer; margin-bottom:10px;"> Ver guía rápida</button>
+<button onclick="var g=document.getElementById('guia-goleadores-delegados'); g.style.display = g.style.display==='none'?'block':'none';" style="width:100%; padding:10px; background-color:#1f4733; color:#2ecc71; border:1px solid #2ecc71; border-radius:8px; font-weight:bold; cursor:pointer; margin-bottom:10px;">📋 Ver guía rápida</button>
 <div id="guia-goleadores-delegados" style="display:none; background-color:#1f4733; padding:15px; border-radius:8px; margin-bottom:15px; font-size:0.85rem; color:white;">
 <p style="margin:0 0 8px 0;">🔑 <b>Contraseña:</b> Se facilita en privado a cada responsable de equipo.</p>
 <a href="https://wa.me/34617417827?text=Hola,%20soy%20el%20responsable%20de%20mi%20equipo%20y%20necesito%20mi%20contrase%C3%B1a%20para%20enviar%20los%20goleadores.%20%C2%A1Gracias!" target="_blank" style="display:block; width:100%; padding:12px; background-color:#25D366; color:white; text-align:center; border-radius:8px; font-weight:bold; text-decoration:none; margin-bottom:12px;">📲 Solicitar contraseña por WhatsApp</a>
-<p style="margin:0 0 8px 0;">📝 <b>Cómo enviar:</b> Selecciona tu equipo → introduce contraseña → elige Jornada y Partido → escribe jugador y goles → "Enviar propuesta".</p>
+<p style="margin:0 0 8px 0;"> <b>Cómo enviar:</b> Selecciona tu equipo → introduce contraseña → elige Jornada y Partido → escribe jugador y goles → "Enviar propuesta".</p>
 <p style="margin:0 0 8px 0; color:#f39c12;">⚠️ <b>IMPORTANTE:</b> Usa siempre el mismo nombre exacto para cada jugador. Si escribes "Javi" un día y "Javier" otro, no sumará al ser nombres diferentes.</p>
 <p style="margin:0;">✅ Se abrirá WhatsApp con el mensaje listo. Envíalo y el admin lo aprobará.</p>
 </div>
@@ -231,7 +197,7 @@ header { justify-content: center; }
 </select>
 <input type="password" id="login-password-delegados" placeholder="Contraseña del equipo">
 <button class="btn-primary" onclick="loginGoleadoresDelegados()">Entrar</button>
-<button class="btn-secondary" onclick="verRankingGoleadoresDesdeDelegados()">Ver ranking público</button>
+<button class="btn-secondary" onclick="cambiarPestana('goleadores', document.querySelectorAll('.tab-btn')[4])">Ver ranking público</button>
 </div>
 </div>
 <div id="acceso-delegados-form" style="display:none;">
@@ -247,7 +213,7 @@ header { justify-content: center; }
 </select>
 <div id="goleadores-lista-delegados" style="margin-top:15px;"></div>
 <button class="btn-add" onclick="addGoleadorRowDelegados()" style="margin-top:10px; width:100%;">➕ Añadir goleador</button>
-<button class="btn-primary" onclick="enviarPropuestaGoleadoresDelegados()" style="margin-top:15px;">📲 Enviar propuesta</button>
+<button class="btn-primary" onclick="enviarPropuestaGoleadoresDelegados()" style="margin-top:15px;"> Enviar propuesta</button>
 </div>
 </div>
 </div>
@@ -284,7 +250,7 @@ header { justify-content: center; }
 <h2 style="color: #2ecc71; margin-bottom: 15px;">🎛️ Panel de Control</h2>
 <button onclick="mostrarSeccionAdmin('resultados')" style="width:100%; padding:12px; background-color:#2ecc71; color:#0b1d15; border:none; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer; margin-bottom:10px;">📊 Resultados</button>
 <button onclick="mostrarSeccionAdmin('propuestas')" style="width:100%; padding:12px; background-color:#f39c12; color:#0b1d15; border:none; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer; margin-bottom:15px;">⚽ Propuestas Goleadores</button>
-<button onclick="mostrarImportarWhatsApp()" style="width:100%; padding:12px; background-color:#3498db; color:white; border:none; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer; margin-bottom:15px;"> Importar desde WhatsApp</button>
+<button onclick="mostrarImportarWhatsApp()" style="width:100%; padding:12px; background-color:#3498db; color:white; border:none; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer; margin-bottom:15px;">📋 Importar desde WhatsApp</button>
 <button onclick="cerrarAdmin()" style="width: 100%; padding: 12px; background-color: transparent; color: #e74c3c; border: 1px solid #e74c3c; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer;">Salir</button>
 <div id="admin-seccion-resultados" style="display:none; margin-top:15px;">
 <p style="color: #a3b8af; margin-bottom: 10px;">Selecciona la jornada para editar resultados:</p>
@@ -296,7 +262,7 @@ header { justify-content: center; }
 <div id="modal-importar-whatsapp" style="display:none; margin-top:15px;">
 <h3 style="color:#3498db; margin-bottom:10px;">📋 Importar desde WhatsApp</h3>
 <p style="color:#a3b8af; font-size:0.85rem; margin-bottom:10px;">Pega aquí el mensaje de WhatsApp:</p>
-<textarea id="texto-whatsapp" placeholder=" *PROPUESTA GOLEADORES*..." style="width:100%; height:200px; padding:10px; border-radius:8px; border:1px solid #1f4733; background-color:#0b1d15; color:white; font-size:14px; box-sizing:border-box;"></textarea>
+<textarea id="texto-whatsapp" placeholder="⚽ *PROPUESTA GOLEADORES*..." style="width:100%; height:200px; padding:10px; border-radius:8px; border:1px solid #1f4733; background-color:#0b1d15; color:white; font-size:14px; box-sizing:border-box;"></textarea>
 <div style="display:flex; gap:10px; margin-top:10px;">
 <button onclick="procesarWhatsApp()" style="flex:1; padding:10px; background-color:#2ecc71; color:#0b1d15; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Procesar</button>
 <button onclick="cerrarModalImportar()" style="flex:1; padding:10px; background-color:#e74c3c; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Cancelar</button>
@@ -373,8 +339,8 @@ var calendario = [
 { local: "U.D.A. Gramanet", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00", arbitro: "Congost" },
 { local: "Penya Decano", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00", arbitro: "Salva" },
 { local: "A.V. Ripollet", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00", arbitro: "Julio" }
-], descanso: "U.E. Castellar" }
-,{ jornada: 5, fecha: "18/10/2026", suspendida: false, partidos: [
+], descanso: "U.E. Castellar" },
+{ jornada: 5, fecha: "18/10/2026", suspendida: false, partidos: [
 { local: "A.V. L'Ametlla del Vallés", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
 { local: "V.C.F. Ripollet", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
 { local: "U.E. Sabadellenca", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
@@ -433,247 +399,7 @@ var calendario = [
 { local: "A.V. Ripollet", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
 { local: "C.E. Sentmenat", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
 { local: "C.F. Cerdanyola", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" }
-], descanso: "C.F. Can Parellada" },
-{ jornada: 11, fecha: "29/11/2026", suspendida: false, partidos: [
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" }
-], descanso: "C.E. Santa Eulàlia de Ronçana" },
-{ jornada: 12, fecha: "13/12/2026", suspendida: false, partidos: [
-{ local: "C.F. Sant Feliu de Codines", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.F. Can Parellada", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" }
-], descanso: "C.F. Barberá" },
-{ jornada: 13, fecha: "20/12/2026", suspendida: false, partidos: [
-{ local: "C.F. Sant Feliu de Codines", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
-], descanso: "C.E. Bigues i Riells" },
-{ jornada: 14, fecha: "10/01/2027", suspendida: false, partidos: [
-{ local: "U.E. Castellar", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.F. Can Parellada", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" }
-], descanso: "U.E. Sabadellenca" },
-{ jornada: 15, fecha: "17/01/2027", suspendida: false, partidos: [
-{ local: "U.E. Castellar", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "U.E. Sabadellenca", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
-], descanso: "V.C.F. Ripollet" },
-{ jornada: 16, fecha: "24/01/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "Penya Decano", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.F. Can Parellada", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" }
-], descanso: "A.V. L'Ametlla del Vallés" },
-{ jornada: 17, fecha: "31/01/2027", suspendida: false, partidos: [
-{ local: "U.D.A. Gramanet", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" }
-], descanso: "A.V. Pallejá" },
-{ jornada: 18, fecha: "14/02/2027", suspendida: false, partidos: [
-{ local: "V.C.F. Ripollet", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "A.V. Pallejá", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" }
-], descanso: "U.E. Canovelles" },
-{ jornada: 19, fecha: "21/02/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
-{ local: "C.F. Can Parellada", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Cerdanyola", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.E. Sentmenat", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "A.V. Ripollet", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" }
-], descanso: "E.F.B Palau Solitá i Plegamans" },
-{ jornada: 20, fecha: "28/02/2027", suspendida: false, partidos: [
-{ local: "A.V. L'Ametlla del Vallés", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "A.V. Pallejá", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "U.E. Canovelles", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" }
-], descanso: "C.F. Sant Feliu de Codines" },
-{ jornada: 21, fecha: "07/03/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "V.C.F. Ripollet", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
-{ local: "C.F. Can Parellada", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Cerdanyola", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.E. Sentmenat", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" }
-], descanso: "U.E. Castellar" },
-{ jornada: 22, fecha: "14/03/2027", suspendida: false, partidos: [
-{ local: "A.V. Pallejá", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "U.E. Canovelles", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "Penya Decano", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" }
-], descanso: "U.D.A. Gramanet" },
-{ jornada: 23, fecha: "21/03/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
-{ local: "C.F. Can Parellada", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Cerdanyola", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" }
-], descanso: "Penya Decano" },
-{ jornada: 24, fecha: "04/04/2027", suspendida: false, partidos: [
-{ local: "U.E. Canovelles", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" }
-], descanso: "A.V. Ripollet" },
-{ jornada: 25, fecha: "11/04/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
-{ local: "C.F. Can Parellada", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" }
-], descanso: "C.E. Sentmenat" },
-{ jornada: 26, fecha: "18/04/2027", suspendida: false, partidos: [
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Can Parellada", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" }
-], descanso: "C.F. Cerdanyola" },
-{ jornada: 27, fecha: "25/04/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" }
-], descanso: "C.F. Can Parellada" },
-{ jornada: 28, fecha: "02/05/2027", suspendida: false, partidos: [
-{ local: "C.F. Sant Feliu de Codines", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.F. Can Parellada", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" }
-], descanso: "C.E. Santa Eulàlia de Ronçana" },
-{ jornada: 29, fecha: "09/05/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" }
-], descanso: "C.F. Barberá" },
-{ jornada: 30, fecha: "16/05/2027", suspendida: false, partidos: [
-{ local: "U.E. Castellar", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "U.D.A. Gramanet", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.F. Can Parellada", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" }
-], descanso: "C.E. Bigues i Riells" },
-{ jornada: 31, fecha: "23/05/2027", suspendida: false, partidos: [
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "A.V. L'Ametlla del Vallés", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
-{ local: "V.C.F. Ripollet", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" }
-], descanso: "U.E. Sabadellenca" },
-{ jornada: 32, fecha: "30/05/2027", suspendida: false, partidos: [
-{ local: "U.D.A. Gramanet", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "Penya Decano", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.F. Can Parellada", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" }
-], descanso: "V.C.F. Ripollet" },
-{ jornada: 33, fecha: "06/06/2027", suspendida: false, partidos: [
-{ local: "U.D.A. Gramanet", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
-{ local: "U.E. Castellar", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
-{ local: "C.F. Sant Feliu de Codines", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
-{ local: "E.F.B Palau Solitá i Plegamans", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
-{ local: "U.E. Canovelles", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
-{ local: "A.V. Pallejá", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
-{ local: "V.C.F. Ripollet", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "U.E. Sabadellenca", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" }
-], descanso: "A.V. L'Ametlla del Vallés" },
-{ jornada: 34, fecha: "13/06/2027", suspendida: false, partidos: [
-{ local: "Penya Decano", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
-{ local: "A.V. Ripollet", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
-{ local: "C.E. Sentmenat", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
-{ local: "C.F. Cerdanyola", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
-{ local: "C.F. Can Parellada", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
-{ local: "C.F. Barberá", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
-{ local: "C.E. Bigues i Riells", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
-{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
-], descanso: "A.V. Pallejá" }
+], descanso: "C.F. Can Parellada" }
 ];
 var equipos = [
 { nombre: "Barberà", img: "barbera.png", nombreCompleto: "C.F. Barberá" },
@@ -702,63 +428,8 @@ btn.classList.add('active');
 if (id === 'calendario') initCalendario();
 if (id === 'fairplay') renderizarFairPlay();
 if (id === 'arbitros') renderizarArbitros();
-if (id === 'goleadores') verRankingGoleadores();
+if (id === 'goleadores') { cargarPropuestasPublicas(); }
 if (id === 'acceso-delegados') initAccesoDelegados();
-}
-function initGoleadores() {
-document.getElementById('goleadores-login').style.display = 'none';
-document.getElementById('goleadores-form').style.display = 'none';
-document.getElementById('goleadores-ranking').style.display = 'block';
-cargarPropuestasPublicas();
-}
-function initSelectorEquipoLogin() {
-var select = document.getElementById('login-equipo');
-if (select.options.length > 1) return;
-Object.keys(contraseñasEquipos).forEach(function(eq) {
-var opt = document.createElement('option');
-opt.value = eq;
-opt.text = eq;
-select.appendChild(opt);
-});
-}
-function loginGoleadores() {
-var equipo = document.getElementById('login-equipo').value;
-var pass = document.getElementById('login-password').value;
-if (!equipo) { alert('Selecciona un equipo'); return; }
-if (contraseñasEquipos[equipo] === pass) {
-equipoLogueado = equipo;
-document.getElementById('login-password').value = '';
-initGoleadores();
-} else {
-alert('Contraseña incorrecta');
-}
-}
-function cerrarSesionGoleadores() {
-equipoLogueado = null;
-document.getElementById('goleador-jornada').value = '';
-document.getElementById('goleador-partido').innerHTML = '<option value="">Selecciona Partido...</option>';
-document.getElementById('goleadores-lista').innerHTML = '';
-initGoleadores();
-}
-function verRankingGoleadores() {
-cargarPropuestasPublicas();
-}
-function cargarPropuestasPublicas() {
-fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/propuestas.json?t=' + Date.now())
-.then(function(r) {
-if (r.status === 404) { propuestas = {}; renderizarRankingGoleadores(); return; }
-return r.json();
-})
-.then(function(data) {
-if (data && data.content) { propuestas = JSON.parse(decodeURIComponent(escape(atob(data.content)))); }
-else if (data && typeof data === 'object' && !data.content) { propuestas = data; }
-else { propuestas = {}; }
-renderizarRankingGoleadores();
-})
-.catch(function(e) { console.error(e); propuestas = {}; renderizarRankingGoleadores(); });
-}
-function volverLoginGoleadores() {
-cambiarPestana('acceso-delegados', document.querySelectorAll('.tab-btn')[5]);
 }
 function initAccesoDelegados() {
 if (equipoLogueado) {
@@ -772,7 +443,6 @@ document.getElementById('acceso-delegados-form').style.display = 'none';
 initSelectorEquipoLoginDelegados();
 }
 }
-
 function initSelectorEquipoLoginDelegados() {
 var select = document.getElementById('login-equipo-delegados');
 if (select.options.length > 1) return;
@@ -783,7 +453,6 @@ opt.text = eq;
 select.appendChild(opt);
 });
 }
-
 function loginGoleadoresDelegados() {
 var equipo = document.getElementById('login-equipo-delegados').value;
 var pass = document.getElementById('login-password-delegados').value;
@@ -796,7 +465,6 @@ initAccesoDelegados();
 alert('Contraseña incorrecta');
 }
 }
-
 function cerrarSesionGoleadoresDelegados() {
 equipoLogueado = null;
 document.getElementById('goleador-jornada-delegados').value = '';
@@ -804,11 +472,6 @@ document.getElementById('goleador-partido-delegados').innerHTML = '<option value
 document.getElementById('goleadores-lista-delegados').innerHTML = '';
 initAccesoDelegados();
 }
-
-function verRankingGoleadoresDesdeDelegados() {
-cambiarPestana('goleadores', document.querySelectorAll('.tab-btn')[4]);
-}
-
 function initSelectorJornadaGoleadorDelegados() {
 var select = document.getElementById('goleador-jornada-delegados');
 if (select.options.length > 1) return;
@@ -819,7 +482,6 @@ opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')';
 select.appendChild(opt);
 });
 }
-
 function cargarPartidosGoleadorDelegados() {
 var numJornada = parseInt(document.getElementById('goleador-jornada-delegados').value);
 var selectPartido = document.getElementById('goleador-partido-delegados');
@@ -837,7 +499,6 @@ selectPartido.appendChild(opt);
 }
 });
 }
-
 function addGoleadorRowDelegados() {
 var lista = document.getElementById('goleadores-lista-delegados');
 var row = document.createElement('div');
@@ -845,7 +506,6 @@ row.className = 'goleador-row';
 row.innerHTML = '<input type="text" placeholder="Nombre del jugador" class="gol-nombre"><input type="number" placeholder="Goles" min="1" class="gol-goles"><button class="btn-remove" onclick="this.parentElement.remove()">✕</button>';
 lista.appendChild(row);
 }
-
 function enviarPropuestaGoleadoresDelegados() {
 var numJornada = parseInt(document.getElementById('goleador-jornada-delegados').value);
 var idxPartido = document.getElementById('goleador-partido-delegados').value;
@@ -874,67 +534,19 @@ var numeroAdmin = '34617417827';
 var url = 'https://wa.me/' + numeroAdmin + '?text=' + encodeURIComponent(texto);
 window.open(url, '_blank');
 }
-function initSelectorJornadaGoleador() {
-var select = document.getElementById('goleador-jornada');
-if (select.options.length > 1) return;
-calendario.forEach(function(j) {
-var opt = document.createElement('option');
-opt.value = j.jornada;
-opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')';
-select.appendChild(opt);
-});
-}
-function cargarPartidosGoleador() {
-var numJornada = parseInt(document.getElementById('goleador-jornada').value);
-var selectPartido = document.getElementById('goleador-partido');
-selectPartido.innerHTML = '<option value="">Selecciona Partido...</option>';
-document.getElementById('goleadores-lista').innerHTML = '';
-if (!numJornada) return;
-var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
-if (!jornada) return;
-jornada.partidos.forEach(function(p, idx) {
-if (p.local === equipoLogueado || p.visitante === equipoLogueado) {
-var opt = document.createElement('option');
-opt.value = idx;
-opt.text = p.local + ' vs ' + p.visitante;
-selectPartido.appendChild(opt);
-}
-});
-}
-function addGoleadorRow() {
-var lista = document.getElementById('goleadores-lista');
-var row = document.createElement('div');
-row.className = 'goleador-row';
-row.innerHTML = '<input type="text" placeholder="Nombre del jugador" class="gol-nombre"><input type="number" placeholder="Goles" min="1" class="gol-goles"><button class="btn-remove" onclick="this.parentElement.remove()">✕</button>';
-lista.appendChild(row);
-}
-function enviarPropuestaGoleadores() {
-var numJornada = parseInt(document.getElementById('goleador-jornada').value);
-var idxPartido = document.getElementById('goleador-partido').value;
-if (!numJornada || idxPartido === '') { alert('Selecciona jornada y partido'); return; }
-var rows = document.querySelectorAll('.goleador-row');
-var goleadores = [];
-rows.forEach(function(row) {
-var nombre = row.querySelector('.gol-nombre').value.trim();
-var goles = parseInt(row.querySelector('.gol-goles').value);
-if (nombre && goles > 0) { goleadores.push({ jugador: nombre, goles: goles }); }
-});
-if (goleadores.length === 0) { alert('Añade al menos un goleador'); return; }
-if (!confirm('¿Enviar propuesta de ' + goleadores.length + ' goleador(es)?')) return;
-var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
-var partido = jornada.partidos[parseInt(idxPartido)];
-var texto = '⚽ *PROPUESTA GOLEADORES*\n';
-texto += '📅 Jornada ' + numJornada + '\n';
-texto += '⚽ ' + partido.local + ' vs ' + partido.visitante + '\n';
-texto += '👕 Equipo: ' + equipoLogueado + '\n';
-texto += '*Goleadores:*\n';
-goleadores.forEach(function(g) {
-texto += '• ' + g.jugador + ' - ' + g.goles + ' gol(es)\n';
-});
-texto += '\nPor favor, valida esta propuesta. ¡Gracias!';
-var numeroAdmin = '34617417827';
-var url = 'https://wa.me/' + numeroAdmin + '?text=' + encodeURIComponent(texto);
-window.open(url, '_blank');
+function cargarPropuestasPublicas() {
+fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/propuestas.json?t=' + Date.now())
+.then(function(r) {
+if (r.status === 404) { propuestas = {}; renderizarRankingGoleadores(); return; }
+return r.json();
+})
+.then(function(data) {
+if (data && data.content) { propuestas = JSON.parse(decodeURIComponent(escape(atob(data.content)))); }
+else if (data && typeof data === 'object' && !data.content) { propuestas = data; }
+else { propuestas = {}; }
+renderizarRankingGoleadores();
+})
+.catch(function(e) { console.error(e); propuestas = {}; renderizarRankingGoleadores(); });
 }
 function renderizarRankingGoleadores() {
 var stats = {};
@@ -956,7 +568,7 @@ var html = '';
 lista.forEach(function(g, i) {
 var rankHtml = '';
 if (i === 0) rankHtml = '<span class="badge-form medalla-oro">🥇</span>';
-else if (i === 1) rankHtml = '<span class="badge-form medalla-plata">🥈</span>';
+else if (i === 1) rankHtml = '<span class="badge-form medalla-plata"></span>';
 else if (i === 2) rankHtml = '<span class="badge-form medalla-bronce">🥉</span>';
 else rankHtml = (i+1);
 html += '<tr><td>' + rankHtml + '</td><td class="team" style="font-weight:bold;">' + g.jugador + '</td><td>' + getNombreCorto(g.equipo) + '</td><td style="font-weight:bold; color:#2ecc71; font-size:1.1rem;">' + g.goles + '</td></tr>';
@@ -1053,7 +665,6 @@ var numJornada = parseInt(matchJornada[1]);
 var matchBloque = texto.match(/Jornada\s+\d+\s*([\s\S]*?)Equipo:/i);
 if (!matchBloque) { alert('No se encontró el bloque del partido'); return; }
 var bloquePartido = matchBloque[1].trim();
-// Eliminar solo emojis y símbolos especiales, pero preservar TODAS las letras (incluida ç, l·l, etc.)
 bloquePartido = bloquePartido.replace(/[\p{Emoji}\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '').trim();
 bloquePartido = bloquePartido.replace(/[\u{200B}-\u{200D}\u{FEFF}]/gu, '');
 bloquePartido = bloquePartido.replace(/\s+/g, ' ');
@@ -1067,42 +678,27 @@ if (!matchEquipo) { alert('No se encontró el equipo'); return; }
 var equipo = matchEquipo[1].trim().normalize('NFC').replace(/[^\w\sáéíóúÁÉÍÓÚñÑüÜ'.-]/gu, '');
 var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
 if (!jornada) { alert('Jornada ' + numJornada + ' no encontrada'); return; }
-// Función auxiliar para normalizar texto (eliminar acentos)
 function normalizarTexto(str) {
-    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/l·l/gi, 'l').replace(/ç/gi, 'c').replace(/[^a-z0-9\s]/g, '').toLowerCase().trim();
 }
-
-function normalizarTexto(str) {
-    return str
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/l·l/gi, 'l')
-        .replace(/ç/gi, 'c')
-        .replace(/[^a-z0-9\s]/g, '')
-        .toLowerCase()
-        .trim();
-}
-
 var idxPartido = -1;
 jornada.partidos.forEach(function(p, idx) {
-    var textoPartidoCal = normalizarTexto(p.local + ' vs ' + p.visitante);
-    var textoPartidoNorm = normalizarTexto(textoPartido);
-    // Comparación exacta primero
-    if (textoPartidoCal === textoPartidoNorm) { idxPartido = idx; }
-    // Si no, buscar por coincidencia de equipos
-    else {
-        var localNorm = normalizarTexto(p.local);
-        var visitNorm = normalizarTexto(p.visitante);
-        var partes = textoPartidoNorm.split(' vs ');
-        if (partes.length === 2) {
-            var localMsg = partes[0].trim();
-            var visitMsg = partes[1].trim();
-            if ((localMsg.includes(localNorm) || localNorm.includes(localMsg)) && 
-                (visitMsg.includes(visitNorm) || visitNorm.includes(visitMsg))) {
-                idxPartido = idx;
-            }
-        }
-    }
+var textoPartidoCal = normalizarTexto(p.local + ' vs ' + p.visitante);
+var textoPartidoNorm = normalizarTexto(textoPartido);
+if (textoPartidoCal === textoPartidoNorm) { idxPartido = idx; }
+else {
+var localNorm = normalizarTexto(p.local);
+var visitNorm = normalizarTexto(p.visitante);
+var partes = textoPartidoNorm.split(' vs ');
+if (partes.length === 2) {
+var localMsg = partes[0].trim();
+var visitMsg = partes[1].trim();
+if ((localMsg.includes(localNorm) || localNorm.includes(localMsg)) &&
+(visitMsg.includes(visitNorm) || visitNorm.includes(visitMsg))) {
+idxPartido = idx;
+}
+}
+}
 });
 if (idxPartido === -1) { alert('Partido no encontrado: "' + textoPartido + '"\nRevisa que los nombres coincidan.'); return; }
 var goleadores = [];
@@ -1123,21 +719,18 @@ var keyPartido = String(idxPartido);
 if (!propuestas[keyJornada]) propuestas[keyJornada] = {};
 if (!propuestas[keyJornada][keyPartido]) propuestas[keyJornada][keyPartido] = [];
 var partidoOrig = jornada.partidos[idxPartido];
-
-// Función para medir similitud entre dos nombres
 function similitudEquipos(a, b) {
-    var norm = function(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, ''); };
-    var aNorm = norm(a);
-    var bNorm = norm(b);
-    var comunes = 0;
-    var i = 0, j = 0;
-    while (i < aNorm.length && j < bNorm.length) {
-        if (aNorm[i] === bNorm[j]) { comunes++; i++; j++; }
-        else { j++; }
-    }
-    return comunes;
+var norm = function(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, ''); };
+var aNorm = norm(a);
+var bNorm = norm(b);
+var comunes = 0;
+var i = 0, j = 0;
+while (i < aNorm.length && j < bNorm.length) {
+if (aNorm[i] === bNorm[j]) { comunes++; i++; j++; }
+else { j++; }
 }
-
+return comunes;
+}
 var simLocal = similitudEquipos(equipo, partidoOrig.local);
 var simVisit = similitudEquipos(equipo, partidoOrig.visitante);
 var equipoOriginal = simLocal >= simVisit ? partidoOrig.local : partidoOrig.visitante;
@@ -1289,17 +882,16 @@ html += '<span style="color:#a3b8af; font-size:0.7rem;">|</span>';
 html += '<span style="color:#e74c3c; font-size:0.75rem; font-weight:bold;">VISIT🔴</span>';
 html += '<input type="number" id="roV-' + index + '" value="' + roV + '" inputmode="numeric" placeholder="0" style="width:40px; text-align:center; padding:4px; border-radius:4px; border:1px solid #e74c3c; background:#11291e; color:white; font-size:14px;">';
 html += '</div>';
-html += '<div style="display:flex; align-items:center; gap:8px; margin-top:8px; justify-content:center;">';
+html += '<div style="display:flex; align-items:center; gap:8px; margin-top:8px; justify-content:center; flex-wrap:wrap;">';
 var campoActual = (resP.campo !== undefined && resP.campo !== null) ? resP.campo : (p.campo || '');
 var horaActual = (resP.hora !== undefined && resP.hora !== null) ? resP.hora : (p.hora || '');
-html += '<div style="display:flex; align-items:center; gap:8px; margin-top:8px; justify-content:center; flex-wrap:wrap;">';
 html += '<span style="color:#a3b8af; font-size:0.75rem;">📍 Campo:</span>';
 html += '<input type="text" id="ca-' + index + '" value="' + campoActual + '" placeholder="Campo" style="flex:1; max-width:200px; padding:5px; border-radius:4px; border:1px solid #2ecc71; background:#11291e; color:white; font-size:13px;">';
-html += '<span style="color:#a3b8af; font-size:0.75rem;"> Hora:</span>';
+html += '<span style="color:#a3b8af; font-size:0.75rem;">🕒 Hora:</span>';
 html += '<input type="text" id="ho-' + index + '" value="' + horaActual + '" placeholder="08:00" style="width:80px; padding:5px; border-radius:4px; border:1px solid #2ecc71; background:#11291e; color:white; font-size:13px; text-align:center;">';
 html += '</div>';
 html += construirSelectArbitros('ar-' + index, arb);
-html += '<label style="color:#3498db; font-size:0.8rem; cursor:pointer;"><input type="checkbox" id="sp-' + index + '" ' + checked + '> ⏸️ Susp.</label>';
+html += '<label style="color:#3498db; font-size:0.8rem; cursor:pointer;"><input type="checkbox" id="sp-' + index + '" ' + checked + '> ️ Susp.</label>';
 html += '</div></div>';
 });
 html += '<button id="btn-guardar" onclick="guardarResultados(' + numJornada + ')" style="width:100%; padding:12px; background-color:#2ecc71; color:#0b1d15; border:none; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer; margin-top:15px;">💾 Guardar Resultados</button>';
@@ -1325,7 +917,7 @@ var valHora = document.getElementById('ho-' + index).value.trim();
 nuevosResultados[String(index)] = { suspendido: susp, golesLocal: susp ? null : (valL === '' ? null : parseInt(valL)), golesVisitante: susp ? null : (valV === '' ? null : parseInt(valV)), arbitro: valArb || null, campo: valCampo || null, hora: valHora || null, amarillasLocal: valAmL === '' ? 0 : parseInt(valAmL), amarillasVisitante: valAmV === '' ? 0 : parseInt(valAmV), rojasLocal: valRoL === '' ? 0 : parseInt(valRoL), rojasVisitante: valRoV === '' ? 0 : parseInt(valRoV) };
 });
 resultados[String(jornadaNum)] = nuevosResultados;
-if (!token) { alert('❌ No hay token configurado.'); btn.textContent = '💾 Guardar'; btn.disabled = false; return; }
+if (!token) { alert(' No hay token configurado.'); btn.textContent = ' Guardar'; btn.disabled = false; return; }
 fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/resultados.json', { headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' } })
 .then(function(r) { if (r.status === 404) { var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(resultados, null, 2)))); return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/resultados.json', { method: 'PUT', headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Crear resultados.json', content: b64 }) }); } return r.json(); })
 .then(function(data) { if (data && data.sha) { var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(resultados, null, 2)))); return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/resultados.json', { method: 'PUT', headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Actualización Jornada ' + jornadaNum, content: b64, sha: data.sha }) }); } return data; })
@@ -1502,7 +1094,7 @@ html += '<td>' + eq.pg + '</td>';
 html += '<td>' + eq.pe + '</td>';
 html += '<td>' + eq.pp + '</td>';
 html += '<td>' + eq.ptsDeportivos + '</td>';
-html += '<td>🟡' + eq.amarillas + '</td>';
+html += '<td>' + eq.amarillas + '</td>';
 html += '<td>🔴' + eq.rojas + '</td>';
 html += '<td style="font-weight:bold; color:#2ecc71;">' + eq.ptsAjustados + '</td>';
 html += '</tr>';
@@ -1611,54 +1203,48 @@ if (sinAcentos(equipos[i].nombreCompleto).indexOf(ncNorm) !== -1) return equipos
 return nc;
 }
 function initCalendario() {
-    var selector = document.getElementById('selector-jornada');
-    if (!selector) {
-        console.error("No se encontró el selector de jornada en el HTML");
-        return;
-    }
-    if (selector.options.length > 0) return;
-    if (typeof calendario === 'undefined' || !Array.isArray(calendario)) {
-        console.error("El array calendario no está definido");
-        return;
-    }
-    
-    // Crear todas las opciones del selector
-    calendario.forEach(function(j) {
-        var opt = document.createElement('option');
-        opt.value = j.jornada;
-        opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')';
-        selector.appendChild(opt);
-    });
-    
-    // Calcular la última jornada jugada
-    var ultimaJornadaJugada = 1;
-    for (var j = 0; j < calendario.length; j++) {
-        var jornada = calendario[j];
-        if (jornada.suspendida === true) {
-            ultimaJornadaJugada = jornada.jornada;
-            continue;
-        }
-        var resJ = resultados[String(jornada.jornada)] || {};
-        var todosConResultado = true;
-        for (var i = 0; i < jornada.partidos.length; i++) {
-            var resP = resJ[String(i)] || {};
-            var gl = (resP.golesLocal !== undefined && resP.golesLocal !== null) ? resP.golesLocal : jornada.partidos[i].golesLocal;
-            var gv = (resP.golesVisitante !== undefined && resP.golesVisitante !== null) ? resP.golesVisitante : jornada.partidos[i].golesVisitante;
-            if (gl === null || gv === null) {
-                todosConResultado = false;
-                break;
-            }
-        }
-        if (todosConResultado) {
-            ultimaJornadaJugada = jornada.jornada;
-        } else {
-            break;
-        }
-    }
-    
-    // Seleccionar la última jornada jugada
-    selector.value = ultimaJornadaJugada;
-    cargarJornada();
+var selector = document.getElementById('selector-jornada');
+if (!selector) {
+console.error("No se encontró el selector de jornada en el HTML");
+return;
+}
+if (selector.options.length > 0) return;
+if (typeof calendario === 'undefined' || !Array.isArray(calendario)) {
+console.error("El array calendario no está definido");
+return;
+}
+calendario.forEach(function(j) {
+var opt = document.createElement('option');
+opt.value = j.jornada;
+opt.text = 'Jornada ' + j.jornada + ' (' + j.fecha + ')';
+selector.appendChild(opt);
+});
+var ultimaJornadaJugada = 1;
+for (var j = 0; j < calendario.length; j++) {
+var jornada = calendario[j];
+if (jornada.suspendida === true) {
+ultimaJornadaJugada = jornada.jornada;
+continue;
+}
+var resJ = resultados[String(jornada.jornada)] || {};
+var todosConResultado = true;
+for (var i = 0; i < jornada.partidos.length; i++) {
+var resP = resJ[String(i)] || {};
+var gl = (resP.golesLocal !== undefined && resP.golesLocal !== null) ? resP.golesLocal : jornada.partidos[i].golesLocal;
+var gv = (resP.golesVisitante !== undefined && resP.golesVisitante !== null) ? resP.golesVisitante : jornada.partidos[i].golesVisitante;
+if (gl === null || gv === null) {
+todosConResultado = false;
+break;
+}
+}
+if (todosConResultado) {
+ultimaJornadaJugada = jornada.jornada;
+} else {
+break;
+}
+}
+selector.value = ultimaJornadaJugada;
+cargarJornada();
 }
 function cargarJornada() {
 var numJornada = parseInt(document.getElementById('selector-jornada').value);
@@ -1690,21 +1276,21 @@ var arbTexto = arbNombre ? ' · 👤 ' + arbNombre : '';
 html += '<div class="match-card"><div class="match-teams"><div class="match-team local"><span>' + getNombreCorto(p.local) + '</span><img src="escudos/' + getImgEquipo(p.local) + '"></div>';
 html += marcador;
 html += '<div class="match-team visitante"><img src="escudos/' + getImgEquipo(p.visitante) + '"><span>' + getNombreCorto(p.visitante) + '</span></div></div>';
-html += '<div class="match-info">📍 ' + campoPartido + ' · 🕒 ' + horaPartido + ' · 📅 ' + jornada.fecha + arbTexto + '</div>';
+html += '<div class="match-info">📍 ' + campoPartido + ' ·  ' + horaPartido + ' ·  ' + jornada.fecha + arbTexto + '</div>';
 if (hayTarjetas && !susp && gl !== null) {
-    html += '<div class="match-cards" style="gap:8px;">';
-    html += '<div style="display:flex; align-items:center; gap:3px;">';
-    if (amL > 0) html += '<span class="fp-card-box"><span class="card-icon card-yellow"></span>' + amL + '</span>';
-    if (roL > 0) html += '<span class="fp-card-box"><span class="card-icon card-red"></span>' + roL + '</span>';
-    if (amL === 0 && roL === 0) html += '<span style="color:#7f8c8d; font-size:0.75rem;">0</span>';
-    html += '</div>';
-    html += '<span style="color:#1f4733; font-weight:bold; margin:0 8px;">-</span>';
-    html += '<div style="display:flex; align-items:center; gap:3px;">';
-    if (amV > 0) html += '<span class="fp-card-box"><span class="card-icon card-yellow"></span>' + amV + '</span>';
-    if (roV > 0) html += '<span class="fp-card-box"><span class="card-icon card-red"></span>' + roV + '</span>';
-    if (amV === 0 && roV === 0) html += '<span style="color:#7f8c8d; font-size:0.75rem;">0</span>';
-    html += '</div>';
-    html += '</div>';
+html += '<div class="match-cards" style="gap:8px;">';
+html += '<div style="display:flex; align-items:center; gap:3px;">';
+if (amL > 0) html += '<span class="fp-card-box"><span class="card-icon card-yellow"></span>' + amL + '</span>';
+if (roL > 0) html += '<span class="fp-card-box"><span class="card-icon card-red"></span>' + roL + '</span>';
+if (amL === 0 && roL === 0) html += '<span style="color:#7f8c8d; font-size:0.75rem;">0</span>';
+html += '</div>';
+html += '<span style="color:#1f4733; font-weight:bold; margin:0 8px;">-</span>';
+html += '<div style="display:flex; align-items:center; gap:3px;">';
+if (amV > 0) html += '<span class="fp-card-box"><span class="card-icon card-yellow"></span>' + amV + '</span>';
+if (roV > 0) html += '<span class="fp-card-box"><span class="card-icon card-red"></span>' + roV + '</span>';
+if (amV === 0 && roV === 0) html += '<span style="color:#7f8c8d; font-size:0.75rem;">0</span>';
+html += '</div>';
+html += '</div>';
 }
 html += '</div>';
 });
@@ -1753,4 +1339,4 @@ initCalendario();
 });
 </script>
 </body>
-</html>w
+</html>
