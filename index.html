@@ -706,18 +706,10 @@ if (id === 'goleadores') verRankingGoleadores();
 if (id === 'acceso-delegados') initAccesoDelegados();
 }
 function initGoleadores() {
-if (equipoLogueado) {
 document.getElementById('goleadores-login').style.display = 'none';
-document.getElementById('goleadores-form').style.display = 'block';
-document.getElementById('goleadores-ranking').style.display = 'none';
-document.getElementById('equipo-actual').textContent = equipoLogueado;
-initSelectorJornadaGoleador();
-} else {
-document.getElementById('goleadores-login').style.display = 'block';
 document.getElementById('goleadores-form').style.display = 'none';
-document.getElementById('goleadores-ranking').style.display = 'none';
-initSelectorEquipoLogin();
-}
+document.getElementById('goleadores-ranking').style.display = 'block';
+cargarPropuestasPublicas();
 }
 function initSelectorEquipoLogin() {
 var select = document.getElementById('login-equipo');
