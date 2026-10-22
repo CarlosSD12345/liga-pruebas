@@ -758,7 +758,7 @@ renderizarRankingGoleadores();
 .catch(function(e) { console.error(e); propuestas = {}; renderizarRankingGoleadores(); });
 }
 function volverLoginGoleadores() {
-initGoleadores();
+cambiarPestana('acceso-delegados', document.querySelectorAll('.tab-btn')[5]);
 }
 function initAccesoDelegados() {
 if (equipoLogueado) {
