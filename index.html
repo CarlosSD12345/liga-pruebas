@@ -704,7 +704,18 @@ if (id === 'arbitros') renderizarArbitros();
 if (id === 'goleadores') initGoleadores();
 }
 function initGoleadores() {
-verRankingGoleadores();
+if (equipoLogueado) {
+document.getElementById('goleadores-login').style.display = 'none';
+document.getElementById('goleadores-form').style.display = 'block';
+document.getElementById('goleadores-ranking').style.display = 'none';
+document.getElementById('equipo-actual').textContent = equipoLogueado;
+initSelectorJornadaGoleador();
+} else {
+document.getElementById('goleadores-login').style.display = 'block';
+document.getElementById('goleadores-form').style.display = 'none';
+document.getElementById('goleadores-ranking').style.display = 'none';
+initSelectorEquipoLogin();
+}
 }
 
 function initGoleadoresDelegados() {
