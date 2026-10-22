@@ -861,6 +861,9 @@ document.getElementById('goleador-partido').innerHTML = '<option value="">Selecc
 document.getElementById('goleadores-lista').innerHTML = '';
 initGoleadores();
 function verRankingGoleadores() {
+document.getElementById('goleadores-login').style.display = 'none';
+document.getElementById('goleadores-form').style.display = 'none';
+document.getElementById('goleadores-ranking').style.display = 'block';
 cargarPropuestasPublicas();
 }
 function cargarPropuestasPublicas() {
