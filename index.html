@@ -675,9 +675,10 @@ document.getElementById(id).classList.add('active');
 btn.classList.add('active');
 if (id === 'calendario') initCalendario();
 if (id === 'fairplay') renderizarFairPlay();
+if (id === 'clasificacion') renderizarClasificacion();
+if (id === 'clasificacion-real') renderizarClasificacionReal();
 if (id === 'arbitros') renderizarArbitros();
-if (id === 'goleadores') { cargarPropuestasPublicas(); }
-if (id === 'goleadores') { cargarPropuestasPublicas(); document.getElementById('goleadores-ranking').style.display = 'block'; document.getElementById('goleadores-login').style.display = 'none'; document.getElementById('goleadores-form').style.display = 'none'; }
+if (id === 'goleadores') cargarPropuestasPublicas();
 if (id === 'acceso-delegados') initAccesoDelegados();
 }
 function initAccesoDelegados() {
