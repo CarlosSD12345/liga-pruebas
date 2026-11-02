@@ -1,271 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Liga Veteranos Vallès</title>
-    <style>
-      :root {
-        --bg: #0b1d15;
-        --panel: #11291e;
-        --panel-alt: #173827;
-        --panel-soft: #1d4334;
-        --border: #1f4733;
-        --green: #2ecc71;
-        --green-strong: #22b15d;
-        --green-soft: #dff9eb;
-        --text: #edf7ef;
-        --muted: #a3b8af;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liga Veteranos Vallès</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b1d15">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Liga Veteranos">
+  <link rel="apple-touch-icon" href="escudos/icono_512.png">
+  <style>
+    body { background-color: #0b1d15; color: white; padding: 20px; font-family: Arial, sans-serif; }
+    .container { max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+    header { display: flex; justify-content: center; margin-bottom: 20px; }
+    .header-logo { width: 400px; max-width: 100%; height: auto; object-fit: contain; }
+    .tabs-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 25px; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tab-btn { background-color: #11291e; color: #a3b8af; border: 1px solid #1f4733; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; white-space: nowrap; }
+    .tab-btn.active { background-color: #2ecc71; color: #0b1d15; border-color: #2ecc71; }
+    .tab-btn.actas-btn { background: linear-gradient(180deg, #1f6b50 0%, #0f4739 100%); color: #ebfff7; border-color: #37d68a; box-shadow: 0 0 0 1px rgba(55, 214, 138, 0.2); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+    .badge { background-color: #2ecc71; color: #0b1d15; padding: 8px 20px; border-radius: 20px; font-weight: bold; display: inline-block; white-space: nowrap; flex-shrink: 0; }
+    .section { display: none; }
+    .section.active { display: block; }
+    table { width: 100%; border-collapse: collapse; background-color: #11291e; border-radius: 12px; overflow: hidden; }
+    th { background-color: #173827; padding: 12px; text-align: center; }
+    td { padding: 12px; border-bottom: 1px solid #1f4733; text-align: center; }
+    .team { text-align: left; padding-left: 15px; }
+    .team-info { display: flex; align-items: center; gap: 10px; }
+    .team-info span { white-space: nowrap; font-weight: 600; }
+    .team-info img { flex-shrink: 0; }
+    .team { min-width: 130px; }
+    #tabla-cr td:nth-child(8), #tabla-cr td:nth-child(9) { white-space: nowrap; font-size: 0.9rem; }
+    .team-logo { width: 44px; height: 44px; object-fit: contain; background: #ffffff; border-radius: 10px; padding: 2px; flex-shrink: 0; }
+    .pts { font-weight: bold; color: #2ecc71; }
+    .badge-form { display: inline-block; width: 22px; height: 22px; line-height: 22px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin: 0 2px; }
+    .win { background-color: #27ae60; }
+    .draw { background-color: #f39c12; }
+    .loss { background-color: #c0392b; }
+    .none { background-color: #7f8c8d; }
+    .suspended { background-color: #3498db; }
+    .rest { background-color: #9b59b6; }
+    .col-forma { white-space: nowrap; min-width: 90px; }
+    .selector-container { margin-bottom: 20px; text-align: center; }
+    #admin-selector-jornada, #goleador-jornada, #goleador-partido, #login-equipo, #login-equipo-delegados { background-color: #11291e; color: white; border: 1px solid #2ecc71; padding: 12px 20px; border-radius: 8px; font-size: 1rem; font-weight: bold; width: 100%; max-width: 350px; cursor: pointer; }
+    .jornadas-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-bottom: 20px; }
+    .jornadas-scroll::-webkit-scrollbar { display: none; }
+    .jornada-btn { flex-shrink: 0; background-color: #11291e; color: #a3b8af; border: 1px solid #1f4733; padding: 10px 14px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.85rem; white-space: nowrap; text-align: center; transition: all 0.2s; }
+    .jornada-btn.active { background-color: #2ecc71; color: #0b1d15; border-color: #2ecc71; }
+    .jornada-btn:hover { background-color: #173827; }
+    .jornada-btn.active:hover { background-color: #2ecc71; }
+    .match-card { background-color: #11291e; border: 1px solid #1f4733; border-radius: 10px; padding: 15px; margin-bottom: 10px; }
+    .match-teams { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 10px 0; }
+    .match-team { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+    .match-team.local { justify-content: flex-end; text-align: right; }
+    .match-team.visitante { justify-content: flex-start; text-align: left; }
+    .match-team img { width: 44px; height: 44px; object-fit: contain; background: #fff; border-radius: 8px; padding: 2px; flex-shrink: 0; }
+    .match-team span { font-size: 0.85rem; font-weight: 600; line-height: 1.25; flex: 1; min-width: 0; }
+    .match-score { background-color: #173827; padding: 10px 14px; border-radius: 8px; font-weight: bold; color: #2ecc71; min-width: 70px; text-align: center; }
+    .match-score.vs { color: #a3b8af; font-size: 0.9rem; }
+    .match-info { font-size: 0.75rem; color: #a3b8af; text-align: center; border-top: 1px solid #1f4733; padding-top: 8px; }
+    .footer { display: flex; flex-direction: column; align-items: center; padding: 30px 20px 20px; color: #a3b8af; font-size: 0.85rem; border-top: 1px solid #1f4733; margin-top: 40px; }
+    .footer-lemma { font-style: italic; color: white; font-size: 20px; text-align: center; margin: 15px auto 8px; max-width: 90%; display: block; }
+    .footer-hastag { color: #2ecc71; font-weight: bold; font-size: 22px; text-align: center; margin: 5px auto 18px; max-width: 90%; display: block; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 400px; margin-top: 10px; padding-top: 15px; border-top: 1px solid #1f4733; }
+    #admin-btn { background-color: #11291e; color: #2ecc71; border: 1px solid #2ecc71; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: bold; cursor: pointer; }
+    .fp-rank-1 { background-color: #2ecc71; color: #0b1d15; }
+    .fp-card-box { display: inline-flex; align-items: center; gap: 4px; font-weight: bold; }
+    .login-box, .propuesta-box { background-color: #11291e; border: 1px solid #2ecc71; border-radius: 12px; padding: 25px; max-width: 400px; margin: 20px auto; text-align: center; }
+    .login-box h2, .propuesta-box h2 { color: #2ecc71; margin-bottom: 20px; }
+    .login-box input, .propuesta-box input, .propuesta-box select { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #1f4733; background-color: #0b1d15; color: white; font-size: 16px; text-align: center; box-sizing: border-box; }
+    .btn-primary { background-color: #2ecc71; color: #0b1d15; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%; margin-bottom: 10px; }
+    .btn-secondary { background-color: transparent; color: #e74c3c; border: 1px solid #e74c3c; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%; }
+    .propuesta-item { background-color: #0b1d15; border: 1px solid #1f4733; border-radius: 8px; padding: 12px; margin-bottom: 10px; text-align: left; }
+    .propuesta-item .estado-pendiente { color: #f39c12; font-weight: bold; }
+    .propuesta-item .estado-aprobado { color: #27ae60; font-weight: bold; }
+    .propuesta-item .estado-rechazado { color: #e74c3c; font-weight: bold; text-decoration: line-through; }
+    .goleador-row { display: flex; gap: 10px; margin: 10px 0; align-items: center; flex-wrap: wrap; }
+    .goleador-row input { flex: 1; min-width: 120px; padding: 8px; border-radius: 6px; border: 1px solid #1f4733; background-color: #0b1d15; color: white; }
+    .btn-add { background-color: #2ecc71; color: #0b1d15; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .btn-remove { background-color: #e74c3c; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    @media (max-width: 600px) {
+      body { padding: 8px; }
+      .header-logo { width: 260px; }
+      .tabs-row { gap: 6px; }
+      .tab-btn { padding: 8px 12px; font-size: 0.8rem; }
+      .badge { padding: 6px 10px; font-size: 0.8rem; }
+      .match-teams { flex-wrap: wrap; }
+      .match-team, .match-team.local, .match-team.visitante { justify-content: center; width: 100%; text-align: center; }
+      .match-score { min-width: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img class="header-logo" src="escudos/logo_liga.png" alt="Liga Veteranos Vallès">
+    </header>
 
-      * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: Arial, sans-serif;
-        padding: 20px;
-      }
-
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        width: 100%;
-      }
-
-      header {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-      }
-
-      .header-logo {
-        width: 400px;
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .tabs-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 25px;
-        flex-wrap: wrap;
-      }
-
-      .tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        flex: 1;
-      }
-
-      .tab-btn {
-        background-color: var(--panel);
-        color: var(--muted);
-        border: 1px solid var(--border);
-        padding: 12px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 1rem;
-        white-space: nowrap;
-        transition: 0.2s ease;
-      }
-
-      .tab-btn.active {
-        background-color: var(--green);
-        color: var(--bg);
-        border-color: var(--green);
-      }
-
-      .tab-btn.actas-btn {
-        background: linear-gradient(180deg, #1f6b50 0%, #0f4739 100%);
-        color: #ebfff7;
-        border-color: #37d68a;
-        box-shadow: 0 0 0 1px rgba(55, 214, 138, 0.2);
-      }
-
-      .tab-btn:hover {
-        filter: brightness(1.08);
-      }
-
-      .badge {
-        background-color: var(--green);
-        color: var(--bg);
-        padding: 8px 20px;
-        border-radius: 20px;
-        font-weight: bold;
-        display: inline-block;
-        white-space: nowrap;
-      }
-
-      .panel {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 18px;
-        margin-top: 14px;
-      }
-
-      .fixture {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        border-top: 1px solid var(--border);
-        padding: 16px 0;
-      }
-
-      .fixture:first-child {
-        border-top: none;
-        padding-top: 0;
-      }
-
-      .team-wrap {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        min-width: 0;
-        flex: 1;
-      }
-
-      .team-wrap.right {
-        justify-content: flex-end;
-      }
-
-      .team-logo {
-        width: 42px;
-        height: 42px;
-        border-radius: 10px;
-        background: #ffffff;
-        color: #0b1d15;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 1rem;
-        flex-shrink: 0;
-      }
-
-      .team-name {
-        font-weight: 700;
-        color: white;
-      }
-
-      .score-box {
-        min-width: 110px;
-        text-align: center;
-        background: var(--panel-alt);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 10px 18px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--green);
-      }
-
-      .meta {
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.82rem;
-        margin-top: 8px;
-      }
-
-      .footer {
-        margin-top: 24px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.85rem;
-      }
-
-      @media (max-width: 700px) {
-        body { padding: 12px; }
-        .tabs-row {
-          align-items: flex-start;
-        }
-        .badge {
-          width: 100%;
-          text-align: center;
-        }
-        .fixture {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .team-wrap, .team-wrap.right {
-          justify-content: center;
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <img class="header-logo" src="escudos/logo_liga.png" alt="Liga Veteranos Vallès" onerror="this.style.display='none'" />
-      </header>
-
-      <div class="tabs-row">
-        <div class="tabs" aria-label="Secciones de la liga">
-          <button class="tab-btn active" type="button">Calendario</button>
-          <button class="tab-btn" type="button">Fair Play</button>
-          <button class="tab-btn" type="button">Clasificación</button>
-          <button class="tab-btn" type="button">Árbitros</button>
-          <button class="tab-btn" type="button">Goleadores</button>
-          <button class="tab-btn" type="button">Acceso Delegados</button>
-          <button class="tab-btn actas-btn" type="button">Actas</button>
-        </div>
-        <div class="badge">JORNADA 7</div>
+    <div class="tabs-row">
+      <div class="tabs">
+        <button class="tab-btn active" type="button">Calendario</button>
+        <button class="tab-btn" type="button">Fair Play</button>
+        <button class="tab-btn" type="button">Clasificación</button>
+        <button class="tab-btn" type="button">Árbitros</button>
+        <button class="tab-btn" type="button">Goleadores</button>
+        <button class="tab-btn" type="button">Acceso Delegados</button>
+        <button class="tab-btn actas-btn" type="button">Actas</button>
       </div>
-
-      <div class="panel">
-        <div class="fixture">
-          <div class="team-wrap">
-            <div class="team-logo">P</div>
-            <div class="team-name">Pallejà</div>
-          </div>
-          <div class="score-box">4 - 2</div>
-          <div class="team-wrap right">
-            <div class="team-name">Canovelles</div>
-            <div class="team-logo">C</div>
-          </div>
-        </div>
-
-        <div class="meta">MPAL PALLEJA · 08:15 · 01/11/2026</div>
-
-        <div class="fixture">
-          <div class="team-wrap">
-            <div class="team-logo">A</div>
-            <div class="team-name">L'Ametlla</div>
-          </div>
-          <div class="score-box">3 - 1</div>
-          <div class="team-wrap right">
-            <div class="team-name">Palau Plegamans</div>
-            <div class="team-logo">P</div>
-          </div>
-        </div>
-
-        <div class="meta">MPAL L'AMETLLA · 08:30 · 01/11/2026</div>
-
-        <div class="fixture">
-          <div class="team-wrap">
-            <div class="team-logo">R</div>
-            <div class="team-name">VCF Ripollet</div>
-          </div>
-          <div class="score-box">3 - 1</div>
-          <div class="team-wrap right">
-            <div class="team-name">Sant Feliu</div>
-            <div class="team-logo">S</div>
-          </div>
-        </div>
-
-        <div class="meta">MPAL RIPOLLET · 08:00 · 01/11/2026</div>
-      </div>
-
-      <div class="footer">Liga Veteranos Vallès</div>
+      <div class="badge">JORNADA 7</div>
     </div>
-  </body>
+
+    <section class="section active">
+      <div class="match-card">
+        <div class="match-teams">
+          <div class="match-team local">
+            <span>Pallejà</span>
+            <img src="escudos/palleja.png" alt="Pallejà">
+          </div>
+          <div class="match-score">4 - 2</div>
+          <div class="match-team visitante">
+            <img src="escudos/canovelles.png" alt="Canovelles">
+            <span>Canovelles</span>
+          </div>
+        </div>
+        <div class="match-info">MPAL PALLEJA · 08:15 · 01/11/2026</div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-teams">
+          <div class="match-team local">
+            <span>L'Ametlla</span>
+            <img src="escudos/ametlla.png" alt="L'Ametlla">
+          </div>
+          <div class="match-score">3 - 1</div>
+          <div class="match-team visitante">
+            <img src="escudos/palau.png" alt="Palau Plegamans">
+            <span>Palau Plegamans</span>
+          </div>
+        </div>
+        <div class="match-info">MPAL L'AMETLLA · 08:30 · 01/11/2026</div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-teams">
+          <div class="match-team local">
+            <span>VCF Ripollet</span>
+            <img src="escudos/ripollet.png" alt="VCF Ripollet">
+          </div>
+          <div class="match-score">3 - 1</div>
+          <div class="match-team visitante">
+            <img src="escudos/santfeliu.png" alt="Sant Feliu">
+            <span>Sant Feliu</span>
+          </div>
+        </div>
+        <div class="match-info">MPAL RIPOLLET · 08:00 · 01/11/2026</div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span class="footer-lemma">Liga Veteranos Vallès</span>
+      <span class="footer-hastag">#VallèsVeteranos</span>
+      <div class="footer-bottom">
+        <span>Temporada 2026</span>
+        <button id="admin-btn">Admin</button>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
