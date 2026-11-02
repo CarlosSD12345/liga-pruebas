@@ -111,6 +111,43 @@
         "fecha": "2026-10-19"
       }
     ],
+    "3": [
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Mario",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Ángel",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Joel",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Raúl",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Javi",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      }
+    ],
     "4": [
       {
         "equipo": "C.F. Cerdanyola",
@@ -286,6 +323,27 @@
         "goles": 2,
         "estado": "aprobado",
         "fecha": "2026-10-26"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "David",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Raúl",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Javi",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
       }
     ],
     "5": [
@@ -482,6 +540,29 @@
         "fecha": "2026-10-26"
       }
     ],
+    "5": [
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Mario",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Raúl",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Javi",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      }
+    ],
     "6": [
       {
         "equipo": "C.F. Cerdanyola",
@@ -587,6 +668,13 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Joel",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
       }
     ],
     "6": [
@@ -738,6 +826,15 @@
         "fecha": "2026-10-25"
       }
     ],
+    "6": [
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Matu",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      }
+    ],
     "7": [
       {
         "equipo": "C.F. Cerdanyola",
@@ -759,6 +856,144 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-10-25"
+      }
+    ]
+  },
+  "7": {
+    "1": [
+      {
+        "equipo": "A.V. L'Ametlla del Vallés",
+        "jugador": "Kaña",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "A.V. L'Ametlla del Vallés",
+        "jugador": "Arnau",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "A.V. L'Ametlla del Vallés",
+        "jugador": "Txap",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      }
+    ],
+    "3": [
+      {
+        "equipo": "U.E. Sabadellenca",
+        "jugador": "Abel",
+        "goles": 4,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "U.E. Sabadellenca",
+        "jugador": "Madir",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "U.E. Castellar",
+        "jugador": "Jaime Perales",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-02"
+      },
+      {
+        "equipo": "U.E. Castellar",
+        "jugador": "Jose Cabrera",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-02"
+      }
+    ],
+    "5": [
+      {
+        "equipo": "C.F. Barberá",
+        "jugador": "Ivan Heras",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Barberá",
+        "jugador": "Fran",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      }
+    ],
+    "6": [
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Matu",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Ángel",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Toni",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Can Parellada",
+        "jugador": "Javi",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      }
+    ],
+    "7": [
+      {
+        "equipo": "C.E. Santa Eulàlia de Ronçana",
+        "jugador": "Nando",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.E. Santa Eulàlia de Ronçana",
+        "jugador": "Gerard",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.E. Santa Eulàlia de Ronçana",
+        "jugador": "Dani",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.E. Santa Eulàlia de Ronçana",
+        "jugador": "Pericas",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "C.F. Cerdanyola",
+        "jugador": "Pepelu",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-01"
       }
     ]
   }
