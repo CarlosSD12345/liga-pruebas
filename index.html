@@ -1573,7 +1573,6 @@ html += '</div>';
 });
 contenedor.innerHTML = html;
 }
-}
 fetch('resultados.json?t=' + Date.now())
 .then(function(r) {
 if (r.status === 404) return {};
