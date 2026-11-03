@@ -1573,26 +1573,6 @@ html += '</div>';
 });
 contenedor.innerHTML = html;
 }
-function actualizarBadgeJornada() {
-var ultimaJornada = 0;
-for (var j = 0; j < calendario.length; j++) {
-var jornada = calendario[j];
-if (jornada.suspendida === true) {
-ultimaJornada = jornada.jornada;
-} else {
-var resJ = resultados[String(jornada.jornada)] || {};
-var todosConResultado = true;
-for (var i = 0; i < jornada.partidos.length; i++) {
-var resP = resJ[String(i)] || {};
-var gl = (resP.golesLocal !== undefined && resP.golesLocal !== null) ? resP.golesLocal : jornada.partidos[i].golesLocal;
-var gv = (resP.golesVisitante !== undefined && resP.golesVisitante !== null) ? resP.golesVisitante : jornada.partidos[i].golesVisitante;
-if (gl === null || gv === null) { todosConResultado = false; break; }
-}
-if (todosConResultado) { ultimaJornada = jornada.jornada; }
-else { break; }
-}
-}
-if (ultimaJornada > 0) { document.getElementById('badge-jornada').textContent = 'JORNADA ' + ultimaJornada; }
 }
 fetch('resultados.json?t=' + Date.now())
 .then(function(r) {
