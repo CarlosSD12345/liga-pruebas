@@ -1583,7 +1583,6 @@ return r.json();
 resultados = data || {};
 renderizarClasificacion();
 renderizarClasificacionReal();
-actualizarBadgeJornada();
 initCalendario();
 cargarPropuestasPublicas();
 })
@@ -1592,7 +1591,6 @@ console.error('Error al cargar resultados:', e);
 resultados = {};
 renderizarClasificacion();
 renderizarClasificacionReal();
-actualizarBadgeJornada();
 initCalendario();
 cargarPropuestasPublicas();
 });
