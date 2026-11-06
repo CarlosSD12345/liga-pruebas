@@ -1135,27 +1135,51 @@ prop.estado = 'aprobado';
 guardarPropuestas();
 }
 function guardarPropuestas() {
-var token = localStorage.getItem('github_token');
-if (!token) { alert('No hay token'); return; }
-fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/propuestas.json', {
-headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
-})
-.then(function(r) { return r.json(); })
-.then(function(data) {
-var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(propuestas, null, 2))));
-return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/propuestas.json', {
-method: 'PUT',
-headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-body: JSON.stringify({ message: 'Actualizar propuestas', content: b64, sha: data.sha })
-});
-})
-.then(function(r) {
-if (r && r.ok) {
-alert('✅ Actualizado');
-renderizarPropuestasAdmin();
-} else if (r && r.message) { throw new Error(r.message); }
-})
-.catch(function(e) { alert('❌ ' + e.message); });
+  var token = localStorage.getItem('github_token');
+  if (!token) { alert('No hay token'); return; }
+  fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/propuestas.json', {
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(propuestas, null, 2))));
+    return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/propuestas.json', {
+      method: 'PUT',
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Actualizar propuestas', content: b64, sha: data.sha })
+    });
+  })
+  .then(function(r) {
+    if (r && r.ok) {
+      // También guardar jugadoresDB
+      var b64Jug = btoa(unescape(encodeURIComponent(JSON.stringify(jugadoresDB, null, 2))));
+      fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/jugadores.json?t=' + Date.now(), {
+        headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      })
+      .then(function(r2) {
+        if (r2.status === 404) {
+          return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/jugadores.json', {
+            method: 'PUT',
+            headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: 'Crear jugadores.json', content: b64Jug })
+          });
+        }
+        return r2.json();
+      })
+      .then(function(dataJug) {
+        if (dataJug && dataJug.sha) {
+          return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/jugadores.json', {
+            method: 'PUT',
+            headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: 'Actualizar jugadores', content: b64Jug, sha: dataJug.sha })
+          });
+        }
+      });
+      alert('✅ Actualizado');
+      renderizarPropuestasAdmin();
+    } else if (r && r.message) { throw new Error(r.message); }
+  })
+  .catch(function(e) { alert('❌ ' + e.message); });
 }
 function construirSelectArbitros(id, valorActual) {
 var html = '<select id="' + id + '" style="flex:1; max-width:150px; padding:5px; border-radius:4px; border:1px solid #1f4733; background:#11291e; color:white; font-size:13px;">';
