@@ -803,9 +803,16 @@ if (!numJornada || idxPartido === '') { alert('Selecciona jornada y partido'); r
 var rows = document.querySelectorAll('#goleadores-lista-delegados .goleador-row');
 var goleadores = [];
 rows.forEach(function(row) {
-var nombre = row.querySelector('.gol-nombre').value.trim();
-var goles = parseInt(row.querySelector('.gol-goles').value);
-if (nombre && goles > 0) { goleadores.push({ jugador: nombre, goles: goles }); }
+  var select = row.querySelector('.gol-select');
+  var inputNombre = row.querySelector('.gol-nombre');
+  var nombre = '';
+  if (select.value === 'nuevo') {
+    nombre = inputNombre.value.trim();
+  } else {
+    nombre = select.value.trim();
+  }
+  var goles = parseInt(row.querySelector('.gol-goles').value);
+  if (nombre && goles > 0) { goleadores.push({ jugador: nombre, goles: goles }); }
 });
 if (goleadores.length === 0) { alert('Añade al menos un goleador'); return; }
 if (!confirm('¿Enviar propuesta de ' + goleadores.length + ' goleador(es)?')) return;
