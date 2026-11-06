@@ -1790,6 +1790,23 @@ html += '</div>';
 contenedor.innerHTML = html;
 }
 cargarJugadoresDB();
+function cargarActas() {
+  fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json?t=' + Date.now())
+  .then(function(r) {
+    if (r.status === 404) { actas = {}; return; }
+    return r.json();
+  })
+  .then(function(data) {
+    if (data && data.content) {
+      actas = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+    } else if (data && typeof data === 'object' && !data.content) {
+      actas = data;
+    } else {
+      actas = {};
+    }
+  })
+  .catch(function() { actas = {}; });
+}
 cargarActas();
 fetch('resultados.json?t=' + Date.now())
 .then(function(r) {
