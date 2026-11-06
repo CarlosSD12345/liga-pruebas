@@ -1104,8 +1104,19 @@ if (!hayPropuestas) html = '<p style="color:#a3b8af; text-align:center; padding:
 contenedor.innerHTML = html;
 }
 function aprobarPropuesta(j, p, idx) {
-propuestas[j][p][idx].estado = 'aprobado';
-guardarPropuestas();
+  propuestas[j][p][idx].estado = 'aprobado';
+  // Añadir jugador a la DB si no existe
+  var prop = propuestas[j][p][idx];
+  if (prop.equipo && prop.jugador) {
+    if (!jugadoresDB[prop.equipo]) jugadoresDB[prop.equipo] = [];
+    var existe = jugadoresDB[prop.equipo].some(function(n) { 
+      return n.toLowerCase().trim() === prop.jugador.toLowerCase().trim(); 
+    });
+    if (!existe) {
+      jugadoresDB[prop.equipo].push(prop.jugador);
+    }
+  }
+  guardarPropuestas();
 }
 function rechazarPropuesta(j, p, idx) {
 if (!confirm('¿Rechazar esta propuesta?')) return;
