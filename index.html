@@ -405,6 +405,13 @@ header { justify-content: center; }
 </div>
 </div>
 </div>
+<!-- Modal Acta -->
+<div id="modal-acta" class="modal-overlay" onclick="if(event.target===this)cerrarModalActa()">
+  <div class="modal-acta">
+    <button class="btn-cerrar-modal" onclick="cerrarModalActa()">✕</button>
+    <div id="modal-acta-contenido"></div>
+  </div>
+</div>
 <script>
 var resultados = {};
 var propuestas = {};
