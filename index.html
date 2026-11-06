@@ -1789,6 +1789,98 @@ html += '</div>';
 });
 contenedor.innerHTML = html;
 }
+function abrirModalActa(numJornada, idxPartido) {
+  var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
+  if (!jornada) return;
+  var partido = jornada.partidos[idxPartido];
+  if (!partido) return;
+  var resJ = resultados[String(numJornada)] || {};
+  var resP = resJ[String(idxPartido)] || {};
+  var gl = (resP.golesLocal !== undefined && resP.golesLocal !== null) ? resP.golesLocal : partido.golesLocal;
+  var gv = (resP.golesVisitante !== undefined && resP.golesVisitante !== null) ? resP.golesVisitante : partido.golesVisitante;
+  var susp = resP.suspendido === true;
+  var arbNombre = (resP.arbitro !== undefined && resP.arbitro !== null) ? resP.arbitro : partido.arbitro;
+  var campoPartido = (resP.campo !== undefined && resP.campo !== null) ? resP.campo : partido.campo;
+  var horaPartido = (resP.hora !== undefined && resP.hora !== null) ? resP.hora : partido.hora;
+  var claveActa = String(numJornada) + '_' + String(idxPartido);
+  var acta = actas[claveActa] || null;
+  var html = '';
+  html += '<div class="modal-header">';
+  html += '<h2>📋 ACTA DEL PARTIDO</h2>';
+  if (susp) {
+    html += '<div class="modal-score" style="color:#3498db;">SUSPENDIDO</div>';
+  } else if (gl !== null && gv !== null) {
+    html += '<div class="modal-score">' + getNombreCorto(partido.local) + ' ' + gl + ' - ' + gv + ' ' + getNombreCorto(partido.visitante) + '</div>';
+  } else {
+    html += '<div class="modal-score" style="color:#a3b8af;">VS</div>';
+  }
+  html += '<div class="modal-info">Jornada ' + numJornada + ' · ' + jornada.fecha + '</div>';
+  html += '</div>';
+  if (!acta) {
+    html += '<div class="modal-acta-pendiente">';
+    html += '<div class="icono">⏳</div>';
+    html += '<h3>Acta pendiente</h3>';
+    html += '<p>El árbitro aún no ha rellenado el acta de este partido.</p>';
+    html += '</div>';
+  } else {
+    html += '<div class="modal-team">';
+    html += '<div class="modal-team-title local">🟢 LOCAL: ' + getNombreCorto(partido.local) + '</div>';
+    if (acta.local && acta.local.jugadores && acta.local.jugadores.length > 0) {
+      acta.local.jugadores.forEach(function(j) {
+        html += '<div class="modal-jugador">';
+        html += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
+        html += '<div class="modal-nombre">' + j.nombre + '</div>';
+        var eventos = '';
+        for (var g = 0; g < (j.goles || 0); g++) eventos += '⚽';
+        for (var a = 0; a < (j.amarillas || 0); a++) eventos += '<span class="modal-tarjeta amarilla"></span>';
+        for (var r = 0; r < (j.rojas || 0); r++) eventos += '<span class="modal-tarjeta roja"></span>';
+        html += '<div class="modal-goles">' + eventos + '</div>';
+        html += '</div>';
+      });
+    } else {
+      html += '<div style="color:#a3b8af; padding:10px; text-align:center;">Sin datos</div>';
+    }
+    html += '</div>';
+    html += '<div class="modal-team">';
+    html += '<div class="modal-team-title visitante">🔴 VISITANTE: ' + getNombreCorto(partido.visitante) + '</div>';
+    if (acta.visitante && acta.visitante.jugadores && acta.visitante.jugadores.length > 0) {
+      acta.visitante.jugadores.forEach(function(j) {
+        html += '<div class="modal-jugador">';
+        html += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
+        html += '<div class="modal-nombre">' + j.nombre + '</div>';
+        var eventos = '';
+        for (var g = 0; g < (j.goles || 0); g++) eventos += '⚽';
+        for (var a = 0; a < (j.amarillas || 0); a++) eventos += '<span class="modal-tarjeta amarilla"></span>';
+        for (var r = 0; r < (j.rojas || 0); r++) eventos += '<span class="modal-tarjeta roja"></span>';
+        html += '<div class="modal-goles">' + eventos + '</div>';
+        html += '</div>';
+      });
+    } else {
+      html += '<div style="color:#a3b8af; padding:10px; text-align:center;">Sin datos</div>';
+    }
+    html += '</div>';
+  }
+  html += '<div class="modal-footer">';
+  html += '<div class="modal-arbitro">';
+  if (arbNombre) html += '👤 Árbitro: <strong>' + arbNombre + '</strong><br>';
+  if (campoPartido) html += '📍 Campo: <strong>' + campoPartido + '</strong>';
+  if (horaPartido) html += ' · 🕒 ' + horaPartido;
+  html += '</div>';
+  html += '<button class="btn-pdf" disabled>📄 Descargar acta en PDF (próximamente)</button>';
+  html += '</div>';
+  document.getElementById('modal-acta-contenido').innerHTML = html;
+  document.getElementById('modal-acta').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarModalActa() {
+  document.getElementById('modal-acta').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') cerrarModalActa();
+});
 cargarJugadoresDB();
 function cargarActas() {
   fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json?t=' + Date.now())
