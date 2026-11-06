@@ -146,6 +146,13 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "EDU",
+        "goles": 3,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
       }
     ],
     "4": [
@@ -517,6 +524,15 @@
         "fecha": "2026-10-18"
       }
     ],
+    "3": [
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "EDU",
+        "goles": 4,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      }
+    ],
     "4": [
       {
         "equipo": "C.F. Barberá",
@@ -620,6 +636,13 @@
         "goles": 2,
         "estado": "aprobado",
         "fecha": "2026-10-18"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "JORDI FARRE",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
       }
     ],
     "3": [
@@ -778,6 +801,50 @@
         "fecha": "2026-10-25"
       }
     ],
+    "2": [
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "JORDI FARRE",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "ORIOL",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "DIEGO",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "GUILLERMO",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "PEQUE",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "FERMIN",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      }
+    ],
     "3": [
       {
         "equipo": "U.E. Sabadellenca",
@@ -860,6 +927,15 @@
     ]
   },
   "7": {
+    "0": [
+      {
+        "equipo": "U.E. Canovelles",
+        "jugador": "CHRIS.D",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-04"
+      }
+    ],
     "1": [
       {
         "equipo": "A.V. L'Ametlla del Vallés",
@@ -881,6 +957,22 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "E.F.B Palau Solitá i Plegamans",
+        "jugador": "ISMAEL",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-05"
+      }
+    ],
+    "2": [
+      {
+        "equipo": "C.F. Sant Feliu de Codines",
+        "jugador": "Kenneth",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-03"
       }
     ],
     "3": [
@@ -927,6 +1019,13 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Denis",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-02"
       }
     ],
     "6": [
