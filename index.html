@@ -116,24 +116,8 @@ header { justify-content: center; }
 .login-box, .propuesta-box { padding: 15px; margin: 10px; }
 .jornada-btn { padding: 8px 10px; font-size: 0.75rem; }
 }
-/* Botón Actas - mismo tamaño que los demás */
-.tabs a.tab-btn {
-display: inline-block;
-padding: 12px 20px;
-border-radius: 8px;
-font-weight: bold;
-font-size: 1rem;
-white-space: nowrap;
-text-align: center;
-box-sizing: border-box;
-}
-/* Ajuste para móvil */
-@media (max-width: 600px) {
-.tabs a.tab-btn {
-padding: 8px 6px;
-font-size: 0.7rem;
-}
-}
+.tabs a.tab-btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 1rem; white-space: nowrap; text-align: center; box-sizing: border-box; }
+@media (max-width: 600px) { .tabs a.tab-btn { padding: 8px 6px; font-size: 0.7rem; } }
 </style>
 </head>
 <body>
@@ -153,49 +137,24 @@ font-size: 0.7rem;
 </div>
 </div>
 <div id="clasificacion-real" class="section">
-<table>
-<thead>
-<tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>Pts Dep.</th><th></th><th>🔴</th><th>Pts Ajustados</th></tr>
-</thead>
-<tbody id="tabla-cr"></tbody>
-</table>
+<table><thead><tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>Pts Dep.</th><th></th><th>🔴</th><th>Pts Ajustados</th></tr></thead><tbody id="tabla-cr"></tbody></table>
 </div>
 <div id="clasificacion" class="section">
-<table>
-<thead>
-<tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>PTS</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DIF</th><th>3 ÚLTIMOS</th></tr>
-</thead>
-<tbody id="tabla"></tbody>
-</table>
+<table><thead><tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>PTS</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DIF</th><th>3 ÚLTIMOS</th></tr></thead><tbody id="tabla"></tbody></table>
 </div>
 <div id="calendario" class="section active">
 <div class="jornadas-scroll" id="jornadas-scroll"></div>
 <div id="contenedor-partidos"></div>
 </div>
 <div id="fairplay" class="section">
-<table>
-<thead>
-<tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>🟡 AMARILLAS</th><th>🔴 ROJAS</th><th style="color:#2ecc71;">TOTAL</th></tr>
-</thead>
-<tbody id="tabla-fp"></tbody>
-</table>
+<table><thead><tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>🟡 AMARILLAS</th><th>🔴 ROJAS</th><th style="color:#2ecc71;">TOTAL</th></tr></thead><tbody id="tabla-fp"></tbody></table>
 </div>
 <div id="arbitros" class="section">
-<table>
-<thead>
-<tr><th>#</th><th class="team">ÁRBITRO</th><th>PA</th><th>🟡 AMARILLAS</th><th>🔴 ROJAS</th><th>TOTAL</th><th style="color:#2ecc71;">TARJ./PARTIDO</th></tr>
-</thead>
-<tbody id="tabla-arb"></tbody>
-</table>
+<table><thead><tr><th>#</th><th class="team">ÁRBITRO</th><th>PA</th><th>🟡 AMARILLAS</th><th>🔴 ROJAS</th><th>TOTAL</th><th style="color:#2ecc71;">TARJ./PARTIDO</th></tr></thead><tbody id="tabla-arb"></tbody></table>
 </div>
 <div id="goleadores" class="section">
 <div id="goleadores-ranking">
-<table>
-<thead>
-<tr><th>#</th><th class="team">Jugador</th><th>Equipo</th><th style="color:#2ecc71;">⚽ GOLES</th></tr>
-</thead>
-<tbody id="tabla-goleadores"></tbody>
-</table>
+<table><thead><tr><th>#</th><th class="team">Jugador</th><th>Equipo</th><th style="color:#2ecc71;">⚽ GOLES</th></tr></thead><tbody id="tabla-goleadores"></tbody></table>
 <button class="btn-primary" onclick="cambiarPestana('acceso-delegados', document.querySelectorAll('.tab-btn')[5])" style="max-width:300px; margin:20px auto; display:block;">Acceso Delegados</button>
 </div>
 </div>
@@ -212,9 +171,7 @@ font-size: 0.7rem;
 <p style="margin:0 0 8px 0; color:#f39c12;">⚠️ <b>IMPORTANTE:</b> Si el jugador ya ha marcado gol antes, aparecerá en el desplegable. Si es nuevo, escríbelo en el campo de texto.</p>
 <p style="margin:0;">✅ Se abrirá WhatsApp con el mensaje listo. Envíalo y el admin lo aprobará.</p>
 </div>
-<select id="login-equipo-delegados">
-<option value="">Selecciona tu equipo...</option>
-</select>
+<select id="login-equipo-delegados"><option value="">Selecciona tu equipo...</option></select>
 <input type="password" id="login-password-delegados" placeholder="Contraseña del equipo">
 <button class="btn-primary" onclick="loginGoleadoresDelegados()">Entrar</button>
 </div>
@@ -224,12 +181,8 @@ font-size: 0.7rem;
 <h2>⚽ Enviar Goleadores</h2>
 <p style="color:#a3b8af; margin-bottom:10px;">Equipo: <strong id="equipo-actual-delegados" style="color:#2ecc71;"></strong></p>
 <button class="btn-secondary" onclick="cerrarSesionGoleadoresDelegados()" style="margin-bottom:15px; font-size:0.85rem; padding:8px;">Cerrar sesión</button>
-<select id="goleador-jornada-delegados" onchange="cargarPartidosGoleadorDelegados()">
-<option value="">Selecciona Jornada...</option>
-</select>
-<select id="goleador-partido-delegados">
-<option value="">Selecciona Partido...</option>
-</select>
+<select id="goleador-jornada-delegados" onchange="cargarPartidosGoleadorDelegados()"><option value="">Selecciona Jornada...</option></select>
+<select id="goleador-partido-delegados"><option value="">Selecciona Partido...</option></select>
 <div id="goleadores-lista-delegados" style="margin-top:15px;"></div>
 <button class="btn-add" onclick="addGoleadorRowDelegados()" style="margin-top:10px; width:100%;">➕ Añadir goleador</button>
 <button class="btn-primary" onclick="enviarPropuestaGoleadoresDelegados()" style="margin-top:15px;">📲 Enviar propuesta</button>
@@ -273,9 +226,7 @@ font-size: 0.7rem;
 <button onclick="cerrarAdmin()" style="width: 100%; padding: 12px; background-color: transparent; color: #e74c3c; border: 1px solid #e74c3c; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer;">Salir</button>
 <div id="admin-seccion-resultados" style="display:none; margin-top:15px;">
 <p style="color: #a3b8af; margin-bottom: 10px;">Selecciona la jornada para editar resultados:</p>
-<select id="admin-selector-jornada" onchange="mostrarPartidosAdmin()" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #1f4733; background-color: #0b1d15; color: white; font-size: 16px;">
-<option value="">Selecciona Jornada...</option>
-</select>
+<select id="admin-selector-jornada" onchange="mostrarPartidosAdmin()" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #1f4733; background-color: #0b1d15; color: white; font-size: 16px;"><option value="">Selecciona Jornada...</option></select>
 <div id="admin-partidos-container"></div>
 </div>
 <div id="modal-importar-whatsapp" style="display:none; margin-top:15px;">
@@ -1544,15 +1495,9 @@ return nc;
 }
 function initCalendario() {
 var contenedor = document.getElementById('jornadas-scroll');
-if (!contenedor) {
-console.error("No se encontró el contenedor de jornadas");
-return;
-}
+if (!contenedor) { console.error("No se encontró el contenedor de jornadas"); return; }
 if (contenedor.children.length > 0) return;
-if (typeof calendario === 'undefined' || !Array.isArray(calendario)) {
-console.error("El array calendario no está definido");
-return;
-}
+if (typeof calendario === 'undefined' || !Array.isArray(calendario)) { console.error("El array calendario no está definido"); return; }
 calendario.forEach(function(j) {
 var btn = document.createElement('button');
 btn.className = 'jornada-btn';
@@ -1564,26 +1509,16 @@ contenedor.appendChild(btn);
 var ultimaJornadaJugada = 1;
 for (var j = 0; j < calendario.length; j++) {
 var jornada = calendario[j];
-if (jornada.suspendida === true) {
-ultimaJornadaJugada = jornada.jornada;
-continue;
-}
+if (jornada.suspendida === true) { ultimaJornadaJugada = jornada.jornada; continue; }
 var resJ = resultados[String(jornada.jornada)] || {};
 var todosConResultado = true;
 for (var i = 0; i < jornada.partidos.length; i++) {
 var resP = resJ[String(i)] || {};
 var gl = (resP.golesLocal !== undefined && resP.golesLocal !== null) ? resP.golesLocal : jornada.partidos[i].golesLocal;
 var gv = (resP.golesVisitante !== undefined && resP.golesVisitante !== null) ? resP.golesVisitante : jornada.partidos[i].golesVisitante;
-if (gl === null || gv === null) {
-todosConResultado = false;
-break;
+if (gl === null || gv === null) { todosConResultado = false; break; }
 }
-}
-if (todosConResultado) {
-ultimaJornadaJugada = jornada.jornada;
-} else {
-break;
-}
+if (todosConResultado) { ultimaJornadaJugada = jornada.jornada; } else { break; }
 }
 seleccionarJornada(ultimaJornadaJugada);
 }
@@ -1593,9 +1528,7 @@ botones.forEach(function(btn) {
 if (parseInt(btn.dataset.jornada) === numJornada) {
 btn.classList.add('active');
 btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-} else {
-btn.classList.remove('active');
-}
+} else { btn.classList.remove('active'); }
 });
 cargarJornada(numJornada);
 }
