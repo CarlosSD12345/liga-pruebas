@@ -796,6 +796,23 @@ var numeroAdmin = '34617417827';
 var url = 'https://wa.me/' + numeroAdmin + '?text=' + encodeURIComponent(texto);
 window.open(url, '_blank');
 }
+function cargarJugadoresDB() {
+  fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/jugadores.json?t=' + Date.now())
+  .then(function(r) {
+    if (r.status === 404) { jugadoresDB = {}; return; }
+    return r.json();
+  })
+  .then(function(data) {
+    if (data && data.content) {
+      jugadoresDB = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+    } else if (data && typeof data === 'object' && !data.content) {
+      jugadoresDB = data;
+    } else {
+      jugadoresDB = {};
+    }
+  })
+  .catch(function() { jugadoresDB = {}; });
+}
 function cargarPropuestasPublicas() {
 fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/propuestas.json?t=' + Date.now())
 .then(function(r) {
