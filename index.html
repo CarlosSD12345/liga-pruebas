@@ -762,11 +762,39 @@ selectPartido.appendChild(opt);
 });
 }
 function addGoleadorRowDelegados() {
-var lista = document.getElementById('goleadores-lista-delegados');
-var row = document.createElement('div');
-row.className = 'goleador-row';
-row.innerHTML = '<input type="text" placeholder="Nombre del jugador" class="gol-nombre"><input type="number" placeholder="Goles" min="1" class="gol-goles"><button class="btn-remove" onclick="this.parentElement.remove()">✕</button>';
-lista.appendChild(row);
+  var lista = document.getElementById('goleadores-lista-delegados');
+  var row = document.createElement('div');
+  row.className = 'goleador-row';
+  
+  // Construir opciones del select con jugadores del equipo
+  var opciones = '<option value="">-- Selecciona jugador --</option>';
+  var jugadoresEquipo = jugadoresDB[equipoLogueado] || [];
+  jugadoresEquipo.forEach(function(j) {
+    opciones += '<option value="' + j + '">' + j + '</option>';
+  });
+  opciones += '<option value="nuevo">➕ Nuevo jugador...</option>';
+  
+  row.innerHTML = 
+    '<select class="gol-select" onchange="onSelectJugadorDelegado(this)" style="flex:1; min-width:120px; padding:8px; border-radius:6px; border:1px solid #1f4733; background-color:#0b1d15; color:white; font-size:14px;">' + opciones + '</select>' +
+    '<input type="text" class="gol-nombre" placeholder="Nombre (si es nuevo)" style="display:none; flex:1; min-width:120px; padding:8px; border-radius:6px; border:1px solid #1f4733; background-color:#0b1d15; color:white; font-size:14px;">' +
+    '<input type="number" placeholder="Goles" min="1" class="gol-goles" style="max-width:80px;">' +
+    '<button class="btn-remove" onclick="this.parentElement.remove()">✕</button>';
+  lista.appendChild(row);
+}
+
+function onSelectJugadorDelegado(sel) {
+  var inputNombre = sel.parentElement.querySelector('.gol-nombre');
+  if (sel.value === 'nuevo') {
+    inputNombre.style.display = 'block';
+    inputNombre.value = '';
+    inputNombre.focus();
+  } else if (sel.value === '') {
+    inputNombre.style.display = 'none';
+    inputNombre.value = '';
+  } else {
+    inputNombre.style.display = 'none';
+    inputNombre.value = sel.value;
+  }
 }
 function enviarPropuestaGoleadoresDelegados() {
 var numJornada = parseInt(document.getElementById('goleador-jornada-delegados').value);
