@@ -1858,7 +1858,9 @@ html += '<div class="modal-nombre" style="display:flex; align-items:center;">' +
       acta.visitante.jugadores.forEach(function(j) {
         html += '<div class="modal-jugador">';
         html += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
-        html += '<div class="modal-nombre">' + j.nombre + '</div>';
+        var fotoUrl = getFotoJugador(j.nombre, partido.visitante);
+var fotoHtml = fotoUrl ? '<img src="' + fotoUrl + '" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;" onerror="this.style.display=\'none\'">' : '';
+html += '<div class="modal-nombre" style="display:flex; align-items:center;">' + fotoHtml + j.nombre + '</div>';
         var eventos = '';
         for (var g = 0; g < (j.goles || 0); g++) eventos += '⚽';
         for (var a = 0; a < (j.amarillas || 0); a++) eventos += '<span class="modal-tarjeta amarilla"></span>';
