@@ -1696,6 +1696,15 @@ if (sinAcentos(equipos[i].nombreCompleto).indexOf(ncNorm) !== -1) return equipos
 }
 return nc;
 }
+function getFotoJugador(nombre, equipo) {
+  var carpeta = '';
+  if (equipo === 'C.F. Cerdanyola') carpeta = 'CF-Cerdanyola';
+  else if (equipo === 'C.F. Can Parellada') carpeta = 'CF-Can-Parellada';
+  else return null;
+  
+  var nombreArchivo = encodeURIComponent(nombre) + '.jpg';
+  return 'https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/fotos-jugadores/' + carpeta + '/' + nombreArchivo;
+}
 function initCalendario() {
 var contenedor = document.getElementById('jornadas-scroll');
 if (!contenedor) { console.error("No se encontró el contenedor de jornadas"); return; }
