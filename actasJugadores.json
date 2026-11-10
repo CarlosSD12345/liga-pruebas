@@ -1,4 +1,4 @@
-{
+2{
   "C.F. Cerdanyola": [
     {"dorsal": 12, "nombre": "Abel Moreno Griera", "foto": "Abel Moreno Griera.jpg"},
     {"dorsal": 23, "nombre": "Albert Antonio Roncal Diaz", "foto": "Albert Antonio Roncal Diaz.jpg"},
@@ -36,5 +36,5 @@
     {"dorsal": 22, "nombre": "Vladimir Céspedes Delgadillo", "foto": "Vladimir Céspedes Delgadillo.jpg"},
     {"dorsal": 10, "nombre": "Ángel Espinosa Cornelo", "foto": "Ángel Espinosa Cornelo.jpg"},
     {"dorsal": 19, "nombre": "Jose Antonio Saavedra Ruiz", "foto": "Jose Antonio Saavedra Ruiz"}
-  ]
+  ],
 }
