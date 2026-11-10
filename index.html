@@ -1258,11 +1258,10 @@ var prop = propuestas[j][p][idx];
 if (prop.equipo && prop.jugador) {
 if (!jugadoresDB[prop.equipo]) jugadoresDB[prop.equipo] = [];
 var existe = jugadoresDB[prop.equipo].some(function(n) {
-  var nombreJugador = (typeof n === 'object') ? n.nombre : n;
-  return nombreJugador.toLowerCase().trim() === prop.jugador.toLowerCase().trim();
+  return n.toLowerCase().trim() === prop.jugador.toLowerCase().trim();
 });
 if (!existe) {
-  jugadoresDB[prop.equipo].push({dorsal: null, nombre: prop.jugador});
+  jugadoresDB[prop.equipo].push(prop.jugador);
 }
 }
 guardarPropuestas();
