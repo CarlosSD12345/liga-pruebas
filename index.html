@@ -1705,6 +1705,16 @@ function getFotoJugador(nombre, equipo) {
   var nombreArchivo = encodeURIComponent(nombre) + '.jpg';
   return 'https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/fotos-jugadores/' + carpeta + '/' + nombreArchivo;
 }
+function getDorsalJugador(nombre, equipo) {
+  var jugadores = jugadoresDB[equipo];
+  if (!jugadores) return null;
+  for (var i = 0; i < jugadores.length; i++) {
+    if (jugadores[i].nombre && jugadores[i].nombre.toLowerCase() === nombre.toLowerCase()) {
+      return jugadores[i].dorsal;
+    }
+  }
+  return null;
+}
 function initCalendario() {
 var contenedor = document.getElementById('jornadas-scroll');
 if (!contenedor) { console.error("No se encontró el contenedor de jornadas"); return; }
