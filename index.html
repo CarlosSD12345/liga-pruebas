@@ -881,20 +881,22 @@ selectPartido.appendChild(opt);
 });
 }
 function addGoleadorRowDelegados() {
-var lista = document.getElementById('goleadores-lista-delegados');
-var row = document.createElement('div');
-row.className = 'goleador-row';
-var opciones = '<option value="">-- Selecciona jugador --</option>';
-var jugadoresEquipo = jugadoresDB[equipoLogueado] || [];
-jugadoresEquipo.forEach(function(j) {
-  opciones += '<option value="' + j.replace(/"/g, '&quot;') + '">' + j + '</option>';
-});
-row.innerHTML =
-'<select class="gol-select" onchange="onSelectJugadorDelegado(this)">' + opciones + '</select>' +
-'<input type="text" class="gol-nombre-manual" placeholder="O escribe nombre nuevo...">' +
-'<input type="number" placeholder="Goles" min="1" class="gol-goles">' +
-'<button class="btn-remove" onclick="this.parentElement.remove()">✕</button>';
-lista.appendChild(row);
+  var lista = document.getElementById('goleadores-lista-delegados');
+  var row = document.createElement('div');
+  row.className = 'goleador-row';
+  var opciones = '<option value="">-- Selecciona jugador --</option>';
+  var jugadoresEquipo = jugadoresDB[equipoLogueado] || [];
+  jugadoresEquipo.forEach(function(j) {
+    var nombre = (typeof j === 'object') ? j.nombre : j;
+    var dorsal = (typeof j === 'object' && j.dorsal) ? ' #' + j.dorsal : '';
+    opciones += '<option value="' + nombre.replace(/"/g, '&quot;') + '">' + dorsal + ' ' + nombre + '</option>';
+  });
+  row.innerHTML =
+    '<select class="gol-select" onchange="onSelectJugadorDelegado(this)">' + opciones + '</select>' +
+    '<input type="text" class="gol-nombre-manual" placeholder="O escribe nombre nuevo...">' +
+    '<input type="number" placeholder="Goles" min="1" class="gol-goles">' +
+    '<button class="btn-remove" onclick="this.parentElement.remove()">✕</button>';
+  lista.appendChild(row);
 }
 function onSelectJugadorDelegado(sel) {
 var inputManual = sel.parentElement.querySelector('.gol-nombre-manual');
