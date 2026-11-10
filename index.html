@@ -887,7 +887,9 @@ row.className = 'goleador-row';
 var opciones = '<option value="">-- Selecciona jugador --</option>';
 var jugadoresEquipo = jugadoresDB[equipoLogueado] || [];
 jugadoresEquipo.forEach(function(j) {
-opciones += '<option value="' + j.replace(/"/g, '&quot;') + '">' + j + '</option>';
+  var nombre = (typeof j === 'object') ? j.nombre : j;
+  var dorsal = (typeof j === 'object' && j.dorsal) ? ' #' + j.dorsal : '';
+  opciones += '<option value="' + nombre.replace(/"/g, '&quot;') + '">' + dorsal + ' ' + nombre + '</option>';
 });
 row.innerHTML =
 '<select class="gol-select" onchange="onSelectJugadorDelegado(this)">' + opciones + '</select>' +
