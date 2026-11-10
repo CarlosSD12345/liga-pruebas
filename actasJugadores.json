@@ -1,4 +1,4 @@
-2{
+{
   "C.F. Cerdanyola": [
     {"dorsal": 12, "nombre": "Abel Moreno Griera", "foto": "Abel Moreno Griera.jpg"},
     {"dorsal": 23, "nombre": "Albert Antonio Roncal Diaz", "foto": "Albert Antonio Roncal Diaz.jpg"},
@@ -32,9 +32,9 @@
     {"dorsal": 7, "nombre": "Raúl Cañas García", "foto": "Raúl Cañas García.jpg"},
     {"dorsal": 11, "nombre": "Raúl Maturana Campos", "foto": "Raúl Maturana Campos.jpg"},
     {"dorsal": 17, "nombre": "Sergio Jiménez Márquez", "foto": "Sergio Jiménez Márquez.jpg"},
-    {"dorsal": 21, "nombre": "wSergio López Molina", "foto": "Sergio López Molina.jpg"},
+    {"dorsal": 21, "nombre": "Sergio López Molina", "foto": "Sergio López Molina.jpg"},
     {"dorsal": 22, "nombre": "Vladimir Céspedes Delgadillo", "foto": "Vladimir Céspedes Delgadillo.jpg"},
-    {"dorsal": 10, "nombre": "Ángel Espinosa Cornelo", "foto": "Ángel Espinosa Cornelo.jpg"},
+    {"dorsal": 10, "nombre": "Ángel Espinosa Cornelio", "foto": "Ángel Espinosa Cornelio.jpg"},
     {"dorsal": 19, "nombre": "Jose Antonio Saavedra Ruiz", "foto": "Jose Antonio Saavedra Ruiz.jpg"}
   ]
 }
