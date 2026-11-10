@@ -931,7 +931,7 @@ if (!confirm('¿Enviar propuesta de ' + goleadores.length + ' goleador(es)?')) r
 var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
 var partido = jornada.partidos[parseInt(idxPartido)];
 var texto = '⚽ *PROPUESTA GOLEADORES*\n';
-texto += '📅 Jornada ' + numJornada + '\n';
+texto += ' Jornada ' + numJornada + '\n';
 texto += '⚽ ' + partido.local + ' vs ' + partido.visitante + '\n';
 texto += '👕 Equipo: ' + equipoLogueado + '\n';
 texto += '*Goleadores:*\n';
