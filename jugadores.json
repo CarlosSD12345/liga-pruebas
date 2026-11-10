@@ -1,40 +1,116 @@
 {
-  "C.F. Cerdanyola": [
-    {"dorsal": 12, "nombre": "Abel Moreno Griera"},
-    {"dorsal": 23, "nombre": "Albert Antonio Roncal Diaz"},
-    {"dorsal": 10, "nombre": "Cristian García Pujante"},
-    {"dorsal": 9, "nombre": "Diego Pérez Martell"},
-    {"dorsal": 22, "nombre": "Edgar Rodríguez Ramírez"},
-    {"dorsal": 8, "nombre": "Eduard Frances Merino Cruces"},
-    {"dorsal": 21, "nombre": "Ismael López Montes"},
-    {"dorsal": 16, "nombre": "Iván Rodríguez Mallas"},
-    {"dorsal": 11, "nombre": "Jose luis Pozo García"},
-    {"dorsal": 14, "nombre": "Juan Mellado Martínez"},
-    {"dorsal": 3, "nombre": "Luis Escalera"},
-    {"dorsal": 7, "nombre": "Mario Romero Molina"},
-    {"dorsal": 25, "nombre": "Martín Moreno Padilla"},
-    {"dorsal": 5, "nombre": "Nicolás Ruiz Granja"},
-    {"dorsal": 2, "nombre": "Pablo Pérez Rodríguez"},
-    {"dorsal": 20, "nombre": "Raúl Ruiz Granja"},
-    {"dorsal": 6, "nombre": "Raúl Ulloa Monserrat"},
-    {"dorsal": 18, "nombre": "Salvador Morales Martín"}
+  "U.E. Sabadellenca": [
+    "Uri",
+    "Abel",
+    "Dídac",
+    "David. B",
+    "Marc",
+    "Iván Diaz",
+    "Raul",
+    "Jose Montero",
+    "Moba",
+    "Dani Flores",
+    "Xavi Molas",
+    "Madir",
+    "Pau",
+    "Javi Raya"
+  ],
+  "A.V. L'Ametlla del Vallés": [
+    "Kaña",
+    "Javi",
+    "Isaac",
+    "Torito",
+    "Miki",
+    "Carri",
+    "Txap",
+    "Arnau",
+    "Ferran"
+  ],
+  "C.F. Barberá": [
+    "Alvaro",
+    "Felix",
+    "Alberto",
+    "Lolo",
+    "Ivan Heras",
+    "Alberto Gomez",
+    "Daniel Gil",
+    "Fran",
+    "Cabrera"
   ],
   "C.F. Can Parellada": [
-    {"dorsal": 6, "nombre": "Antonio Mengual Ávila"},
-    {"dorsal": 24, "nombre": "David Palacio Durán"},
-    {"dorsal": 5, "nombre": "Javier Cañas García"},
-    {"dorsal": 3, "nombre": "Javier Lores Bautista"},
-    {"dorsal": 20, "nombre": "Jordi Leiva Cañestro"},
-    {"dorsal": 2, "nombre": "Jordi Prats Sevillano"},
-    {"dorsal": 12, "nombre": "Juan Miguel Torres Hernández"},
-    {"dorsal": 15, "nombre": "Mario Álvarez Pérez"},
-    {"dorsal": 23, "nombre": "Ramón Prats Sevillano"},
-    {"dorsal": 7, "nombre": "Raúl Cañas García"},
-    {"dorsal": 11, "nombre": "Raúl Maturana Campos"},
-    {"dorsal": 17, "nombre": "Sergio Jiménez Márquez"},
-    {"dorsal": 21, "nombre": "Sergio López Molina"},
-    {"dorsal": 22, "nombre": "Vladimir Céspedes Delgadillo"},
-    {"dorsal": 10, "nombre": "Ángel Espinosa Cornelio"},
-    {"dorsal": 19, "nombre": "Jose Antonio Saavedra Ruiz"}
+    "Mario",
+    "Ángel",
+    "Joel",
+    "Raúl",
+    "Javi",
+    "David",
+    "Matu",
+    "Toni"
+  ],
+  "E.F.B Palau Solitá i Plegamans": [
+    "EDU",
+    "JORDI FARRE",
+    "ORIOL",
+    "DIEGO",
+    "GUILLERMO",
+    "PEQUE",
+    "FERMIN",
+    "ISMAEL"
+  ],
+  "C.F. Cerdanyola": [
+    "Pepelu",
+    "Nico Ruiz",
+    "Cristian",
+    "Raul Ruiz",
+    "Juan",
+    "Salva"
+  ],
+  "C.F. Sant Feliu de Codines": [
+    "Enric González",
+    "Ivan Fenández",
+    "Kenneth"
+  ],
+  "U.E. Castellar": [
+    "Jaime Perales",
+    "Jose antonio Alfaro",
+    "Xavi Herrero",
+    "Jose Cabrera",
+    "Carlos Anselmo",
+    "Marcial Salinas"
+  ],
+  "C.E. Santa Eulalia de Ronçana": [
+    "Borja",
+    "Edu",
+    "Dani",
+    "Gerard",
+    "Diego"
+  ],
+  "Penya Decano": [
+    "Sergio Hermoso",
+    "Denis",
+    "Eze",
+    "Baena",
+    "Monki",
+    "Jose",
+    "Chus",
+    "Xavi"
+  ],
+  "U.E. Canovelles": [
+    "ANTONIO",
+    "DAVIDE",
+    "TEINO",
+    "CHRIS.D",
+    "DOSI",
+    "JAVI ROBLES",
+    "Eloy"
+  ],
+  "C.E. Santa Eulàlia de Ronçana": [
+    "Edu",
+    "Diego",
+    "Nando",
+    "Gerard",
+    "Dani",
+    "Pericas",
+    "Pascual"
   ]
 }
