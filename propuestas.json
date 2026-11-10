@@ -201,6 +201,22 @@
         "fecha": "2026-10-13"
       }
     ],
+    "6": [
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Musta",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
+      },
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Vlad",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
+      }
+    ],
     "7": [
       {
         "equipo": "C.E. Santa Eulalia de Ronçana",
@@ -418,6 +434,20 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-10-19"
+      },
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Vlad",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
+      },
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Musta",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
       }
     ]
   },
@@ -721,6 +751,13 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-10-18"
+      },
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Musta",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
       }
     ],
     "7": [
@@ -900,6 +937,13 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-11-01"
+      },
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Said",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
       }
     ],
     "7": [
@@ -1219,6 +1263,15 @@
         "fecha": "2026-11-08"
       }
     ],
+    "5": [
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Xavi",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
+      }
+    ],
     "6": [
       {
         "equipo": "C.F. Barberá",
@@ -1233,6 +1286,13 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-11-08"
+      },
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Vlad",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-10"
       }
     ],
     "7": [
