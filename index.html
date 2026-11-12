@@ -475,25 +475,29 @@ function cargarCalendarioDesdeGitHub() {
     fetch('https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/calendario.json?t=' + Date.now())
     .then(function(r) {
         if (r.status === 404) {
-            console.error('No se encontró calendario.json en GitHub');
-            alert('Error: No se encontró el archivo calendario.json');
-            return;
+            console.warn('No se encontró calendario.json, usando calendario por defecto');
+            return null;
         }
+        if (!r.ok) throw new Error('Error HTTP: ' + r.status);
         return r.json();
     })
     .then(function(data) {
-        if (data && Array.isArray(data)) {
+        if (data && Array.isArray(data) && data.length > 0) {
             calendario = data;
-            console.log('✅ Calendario cargado:', calendario.length, 'jornadas');
-            initCalendario();
-            cargarSelectorAdmin();
+            console.log('✅ Calendario cargado desde GitHub:', calendario.length, 'jornadas');
         } else {
-            console.error('El calendario no es un array válido');
+            console.warn('Calendario no válido, usando por defecto');
         }
+        // SIEMPRE inicializar el calendario, tenga datos o no
+        initCalendario();
+        cargarSelectorAdmin();
     })
     .catch(function(e) {
-        console.error('Error al cargar calendario:', e);
-        alert('Error al cargar el calendario. Recarga la página.');
+        console.error('Error al cargar calendario desde GitHub:', e);
+        console.log('Usando calendario por defecto (hardcodeado)');
+        // Si falla, inicializar con lo que haya
+        initCalendario();
+        cargarSelectorAdmin();
     });
 }
 
