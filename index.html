@@ -1626,10 +1626,10 @@ cambiarPestanaActa('local');
 function renderJugadorModal(j, equipoNombre) {
 var linea = '<div class="modal-jugador">';
 linea += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
-var fotoUrl = getFotoJugador(j.nombre, equipoNombre);
+var fotoUrls = getFotoJugador(j.nombre, equipoNombre);
 var fotoHtml = '';
-if (fotoUrl) {
-fotoHtml = '<img class="modal-foto" src="' + fotoUrl + '" onerror="this.src=\'' + fotoUrl.replace('.jpg', '.png') + '\'; this.onerror=function(){this.style.display=\'none\';}">';
+if (fotoUrls) {
+fotoHtml = '<img class="modal-foto" src="' + fotoUrls.jpg + '" onerror="this.src=\'' + fotoUrls.png + '\'; this.onerror=function(){this.style.display=\'none\';}">';
 }
 linea += fotoHtml;
 linea += '<div class="modal-nombre">' + j.nombre + '</div>';
@@ -1646,7 +1646,7 @@ else if (t.tipo === 'doble_amarilla') eventos += '<span class="modal-tarjeta ama
 else if (t.tipo === 'amarilla') eventos += '<span class="modal-tarjeta amarilla"></span> <span style="color:#f1c40f; font-weight:bold;">' + minutoTexto + motivoTexto + '</span>';
 });
 }
-if (eventos) linea += '<div class="modal-jugador-bottom">' + eventos + '</div>';
+if (eventos) linea += '<div class="modal-eventos">' + eventos + '</div>';
 linea += '</div>';
 return linea;
 }
