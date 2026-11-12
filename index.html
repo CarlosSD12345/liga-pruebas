@@ -140,21 +140,63 @@ header { justify-content: center; }
 .modal-cuerpo-tecnico { background-color: #173827; padding: 10px 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; border-left: 3px solid #f39c12; }
 .modal-cuerpo-tecnico div { margin-bottom: 4px; }
 .modal-cuerpo-tecnico div:last-child { margin-bottom: 0; }
-.modal-jugador { display: flex; flex-wrap: wrap; align-items: center; padding: 8px 12px; border-bottom: 1px solid #1f4733; }
-.modal-jugador:last-child { border-bottom: none; }
-.modal-jugador-top { display: flex; align-items: flex-start; width: 100%; gap: 10px; flex-wrap: wrap; }
-.modal-dorsal { flex-shrink: 0; }
-.modal-jugador-top img { flex-shrink: 0; } 
-.modal-jugador-bottom { width: 100%; padding-left: 52px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #a3b8af; margin-top: 4px; flex-wrap: wrap; }
-.modal-dorsal { background-color: #1f4733; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; }
-.modal-nombre { 
-    flex: 1; 
-    font-weight: 600;
-    word-break: break-word;
-    min-width: 0;
+.modal-jugador {
+display: grid;
+grid-template-columns: 32px 40px 1fr;
+grid-template-rows: auto auto;
+column-gap: 10px;
+row-gap: 2px;
+padding: 8px 12px;
+border-bottom: 1px solid #1f4733;
+font-size: 0.95rem;
+align-items: start;
 }
-.modal-goles { color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 4px; }
-.modal-tarjeta { width: 14px; height: 18px; border-radius: 2px; display: inline-block; }
+.modal-jugador:last-child { border-bottom: none; }
+.modal-dorsal {
+grid-column: 1;
+grid-row: 1 / span 2;
+align-self: center;
+background-color: #1f4733;
+color: white;
+width: 32px; height: 32px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+font-size: 0.85rem;
+}
+.modal-foto {
+grid-column: 2;
+grid-row: 1;
+width: 40px; height: 40px;
+border-radius: 50%;
+object-fit: cover;
+background: #fff;
+}
+.modal-nombre {
+grid-column: 3;
+grid-row: 1;
+font-weight: 600;
+word-break: break-word;
+line-height: 1.3;
+}
+.modal-eventos {
+grid-column: 2 / span 2;
+grid-row: 2;
+color: #2ecc71;
+font-weight: bold;
+display: flex;
+align-items: center;
+gap: 6px;
+flex-wrap: wrap;
+font-size: 0.9rem;
+}
+.modal-tarjeta {
+width: 14px; height: 18px;
+border-radius: 2px;
+display: inline-block;
+}
 .modal-tarjeta.amarilla { background-color: #f1c40f; }
 .modal-tarjeta.roja { background-color: #e74c3c; }
 .modal-acta-pendiente { text-align: center; padding: 40px 20px; color: #f39c12; }
