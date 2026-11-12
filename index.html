@@ -118,133 +118,36 @@ header { justify-content: center; }
 }
 .tabs a.tab-btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 1rem; white-space: nowrap; text-align: center; box-sizing: border-box; }
 @media (max-width: 600px) { .tabs a.tab-btn { padding: 8px 6px; font-size: 0.7rem; } }
-/* Modal Acta */
-.modal-overlay {
-display: none;
-position: fixed;
-top: 0; left: 0;
-width: 100%; height: 100%;
-background-color: rgba(0,0,0,0.85);
-z-index: 10000;
-overflow-y: auto;
-padding: 20px;
-box-sizing: border-box;
-}
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 10000; overflow-y: auto; padding: 20px; box-sizing: border-box; }
 .modal-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
-.modal-acta {
-background-color: #0b1d15;
-border: 2px solid #2ecc71;
-border-radius: 12px;
-max-width: 500px;
-width: 100%;
-margin: 20px auto;
-padding: 20px;
-position: relative;
-}
-.modal-header {
-text-align: center;
-border-bottom: 1px solid #1f4733;
-padding-bottom: 15px;
-margin-bottom: 15px;
-}
+.modal-acta { background-color: #0b1d15; border: 2px solid #2ecc71; border-radius: 12px; max-width: 500px; width: 100%; margin: 20px auto; padding: 20px; position: relative; }
+.modal-header { text-align: center; border-bottom: 1px solid #1f4733; padding-bottom: 15px; margin-bottom: 15px; }
 .modal-header h2 { color: #2ecc71; margin: 0 0 8px 0; font-size: 1.3rem; }
 .modal-header .modal-score { font-size: 1.5rem; font-weight: bold; color: white; }
 .modal-header .modal-info { color: #a3b8af; font-size: 0.85rem; margin-top: 5px; }
 .modal-team { margin-bottom: 20px; }
-.modal-team-title {
-font-size: 0.9rem;
-font-weight: bold;
-padding: 8px 12px;
-border-radius: 6px;
-margin-bottom: 10px;
-display: flex;
-align-items: center;
-gap: 8px;
-}
+.modal-team-title { font-size: 0.9rem; font-weight: bold; padding: 8px 12px; border-radius: 6px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 .modal-team-title.local { background-color: #173827; color: #2ecc71; }
 .modal-team-title.visitante { background-color: #3d1f1f; color: #e74c3c; }
-.modal-jugador {
-display: flex;
-align-items: center;
-gap: 10px;
-padding: 8px 12px;
-border-bottom: 1px solid #1f4733;
-font-size: 0.95rem;
-}
+.modal-jugador { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-bottom: 1px solid #1f4733; font-size: 0.95rem; }
 .modal-jugador:last-child { border-bottom: none; }
-.modal-dorsal {
-background-color: #1f4733;
-color: white;
-width: 32px; height: 32px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: bold;
-font-size: 0.85rem;
-flex-shrink: 0;
-}
+.modal-dorsal { background-color: #1f4733; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; }
 .modal-nombre { flex: 1; font-weight: 600; }
 .modal-goles { color: #2ecc71; font-weight: bold; }
 .modal-tarjetas { display: flex; gap: 3px; }
-.modal-tarjeta {
-width: 14px; height: 18px;
-border-radius: 2px;
-display: inline-block;
-}
+.modal-tarjeta { width: 14px; height: 18px; border-radius: 2px; display: inline-block; }
 .modal-tarjeta.amarilla { background-color: #f1c40f; }
 .modal-tarjeta.roja { background-color: #e74c3c; }
-.modal-acta-pendiente {
-text-align: center;
-padding: 40px 20px;
-color: #f39c12;
-}
+.modal-acta-pendiente { text-align: center; padding: 40px 20px; color: #f39c12; }
 .modal-acta-pendiente .icono { font-size: 3rem; margin-bottom: 15px; }
 .modal-acta-pendiente h3 { margin: 0 0 10px 0; font-size: 1.3rem; }
 .modal-acta-pendiente p { color: #a3b8af; margin: 0; font-size: 0.95rem; }
-.modal-footer {
-text-align: center;
-border-top: 1px solid #1f4733;
-padding-top: 15px;
-margin-top: 15px;
-}
-.modal-arbitro {
-color: #a3b8af;
-font-size: 0.85rem;
-margin-bottom: 15px;
-}
-.btn-pdf {
-background-color: #3498db;
-color: white;
-border: none;
-padding: 12px 24px;
-border-radius: 8px;
-font-weight: bold;
-font-size: 1rem;
-cursor: pointer;
-width: 100%;
-}
-.btn-pdf:disabled {
-background-color: #7f8c8d;
-cursor: not-allowed;
-}
-.btn-cerrar-modal {
-position: absolute;
-top: 10px; right: 10px;
-background: #e74c3c;
-color: white;
-border: none;
-width: 36px; height: 36px;
-border-radius: 50%;
-font-size: 1.2rem;
-cursor: pointer;
-font-weight: bold;
-}
-@media (max-width: 600px) {
-.modal-acta { margin: 10px auto; padding: 15px; }
-.modal-header h2 { font-size: 1.1rem; }
-.modal-header .modal-score { font-size: 1.2rem; }
-}
+.modal-footer { text-align: center; border-top: 1px solid #1f4733; padding-top: 15px; margin-top: 15px; }
+.modal-arbitro { color: #a3b8af; font-size: 0.85rem; margin-bottom: 15px; }
+.btn-pdf { background-color: #3498db; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; width: 100%; }
+.btn-pdf:disabled { background-color: #7f8c8d; cursor: not-allowed; }
+.btn-cerrar-modal { position: absolute; top: 10px; right: 10px; background: #e74c3c; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; font-weight: bold; }
+@media (max-width: 600px) { .modal-acta { margin: 10px auto; padding: 15px; } .modal-header h2 { font-size: 1.1rem; } .modal-header .modal-score { font-size: 1.2rem; } }
 </style>
 </head>
 <body>
@@ -260,13 +163,13 @@ font-weight: bold;
 <button class="tab-btn" onclick="cambiarPestana('arbitros', this)">Árbitros</button>
 <button class="tab-btn" onclick="cambiarPestana('goleadores', this)">Goleadores</button>
 <button class="tab-btn" onclick="cambiarPestana('acceso-delegados', this)">Acceso Delegados</button>
-<a href="https://carlossd12345.github.io/Actas-veteranos/?from=pruebas" target="_blank" class="tab-btn" style="background-color:#3498db; color:white; border-color:#3498db; text-decoration:none;"> Actas</a>
+<a href="https://carlossd12345.github.io/Actas-veteranos/?from=pruebas" target="_blank" class="tab-btn" style="background-color:#3498db; color:white; border-color:#3498db; text-decoration:none;">📋 Actas</a>
 </div>
 </div>
 <div id="clasificacion-real" class="section">
 <table>
 <thead>
-<tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>Pts Dep.</th><th></th><th></th><th>Pts Ajustados</th></tr>
+<tr><th>#</th><th class="team">Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>Pts Dep.</th><th>🟡</th><th>🔴</th><th>Pts Ajustados</th></tr>
 </thead>
 <tbody id="tabla-cr"></tbody>
 </table>
@@ -315,12 +218,12 @@ font-weight: bold;
 <div class="login-box">
 <h2>⚽ Acceso Goleadores</h2>
 <p style="color:#a3b8af; margin-bottom:15px; font-size:0.9rem;">Solo responsables de equipo</p>
-<button onclick="var g=document.getElementById('guia-goleadores-delegados'); g.style.display = g.style.display==='none'?'block':'none';" style="width:100%; padding:10px; background-color:#1f4733; color:#2ecc71; border:1px solid #2ecc71; border-radius:8px; font-weight:bold; cursor:pointer; margin-bottom:10px;"> Ver guía rápida</button>
+<button onclick="var g=document.getElementById('guia-goleadores-delegados'); g.style.display = g.style.display==='none'?'block':'none';" style="width:100%; padding:10px; background-color:#1f4733; color:#2ecc71; border:1px solid #2ecc71; border-radius:8px; font-weight:bold; cursor:pointer; margin-bottom:10px;">📖 Ver guía rápida</button>
 <div id="guia-goleadores-delegados" style="display:none; background-color:#1f4733; padding:15px; border-radius:8px; margin-bottom:15px; font-size:0.85rem; color:white;">
 <p style="margin:0 0 8px 0;">🔑 <b>Contraseña:</b> Se facilita en privado a cada responsable de equipo.</p>
 <a href="https://wa.me/34617417827?text=Hola,%20soy%20el%20responsable%20de%20mi%20equipo%20y%20necesito%20mi%20contrase%C3%B1a%20para%20enviar%20los%20goleadores.%20%C2%A1Gracias!" target="_blank" style="display:block; width:100%; padding:12px; background-color:#25D366; color:white; text-align:center; border-radius:8px; font-weight:bold; text-decoration:none; margin-bottom:12px;">📲 Solicitar contraseña por WhatsApp</a>
 <p style="margin:0 0 8px 0;">📝 <b>Cómo enviar:</b> Selecciona tu equipo → introduce contraseña → elige Jornada y Partido → selecciona jugador del desplegable (o escribe uno nuevo) → añade goles → "Enviar propuesta".</p>
-<p style="margin:0 0 8px 0; color:#f39c12;">️ <b>IMPORTANTE:</b> Si el jugador ya ha marcado gol antes, aparecerá en el desplegable. Si es nuevo, escríbelo en el campo de texto.</p>
+<p style="margin:0 0 8px 0; color:#f39c12;">⚠️ <b>IMPORTANTE:</b> Si el jugador ya ha marcado gol antes, aparecerá en el desplegable. Si es nuevo, escríbelo en el campo de texto.</p>
 <p style="margin:0;">✅ Se abrirá WhatsApp con el mensaje listo. Envíalo y el admin lo aprobará.</p>
 </div>
 <select id="login-equipo-delegados">
@@ -332,7 +235,7 @@ font-weight: bold;
 </div>
 <div id="acceso-delegados-form" style="display:none;">
 <div class="propuesta-box">
-<h2> Enviar Goleadores</h2>
+<h2>⚽ Enviar Goleadores</h2>
 <p style="color:#a3b8af; margin-bottom:10px;">Equipo: <strong id="equipo-actual-delegados" style="color:#2ecc71;"></strong></p>
 <button class="btn-secondary" onclick="cerrarSesionGoleadoresDelegados()" style="margin-bottom:15px; font-size:0.85rem; padding:8px;">Cerrar sesión</button>
 <select id="goleador-jornada-delegados" onchange="cargarPartidosGoleadorDelegados()">
@@ -342,7 +245,7 @@ font-weight: bold;
 <option value="">Selecciona Partido...</option>
 </select>
 <div id="goleadores-lista-delegados" style="margin-top:15px;"></div>
-<button class="btn-add" onclick="addGoleadorRowDelegados()" style="margin-top:10px; width:100%;"> Añadir goleador</button>
+<button class="btn-add" onclick="addGoleadorRowDelegados()" style="margin-top:10px; width:100%;">➕ Añadir goleador</button>
 <button class="btn-primary" onclick="enviarPropuestaGoleadoresDelegados()" style="margin-top:15px;">📲 Enviar propuesta</button>
 </div>
 </div>
@@ -400,11 +303,11 @@ font-weight: bold;
 </div>
 </div>
 <div id="modal-importar-acta" style="display:none; margin-top:15px;">
-<h3 style="color:#9b59b6; margin-bottom:10px;"> Importar ACTA desde WhatsApp</h3>
+<h3 style="color:#9b59b6; margin-bottom:10px;">📋 Importar ACTA desde WhatsApp</h3>
 <p style="color:#a3b8af; font-size:0.85rem; margin-bottom:10px;">Copia el mensaje completo del WhatsApp del árbitro y pégalo aquí:</p>
 <textarea id="texto-acta-whatsapp" placeholder="📋 *ACTA DIGITAL - VETERANS DEL VALLÈS*..." style="width:100%; height:250px; padding:10px; border-radius:8px; border:1px solid #9b59b6; background-color:#0b1d15; color:white; font-size:13px; box-sizing:border-box; font-family:monospace;"></textarea>
 <div style="display:flex; gap:10px; margin-top:10px;">
-<button onclick="procesarActaWhatsApp()" style="flex:1; padding:10px; background-color:#9b59b6; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">⚙️ Procesar y Guardar</button>
+<button onclick="procesarActaWhatsApp()" style="flex:1; padding:10px; background-color:#9b59b6; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">⚙️ Procesar</button>
 <button onclick="cerrarModalImportarActa()" style="flex:1; padding:10px; background-color:#e74c3c; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">❌ Cancelar</button>
 </div>
 <div id="resultado-procesamiento-acta" style="margin-top:15px; padding:12px; border-radius:8px; display:none; font-size:0.85rem;"></div>
@@ -416,7 +319,6 @@ font-weight: bold;
 </div>
 </div>
 </div>
-<!-- Modal Acta -->
 <div id="modal-acta" class="modal-overlay" onclick="if(event.target===this)cerrarModalActa()">
 <div class="modal-acta">
 <button class="btn-cerrar-modal" onclick="cerrarModalActa()">✕</button>
@@ -429,6 +331,26 @@ var propuestas = {};
 var equipoLogueado = null;
 var jugadoresDB = {};
 var actas = {};
+var contraseñasEquipos = {
+"C.F. Barberá": "barbera26",
+"C.F. Can Parellada": "canparellada26",
+"U.E. Castellar": "castellar26",
+"C.E. Santa Eulàlia de Ronçana": "santaeulalia26",
+"A.V. L'Ametlla del Vallés": "lametlla26",
+"U.E. Sabadellenca": "sabadellenca26",
+"C.F. Cerdanyola": "cerdanyola26",
+"Penya Decano": "penyadecano26",
+"A.V. Pallejá": "palleja26",
+"A.V. Ripollet": "avripollet26",
+"U.D.A. Gramanet": "gramanet26",
+"C.E. Sentmenat": "sentmenat26",
+"C.F. Sant Feliu de Codines": "santfeliu26",
+"E.F.B Palau Solitá i Plegamans": "palauplegamans26",
+"U.E. Canovelles": "canovelles26",
+"V.C.F. Ripollet": "vcfripollet26",
+"C.E. Bigues i Riells": "bigues26"
+};
+var listaArbitros = ["Duran", "Molina", "Humanes", "Portoles", "Utrera", "Julio", "Congost", "Fabregas", "Puibert", "Salva", "Lleixa", "Edu", "Exposito"];
 var calendario = [
 { jornada: 1, fecha: "20/09/2026", suspendida: false, partidos: [
 { local: "U.E. Sabadellenca", visitante: "V.C.F. Ripollet", golesLocal: 5, golesVisitante: 1, campo: "CAMPOAMOR", hora: "08:00", arbitro: "Salva" },
@@ -459,28 +381,78 @@ var calendario = [
 { local: "C.F. Cerdanyola", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
 { local: "C.E. Sentmenat", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
 { local: "C.E. Santa Eulàlia de Ronçana", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
-], descanso: "C.F. Sant Feliu de Codines" }
+], descanso: "C.F. Sant Feliu de Codines" },
+{ jornada: 4, fecha: "11/10/2026", suspendida: false, partidos: [
+{ local: "A.V. L'Ametlla del Vallés", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30", arbitro: "Duran" },
+{ local: "A.V. Pallejá", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15", arbitro: "Molina" },
+{ local: "U.E. Canovelles", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00", arbitro: "Exposito" },
+{ local: "E.F.B Palau Solitá i Plegamans", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00", arbitro: "Fabregas" },
+{ local: "C.F. Sant Feliu de Codines", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00", arbitro: "Edu" },
+{ local: "U.D.A. Gramanet", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00", arbitro: "Congost" },
+{ local: "Penya Decano", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00", arbitro: "Salva" },
+{ local: "A.V. Ripollet", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00", arbitro: "Julio" }
+], descanso: "U.E. Castellar" },
+{ jornada: 5, fecha: "18/10/2026", suspendida: false, partidos: [
+{ local: "A.V. L'Ametlla del Vallés", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
+{ local: "V.C.F. Ripollet", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
+{ local: "U.E. Sabadellenca", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
+{ local: "C.E. Bigues i Riells", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
+{ local: "C.F. Barberá", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
+{ local: "C.F. Can Parellada", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
+{ local: "C.F. Cerdanyola", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
+{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
+], descanso: "U.D.A. Gramanet" },
+{ jornada: 6, fecha: "25/10/2026", suspendida: false, partidos: [
+{ local: "A.V. Pallejá", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
+{ local: "U.E. Canovelles", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
+{ local: "E.F.B Palau Solitá i Plegamans", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
+{ local: "C.F. Sant Feliu de Codines", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
+{ local: "U.E. Castellar", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
+{ local: "U.D.A. Gramanet", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
+{ local: "A.V. Ripollet", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
+{ local: "C.E. Sentmenat", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" }
+], descanso: "Penya Decano" },
+{ jornada: 7, fecha: "01/11/2026", suspendida: false, partidos: [
+{ local: "A.V. Pallejá", visitante: "U.E. Canovelles", golesLocal: 4, golesVisitante: 2, campo: "MPAL PALLEJA", hora: "08:15", arbitro: "Lleixa" },
+{ local: "A.V. L'Ametlla del Vallés", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: 3, golesVisitante: 1, campo: "MPAL L'AMETLLA", hora: "08:30", arbitro: "Edu" },
+{ local: "V.C.F. Ripollet", visitante: "C.F. Sant Feliu de Codines", golesLocal: 3, golesVisitante: 1, campo: "MPAL RIPOLLET", hora: "08:00", arbitro: "Julio" },
+{ local: "U.E. Sabadellenca", visitante: "U.E. Castellar", golesLocal: 5, golesVisitante: 2, campo: "CAMPOAMOR", hora: "08:00", arbitro: "Salva" },
+{ local: "C.E. Bigues i Riells", visitante: "U.D.A. Gramanet", golesLocal: 4, golesVisitante: 3, campo: "MPAL BIGUES", hora: "08:15" },
+{ local: "C.F. Barberá", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
+{ local: "C.F. Can Parellada", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
+{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "C.F. Cerdanyola", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
+], descanso: "A.V. Ripollet" },
+{ jornada: 8, fecha: "08/11/2026", suspendida: false, partidos: [
+{ local: "U.E. Canovelles", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
+{ local: "E.F.B Palau Solitá i Plegamans", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
+{ local: "C.F. Sant Feliu de Codines", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
+{ local: "U.E. Castellar", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
+{ local: "U.D.A. Gramanet", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
+{ local: "Penya Decano", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
+{ local: "A.V. Ripollet", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
+{ local: "C.F. Cerdanyola", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" }
+], descanso: "C.E. Sentmenat" },
+{ jornada: 9, fecha: "15/11/2026", suspendida: false, partidos: [
+{ local: "U.E. Canovelles", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL CANOVELLES", hora: "08:00" },
+{ local: "A.V. Pallejá", visitante: "C.F. Sant Feliu de Codines", golesLocal: null, golesVisitante: null, campo: "MPAL PALLEJA", hora: "08:15" },
+{ local: "A.V. L'Ametlla del Vallés", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "MPAL L'AMETLLA", hora: "08:30" },
+{ local: "V.C.F. Ripollet", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
+{ local: "U.E. Sabadellenca", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
+{ local: "C.E. Bigues i Riells", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
+{ local: "C.F. Barberá", visitante: "C.E. Sentmenat", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
+{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "C.F. Can Parellada", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
+], descanso: "C.F. Cerdanyola" },
+{ jornada: 10, fecha: "22/11/2026", suspendida: false, partidos: [
+{ local: "E.F.B Palau Solitá i Plegamans", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: null, golesVisitante: null, campo: "MPAL PALAU", hora: "08:00" },
+{ local: "C.F. Sant Feliu de Codines", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL SANT FELIU", hora: "08:00" },
+{ local: "U.E. Castellar", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "MPAL CASTELLAR", hora: "08:15" },
+{ local: "U.D.A. Gramanet", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL GRAMANET", hora: "08:00" },
+{ local: "Penya Decano", visitante: "V.C.F. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL LA FERRERIA", hora: "08:00" },
+{ local: "A.V. Ripollet", visitante: "U.E. Sabadellenca", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
+{ local: "C.E. Sentmenat", visitante: "C.E. Bigues i Riells", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
+{ local: "C.F. Cerdanyola", visitante: "C.F. Barberá", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" }
+], descanso: "C.F. Can Parellada" }
 ];
-var contraseñasEquipos = {
-"C.F. Barberá": "barbera26",
-"C.F. Can Parellada": "canparellada26",
-"U.E. Castellar": "castellar26",
-"C.E. Santa Eulàlia de Ronçana": "santaeulalia26",
-"A.V. L'Ametlla del Vallés": "lametlla26",
-"U.E. Sabadellenca": "sabadellenca26",
-"C.F. Cerdanyola": "cerdanyola26",
-"Penya Decano": "penyadecano26",
-"A.V. Pallejá": "palleja26",
-"A.V. Ripollet": "avripollet26",
-"U.D.A. Gramanet": "gramanet26",
-"C.E. Sentmenat": "sentmenat26",
-"C.F. Sant Feliu de Codines": "santfeliu26",
-"E.F.B Palau Solitá i Plegamans": "palauplegamans26",
-"U.E. Canovelles": "canovelles26",
-"V.C.F. Ripollet": "vcfripollet26",
-"C.E. Bigues i Riells": "bigues26"
-};
-var listaArbitros = ["Duran", "Molina", "Humanes", "Portoles", "Utrera", "Julio", "Congost", "Fabregas", "Puibert", "Salva", "Lleixa", "Edu", "Exposito"];
 var equipos = [
 { nombre: "Barberà", img: "barbera.png", nombreCompleto: "C.F. Barberá" },
 { nombre: "Can Parellada", img: "can_parellada.png", nombreCompleto: "C.F. Can Parellada" },
@@ -500,38 +472,6 @@ var equipos = [
 { nombre: "VCF Ripollet", img: "vcf_ripollet.png", nombreCompleto: "V.C.F. Ripollet" },
 { nombre: "Bigues", img: "bigues.png", nombreCompleto: "C.E. Bigues i Riells" }
 ];
-
-// ==================== CARGAR CALENDARIO DESDE GITHUB ====================
-function cargarCalendarioDesdeGitHub() {
-    fetch('https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/calendario.json?t=' + Date.now())
-    .then(function(r) {
-        if (r.status === 404) {
-            console.warn('No se encontró calendario.json, usando calendario por defecto');
-            return null;
-        }
-        if (!r.ok) throw new Error('Error HTTP: ' + r.status);
-        return r.json();
-    })
-    .then(function(data) {
-        if (data && Array.isArray(data) && data.length > 0) {
-            calendario = data;
-            console.log('✅ Calendario cargado desde GitHub:', calendario.length, 'jornadas');
-        } else {
-            console.warn('Calendario no válido, usando por defecto');
-        }
-        // SIEMPRE inicializar el calendario, tenga datos o no
-        initCalendario();
-        cargarSelectorAdmin();
-    })
-    .catch(function(e) {
-        console.error('Error al cargar calendario desde GitHub:', e);
-        console.log('Usando calendario por defecto (hardcodeado)');
-        // Si falla, inicializar con lo que haya
-        initCalendario();
-        cargarSelectorAdmin();
-    });
-}
-
 function cambiarPestana(id, btn) {
 document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
 document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -666,7 +606,7 @@ var partido = jornada.partidos[parseInt(idxPartido)];
 var texto = '⚽ *PROPUESTA GOLEADORES*\n';
 texto += '📅 Jornada ' + numJornada + '\n';
 texto += '⚽ ' + partido.local + ' vs ' + partido.visitante + '\n';
-texto += ' Equipo: ' + equipoLogueado + '\n';
+texto += '👕 Equipo: ' + equipoLogueado + '\n';
 texto += '*Goleadores:*\n';
 goleadores.forEach(function(g) {
 texto += '• ' + g.jugador + ' - ' + g.goles + ' gol(es)\n';
@@ -760,7 +700,7 @@ lista.forEach(function(g, i) {
 var rankHtml = '';
 if (i === 0) rankHtml = '<span class="badge-form medalla-oro">🥇</span>';
 else if (i === 1) rankHtml = '<span class="badge-form medalla-plata">🥈</span>';
-else if (i === 2) rankHtml = '<span class="badge-form medalla-bronce"></span>';
+else if (i === 2) rankHtml = '<span class="badge-form medalla-bronce">🥉</span>';
 else rankHtml = (i+1);
 html += '<tr><td>' + rankHtml + '</td><td class="team" style="font-weight:bold;">' + g.jugador + '</td><td>' + getNombreCorto(g.equipo) + '</td><td style="font-weight:bold; color:#2ecc71; font-size:1.1rem;">' + g.goles + '</td></tr>';
 });
@@ -957,268 +897,252 @@ cargarPropuestasAdmin();
 
 // ==================== FUNCIONES PARA IMPORTAR ACTAS ====================
 function mostrarImportarActa() {
-    document.getElementById('admin-seccion-resultados').style.display = 'none';
-    document.getElementById('admin-seccion-propuestas').style.display = 'none';
-    document.getElementById('modal-importar-whatsapp').style.display = 'none';
-    document.getElementById('modal-importar-acta').style.display = 'block';
-    document.getElementById('texto-acta-whatsapp').value = '';
-    document.getElementById('resultado-procesamiento-acta').style.display = 'none';
+document.getElementById('admin-seccion-resultados').style.display = 'none';
+document.getElementById('admin-seccion-propuestas').style.display = 'none';
+document.getElementById('modal-importar-whatsapp').style.display = 'none';
+document.getElementById('modal-importar-acta').style.display = 'block';
+document.getElementById('texto-acta-whatsapp').value = '';
+document.getElementById('resultado-procesamiento-acta').style.display = 'none';
 }
 
 function cerrarModalImportarActa() {
-    document.getElementById('modal-importar-acta').style.display = 'none';
-    document.getElementById('admin-seccion-propuestas').style.display = 'block';
+document.getElementById('modal-importar-acta').style.display = 'none';
+document.getElementById('admin-seccion-propuestas').style.display = 'block';
 }
 
 function procesarActaWhatsApp() {
-    var texto = document.getElementById('texto-acta-whatsapp').value.trim();
-    var resultadoDiv = document.getElementById('resultado-procesamiento-acta');
-    
-    if (!texto) {
-        resultadoDiv.style.display = 'block';
-        resultadoDiv.style.backgroundColor = '#e74c3c';
-        resultadoDiv.style.color = 'white';
-        resultadoDiv.textContent = '❌ El campo de texto está vacío. Pega el mensaje del WhatsApp.';
-        return;
-    }
+var texto = document.getElementById('texto-acta-whatsapp').value.trim();
+var resultadoDiv = document.getElementById('resultado-procesamiento-acta');
 
-    // Extraer datos básicos
-    var matchJornada = texto.match(/Jornada\s+(\d+)/i);
-    var matchResultado = texto.match(/RESULTADO:\s*(\d+)\s*-\s*(\d+)/i);
-    var matchEquipos = texto.match(/⚽\s+(.+?)\s+vs\s+(.+?)\n/i);
-    var matchArbitro = texto.match(/Árbitro:\s*(.+?)(?:\n|$)/i);
-    var matchCampo = texto.match(/📍\s*(.+?)\s*·/i);
-    var matchHora = texto.match(/🕒\s*(.+?)(?:\n|$)/i);
-    
-    if (!matchJornada || !matchResultado || !matchEquipos) {
-        resultadoDiv.style.display = 'block';
-        resultadoDiv.style.backgroundColor = '#e74c3c';
-        resultadoDiv.style.color = 'white';
-        resultadoDiv.textContent = '❌ No se pudo reconocer el formato del acta. Asegúrate de copiar el mensaje completo tal cual lo envía el formulario.';
-        return;
-    }
+if (!texto) {
+resultadoDiv.style.display = 'block';
+resultadoDiv.style.backgroundColor = '#e74c3c';
+resultadoDiv.style.color = 'white';
+resultadoDiv.textContent = '❌ El campo de texto está vacío. Pega el mensaje del WhatsApp.';
+return;
+}
 
-    var numJornada = parseInt(matchJornada[1]);
-    var resultadoLocal = parseInt(matchResultado[1]);
-    var resultadoVisitante = parseInt(matchResultado[2]);
-    var equipoLocal = matchEquipos[1].trim();
-    var equipoVisitante = matchEquipos[2].trim();
-    var arbitro = matchArbitro ? matchArbitro[1].trim() : '';
-    var campo = matchCampo ? matchCampo[1].trim() : '';
-    var hora = matchHora ? matchHora[1].trim() : '';
+var matchJornada = texto.match(/Jornada\s+(\d+)/i);
+var matchResultado = texto.match(/RESULTADO:\s*(\d+)\s*-\s*(\d+)/i);
+var matchEquipos = texto.match(/⚽\s+(.+?)\s+vs\s+(.+?)\n/i);
+var matchArbitro = texto.match(/Árbitro:\s*(.+?)(?:\n|$)/i);
+var matchCampo = texto.match(/📍\s*(.+?)\s*·/i);
+var matchHora = texto.match(/🕒\s*(.+?)(?:\n|$)/i);
 
-    // Buscar el partido en el calendario
-    var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
-    if (!jornada) {
-        resultadoDiv.style.display = 'block';
-        resultadoDiv.style.backgroundColor = '#e74c3c';
-        resultadoDiv.style.color = 'white';
-        resultadoDiv.textContent = '❌ Jornada ' + numJornada + ' no encontrada en el calendario.';
-        return;
-    }
+if (!matchJornada || !matchResultado || !matchEquipos) {
+resultadoDiv.style.display = 'block';
+resultadoDiv.style.backgroundColor = '#e74c3c';
+resultadoDiv.style.color = 'white';
+resultadoDiv.textContent = '❌ No se pudo reconocer el formato del acta. Asegúrate de copiar el mensaje completo tal cual lo envía el formulario.';
+return;
+}
 
-    function normalizarTexto(str) {
-        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/l·l/gi, 'l').replace(/ç/gi, 'c').replace(/[^a-z0-9\s]/g, '').toLowerCase().trim();
-    }
+var numJornada = parseInt(matchJornada[1]);
+var resultadoLocal = parseInt(matchResultado[1]);
+var resultadoVisitante = parseInt(matchResultado[2]);
+var equipoLocal = matchEquipos[1].trim();
+var equipoVisitante = matchEquipos[2].trim();
+var arbitro = matchArbitro ? matchArbitro[1].trim() : '';
+var campo = matchCampo ? matchCampo[1].trim() : '';
+var hora = matchHora ? matchHora[1].trim() : '';
 
-    var idxPartido = -1;
-    jornada.partidos.forEach(function(p, idx) {
-        var textoPartidoCal = normalizarTexto(p.local + ' vs ' + p.visitante);
-        var textoPartidoMsg = normalizarTexto(equipoLocal + ' vs ' + equipoVisitante);
-        if (textoPartidoCal === textoPartidoMsg) {
-            idxPartido = idx;
-        }
-    });
+var jornada = calendario.find(function(j) { return j.jornada === numJornada; });
+if (!jornada) {
+resultadoDiv.style.display = 'block';
+resultadoDiv.style.backgroundColor = '#e74c3c';
+resultadoDiv.style.color = 'white';
+resultadoDiv.textContent = '❌ Jornada ' + numJornada + ' no encontrada en el calendario.';
+return;
+}
 
-    if (idxPartido === -1) {
-        resultadoDiv.style.display = 'block';
-        resultadoDiv.style.backgroundColor = '#e74c3c';
-        resultadoDiv.style.color = 'white';
-        resultadoDiv.textContent = '❌ Partido no encontrado: "' + equipoLocal + ' vs ' + equipoVisitante + '" en Jornada ' + numJornada + '. Revisa que los nombres coincidan.';
-        return;
-    }
+function normalizarTexto(str) {
+return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/l·l/gi, 'l').replace(/ç/gi, 'c').replace(/[^a-z0-9\s]/g, '').toLowerCase().trim();
+}
 
-    // Extraer jugadores (titulares y suplentes)
-    var jugadoresLocal = [];
-    var jugadoresVisitante = [];
-    var seccionActual = null;
-    var subseccionActual = null;
-    var lineas = texto.split('\n');
-    
-    for (var i = 0; i < lineas.length; i++) {
-        var linea = lineas[i].trim();
-        
-        // Detectar sección de equipo
-        if (linea.indexOf('LOCAL -') !== -1 || linea.indexOf('👕 *LOCAL') !== -1) {
-            seccionActual = 'local';
-            continue;
-        }
-        if (linea.indexOf('VISITANTE -') !== -1 || linea.indexOf('👕 *VISITANTE') !== -1) {
-            seccionActual = 'visitante';
-            continue;
-        }
-        
-        // Detectar subsección (titulares/suplentes)
-        if (linea.indexOf('*TITULARES:*') !== -1 || linea.indexOf('TITULARES:') !== -1) {
-            subseccionActual = 'titular';
-            continue;
-        }
-        if (linea.indexOf('*SUPLENTS:*') !== -1 || linea.indexOf('SUPLENTS:') !== -1) {
-            subseccionActual = 'suplent';
-            continue;
-        }
-        
-        // Procesar jugador
-        if (linea.indexOf('•') !== -1 && seccionActual && subseccionActual) {
-            var matchJugador = linea.match(/•\s*(\d+)\s+(.+?)(?:\s*⚽|\s*$)/);
-            if (matchJugador) {
-                var dorsal = parseInt(matchJugador[1]);
-                var nombre = matchJugador[2].trim();
-                
-                // Contar goles
-                var goles = 0;
-                var matchGoles = linea.match(/⚽x(\d+)/);
-                if (matchGoles) {
-                    goles = parseInt(matchGoles[1]);
-                } else {
-                    var matchGolesSimple = linea.match(//g);
-                    if (matchGolesSimple) goles = matchGolesSimple.length;
-                }
-                
-                var jugador = {
-                    dorsal: dorsal,
-                    nombre: nombre,
-                    goles: goles,
-                    condicion: subseccionActual,
-                    tarjetas: []
-                };
-                
-                // Buscar tarjetas en las siguientes líneas
-                for (var j = i + 1; j < lineas.length && lineas[j].trim().indexOf('   ') === 0; j++) {
-                    var lineaTarjeta = lineas[j].trim();
-                    if (lineaTarjeta.indexOf('🟨') !== -1 || lineaTarjeta.indexOf('🟥') !== -1) {
-                        var tarjeta = {};
-                        if (lineaTarjeta.indexOf('') !== -1) {
-                            tarjeta.tipo = 'roja';
-                            var matchMinuto = lineaTarjeta.match(/(\d+)'/);
-                            if (matchMinuto) tarjeta.minuto = parseInt(matchMinuto[1]);
-                            var matchMotivo = lineaTarjeta.match(/-\s*(.+)$/);
-                            if (matchMotivo) tarjeta.motivo = matchMotivo[1].trim();
-                        } else if (lineaTarjeta.indexOf('🟨🟨') !== -1) {
-                            tarjeta.tipo = 'doble_amarilla';
-                            var matchMinuto = lineaTarjeta.match(/(\d+)'/);
-                            if (matchMinuto) tarjeta.minuto = parseInt(matchMinuto[1]);
-                        } else if (lineaTarjeta.indexOf('🟨') !== -1) {
-                            tarjeta.tipo = 'amarilla';
-                            var matchMinuto = lineaTarjeta.match(/(\d+)'/);
-                            if (matchMinuto) tarjeta.minuto = parseInt(matchMinuto[1]);
-                            var matchMotivo = lineaTarjeta.match(/-\s*(.+)$/);
-                            if (matchMotivo) tarjeta.motivo = matchMotivo[1].trim();
-                        }
-                        jugador.tarjetas.push(tarjeta);
-                    }
-                }
-                
-                if (seccionActual === 'local') {
-                    jugadoresLocal.push(jugador);
-                } else {
-                    jugadoresVisitante.push(jugador);
-                }
-            }
-        }
-    }
+var idxPartido = -1;
+jornada.partidos.forEach(function(p, idx) {
+var textoPartidoCal = normalizarTexto(p.local + ' vs ' + p.visitante);
+var textoPartidoMsg = normalizarTexto(equipoLocal + ' vs ' + equipoVisitante);
+if (textoPartidoCal === textoPartidoMsg) {
+idxPartido = idx;
+}
+});
 
-    // Crear el objeto acta
-    var claveActa = String(numJornada) + '_' + String(idxPartido);
-    var acta = {
-        jornada: numJornada,
-        partido: idxPartido,
-        equipoLocal: equipoLocal,
-        equipoVisitante: equipoVisitante,
-        resultadoLocal: resultadoLocal,
-        resultadoVisitante: resultadoVisitante,
-        arbitro: arbitro,
-        campo: campo,
-        hora: hora,
-        local: {
-            jugadores: jugadoresLocal
-        },
-        visitante: {
-            jugadores: jugadoresVisitante
-        },
-        fechaImportacion: new Date().toISOString()
-    };
+if (idxPartido === -1) {
+resultadoDiv.style.display = 'block';
+resultadoDiv.style.backgroundColor = '#e74c3c';
+resultadoDiv.style.color = 'white';
+resultadoDiv.textContent = '❌ Partido no encontrado: "' + equipoLocal + ' vs ' + equipoVisitante + '" en Jornada ' + numJornada + '. Revisa que los nombres coincidan.';
+return;
+}
 
-    // Mostrar resumen
-    resultadoDiv.style.display = 'block';
-    resultadoDiv.style.backgroundColor = '#2ecc71';
-    resultadoDiv.style.color = '#0b1d15';
-    resultadoDiv.innerHTML = '✅ <b>¡Acta procesada correctamente!</b><br>' +
-        'Jornada: ' + numJornada + '<br>' +
-        'Partido: ' + equipoLocal + ' vs ' + equipoVisitante + '<br>' +
-        'Resultado: ' + resultadoLocal + ' - ' + resultadoVisitante + '<br>' +
-        'Árbitro: ' + (arbitro || 'No especificado') + '<br>' +
-        'Jugadores Local: ' + jugadoresLocal.length + '<br>' +
-        'Jugadores Visitante: ' + jugadoresVisitante.length + '<br><br>' +
-        '<i>Pulsa "Guardar en GitHub" para guardar el acta.</i><br><br>' +
-        '<button onclick="guardarActaEnGitHub(\'' + claveActa + '\')" style="padding:8px 16px; background-color:#0b1d15; color:#2ecc71; border:1px solid #2ecc71; border-radius:6px; font-weight:bold; cursor:pointer;">💾 Guardar en GitHub</button>';
-    
-    // Guardar temporalmente
-    window.actaTemporal = { clave: claveActa, acta: acta };
+var jugadoresLocal = [];
+var jugadoresVisitante = [];
+var seccionActual = null;
+var subseccionActual = null;
+var lineas = texto.split('\n');
+
+for (var i = 0; i < lineas.length; i++) {
+var linea = lineas[i].trim();
+
+if (linea.indexOf('LOCAL -') !== -1 || linea.indexOf('👕 *LOCAL') !== -1) {
+seccionActual = 'local';
+continue;
+}
+if (linea.indexOf('VISITANTE -') !== -1 || linea.indexOf('👕 *VISITANTE') !== -1) {
+seccionActual = 'visitante';
+continue;
+}
+
+if (linea.indexOf('*TITULARES:*') !== -1 || linea.indexOf('TITULARES:') !== -1) {
+subseccionActual = 'titular';
+continue;
+}
+if (linea.indexOf('*SUPLENTS:*') !== -1 || linea.indexOf('SUPLENTS:') !== -1) {
+subseccionActual = 'suplent';
+continue;
+}
+
+if (linea.indexOf('•') !== -1 && seccionActual && subseccionActual) {
+var matchJugador = linea.match(/•\s*(\d+)\s+(.+?)(?:\s*⚽|\s*$)/);
+if (matchJugador) {
+var dorsal = parseInt(matchJugador[1]);
+var nombre = matchJugador[2].trim();
+
+var goles = 0;
+var matchGolesX = linea.match(/⚽x(\d+)/);
+if (matchGolesX) {
+goles = parseInt(matchGolesX[1]);
+} else {
+var matchGolesSimple = linea.match(/⚽/g);
+if (matchGolesSimple) goles = matchGolesSimple.length;
+}
+
+var jugador = {
+dorsal: dorsal,
+nombre: nombre,
+goles: goles,
+condicion: subseccionActual,
+tarjetas: []
+};
+
+for (var j = i + 1; j < lineas.length && lineas[j].trim().indexOf('   ') === 0; j++) {
+var lineaTarjeta = lineas[j].trim();
+if (lineaTarjeta.indexOf('🟨') !== -1 || lineaTarjeta.indexOf('🟥') !== -1) {
+var tarjeta = {};
+if (lineaTarjeta.indexOf('🟥') !== -1) {
+tarjeta.tipo = 'roja';
+var matchMinuto = lineaTarjeta.match(/(\d+)'/);
+if (matchMinuto) tarjeta.minuto = parseInt(matchMinuto[1]);
+var matchMotivo = lineaTarjeta.match(/-\s*(.+)$/);
+if (matchMotivo) tarjeta.motivo = matchMotivo[1].trim();
+} else if (lineaTarjeta.indexOf('🟨🟨') !== -1) {
+tarjeta.tipo = 'doble_amarilla';
+var matchMinuto = lineaTarjeta.match(/(\d+)'/);
+if (matchMinuto) tarjeta.minuto = parseInt(matchMinuto[1]);
+} else if (lineaTarjeta.indexOf('🟨') !== -1) {
+tarjeta.tipo = 'amarilla';
+var matchMinuto = lineaTarjeta.match(/(\d+)'/);
+if (matchMinuto) tarjeta.minuto = parseInt(matchMinuto[1]);
+var matchMotivo = lineaTarjeta.match(/-\s*(.+)$/);
+if (matchMotivo) tarjeta.motivo = matchMotivo[1].trim();
+}
+jugador.tarjetas.push(tarjeta);
+}
+}
+
+if (seccionActual === 'local') {
+jugadoresLocal.push(jugador);
+} else {
+jugadoresVisitante.push(jugador);
+}
+}
+}
+}
+
+var claveActa = String(numJornada) + '_' + String(idxPartido);
+var acta = {
+jornada: numJornada,
+partido: idxPartido,
+equipoLocal: equipoLocal,
+equipoVisitante: equipoVisitante,
+resultadoLocal: resultadoLocal,
+resultadoVisitante: resultadoVisitante,
+arbitro: arbitro,
+campo: campo,
+hora: hora,
+local: { jugadores: jugadoresLocal },
+visitante: { jugadores: jugadoresVisitante },
+fechaImportacion: new Date().toISOString()
+};
+
+resultadoDiv.style.display = 'block';
+resultadoDiv.style.backgroundColor = '#2ecc71';
+resultadoDiv.style.color = '#0b1d15';
+resultadoDiv.innerHTML = '✅ <b>¡Acta procesada correctamente!</b><br>' +
+'Jornada: ' + numJornada + '<br>' +
+'Partido: ' + equipoLocal + ' vs ' + equipoVisitante + '<br>' +
+'Resultado: ' + resultadoLocal + ' - ' + resultadoVisitante + '<br>' +
+'Árbitro: ' + (arbitro || 'No especificado') + '<br>' +
+'Jugadores Local: ' + jugadoresLocal.length + '<br>' +
+'Jugadores Visitante: ' + jugadoresVisitante.length + '<br><br>' +
+'<i>Pulsa "Guardar en GitHub" para guardar el acta.</i><br><br>' +
+'<button onclick="guardarActaEnGitHub(\'' + claveActa + '\')" style="padding:8px 16px; background-color:#0b1d15; color:#2ecc71; border:1px solid #2ecc71; border-radius:6px; font-weight:bold; cursor:pointer;">💾 Guardar en GitHub</button>';
+
+window.actaTemporal = { clave: claveActa, acta: acta };
 }
 
 function guardarActaEnGitHub(claveActa) {
-    var token = localStorage.getItem('github_token');
-    if (!token) {
-        alert('❌ No hay token configurado. Entra en el panel admin y configura tu token de GitHub.');
-        return;
-    }
-    
-    if (!window.actaTemporal || window.actaTemporal.clave !== claveActa) {
-        alert('❌ No hay acta temporal para guardar.');
-        return;
-    }
-    
-    var acta = window.actaTemporal.acta;
-    actas[claveActa] = acta;
-    
-    // Guardar en GitHub
-    fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json', {
-        headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
-    })
-    .then(function(r) {
-        if (r.status === 404) {
-            var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(actas, null, 2))));
-            return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json', {
-                method: 'PUT',
-                headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: 'Crear actas.json', content: b64 })
-            });
-        }
-        return r.json();
-    })
-    .then(function(data) {
-        if (data && data.sha) {
-            var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(actas, null, 2))));
-            return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json', {
-                method: 'PUT',
-                headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: 'Actualizar acta J' + acta.jornada + ' P' + acta.partido, content: b64, sha: data.sha })
-            });
-        }
-    })
-    .then(function(r) {
-        if (r && r.ok) {
-            alert('✅ Acta guardada correctamente en GitHub.');
-            cerrarModalImportarActa();
-            cargarJornada(acta.jornada); // Recargar la jornada para mostrar el acta
-        } else if (r && r.message) {
-            throw new Error(r.message);
-        }
-    })
-    .catch(function(e) {
-        alert('❌ Error al guardar: ' + e.message);
-    });
+var token = localStorage.getItem('github_token');
+if (!token) {
+alert('❌ No hay token configurado. Entra en el panel admin y configura tu token de GitHub.');
+return;
+}
+
+if (!window.actaTemporal || window.actaTemporal.clave !== claveActa) {
+alert('❌ No hay acta temporal para guardar.');
+return;
+}
+
+var acta = window.actaTemporal.acta;
+actas[claveActa] = acta;
+
+fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json', {
+headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+})
+.then(function(r) {
+if (r.status === 404) {
+var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(actas, null, 2))));
+return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json', {
+method: 'PUT',
+headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+body: JSON.stringify({ message: 'Crear actas.json', content: b64 })
+});
+}
+return r.json();
+})
+.then(function(data) {
+if (data && data.sha) {
+var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(actas, null, 2))));
+return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/actas.json', {
+method: 'PUT',
+headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+body: JSON.stringify({ message: 'Actualizar acta J' + acta.jornada + ' P' + acta.partido, content: b64, sha: data.sha })
+});
+}
+})
+.then(function(r) {
+if (r && r.ok) {
+alert('✅ Acta guardada correctamente en GitHub.');
+cerrarModalImportarActa();
+cargarJornada(acta.jornada);
+} else if (r && r.message) {
+throw new Error(r.message);
+}
+})
+.catch(function(e) {
+alert('❌ Error al guardar: ' + e.message);
+});
 }
 
 function renderizarPropuestasAdmin() {
@@ -1413,7 +1337,7 @@ fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/resultad
 .then(function(r) { if (r.status === 404) { var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(resultados, null, 2)))); return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/resultados.json', { method: 'PUT', headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Crear resultados.json', content: b64 }) }); } return r.json(); })
 .then(function(data) { if (data && data.sha) { var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(resultados, null, 2)))); return fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/resultados.json', { method: 'PUT', headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Actualización Jornada ' + jornadaNum, content: b64, sha: data.sha }) }); } return data; })
 .then(function(r) { if (r && r.ok) { alert('✅ Guardado!'); location.reload(); } else if (r && r.message) { throw new Error(r.message); } })
-.catch(function(e) { alert('❌ ' + e.message); btn.textContent = ' Guardar'; btn.disabled = false; });
+.catch(function(e) { alert('❌ ' + e.message); btn.textContent = '💾 Guardar'; btn.disabled = false; });
 }
 function calcularClasificacion() {
 var stats = {}; equipos.forEach(function(eq) { stats[eq.nombreCompleto] = { nombre: eq.nombre, img: eq.img, pj: 0, pts: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, forma: [] }; });
@@ -1760,7 +1684,7 @@ if (!jornada) return;
 var resJ = resultados[String(numJornada)] || {};
 var contenedor = document.getElementById('contenedor-partidos');
 var html = '';
-if (jornada.suspendida === true) { html += '<div class="suspended-banner">️ JORNADA ' + jornada.jornada + ' SUSPENDIDA POR LLUVIA</div>'; }
+if (jornada.suspendida === true) { html += '<div class="suspended-banner">🌧️ JORNADA ' + jornada.jornada + ' SUSPENDIDA POR LLUVIA</div>'; }
 if (jornada.descanso) { html += '<div class="descanso-banner">😴 Descansa: <strong>' + getNombreCorto(jornada.descanso) + '</strong></div>'; }
 jornada.partidos.forEach(function(p, idx) {
 var resP = resJ[String(idx)] || {};
@@ -1833,13 +1757,13 @@ html += '<div class="modal-info">Jornada ' + numJornada + ' · ' + jornada.fecha
 html += '</div>';
 if (!acta) {
 html += '<div class="modal-acta-pendiente">';
-html += '<div class="icono"></div>';
+html += '<div class="icono">⏳</div>';
 html += '<h3>Acta pendiente</h3>';
 html += '<p>El árbitro aún no ha rellenado el acta de este partido.</p>';
 html += '</div>';
 } else {
 html += '<div class="modal-team">';
-html += '<div class="modal-team-title local"> LOCAL: ' + getNombreCorto(partido.local) + '</div>';
+html += '<div class="modal-team-title local">🟢 LOCAL: ' + getNombreCorto(partido.local) + '</div>';
 if (acta.local && acta.local.jugadores && acta.local.jugadores.length > 0) {
 acta.local.jugadores.forEach(function(j) {
 html += '<div class="modal-jugador">';
@@ -1926,7 +1850,7 @@ return r.json();
 resultados = data || {};
 renderizarClasificacion();
 renderizarClasificacionReal();
-cargarCalendarioDesdeGitHub(); // Cargar calendario desde GitHub
+initCalendario();
 cargarPropuestasPublicas();
 })
 .catch(function(e) {
@@ -1934,7 +1858,7 @@ console.error('Error al cargar resultados:', e);
 resultados = {};
 renderizarClasificacion();
 renderizarClasificacionReal();
-cargarCalendarioDesdeGitHub(); // Cargar calendario desde GitHub
+initCalendario();
 cargarPropuestasPublicas();
 });
 </script>
