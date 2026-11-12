@@ -1634,8 +1634,7 @@ fotoHtml = '<img src="' + fotoUrls.jpg + '" style="width:40px; height:40px; bord
 linea += '<div class="modal-nombre">' + fotoHtml + j.nombre + '</div></div>';
 var eventos = '';
 if (j.goles && j.goles > 0) {
-if (j.goles <= 3) { for (var g = 0; g < j.goles; g++) eventos += '⚽'; }
-else { eventos += '⚽x' + j.goles; }
+eventos += '⚽x' + j.goles;
 }
 if (j.tarjetas && j.tarjetas.length > 0) {
 j.tarjetas.forEach(function(t) {
