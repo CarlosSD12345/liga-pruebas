@@ -1624,14 +1624,15 @@ cambiarPestanaActa('local');
 }
 
 function renderJugadorModal(j, equipoNombre) {
-var linea = '<div class="modal-jugador"><div class="modal-jugador-top">';
+var linea = '<div class="modal-jugador">';
 linea += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
-var fotoUrls = getFotoJugador(j.nombre, equipoNombre);
+var fotoUrl = getFotoJugador(j.nombre, equipoNombre);
 var fotoHtml = '';
-if (fotoUrls) {
-fotoHtml = '<img src="' + fotoUrls.jpg + '" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;" onerror="this.src=\'' + fotoUrls.png + '\'; this.onerror=function(){this.style.display=\'none\';}">';
+if (fotoUrl) {
+fotoHtml = '<img class="modal-foto" src="' + fotoUrl + '" onerror="this.src=\'' + fotoUrl.replace('.jpg', '.png') + '\'; this.onerror=function(){this.style.display=\'none\';}">';
 }
-linea += '<div class="modal-nombre">' + fotoHtml + j.nombre + '</div></div>';
+linea += fotoHtml;
+linea += '<div class="modal-nombre">' + j.nombre + '</div>';
 var eventos = '';
 if (j.goles && j.goles > 0) {
 eventos += '⚽x' + j.goles;
