@@ -429,7 +429,38 @@ var propuestas = {};
 var equipoLogueado = null;
 var jugadoresDB = {};
 var actas = {};
-var calendario = [];
+var calendario = [
+{ jornada: 1, fecha: "20/09/2026", suspendida: false, partidos: [
+{ local: "U.E. Sabadellenca", visitante: "V.C.F. Ripollet", golesLocal: 5, golesVisitante: 1, campo: "CAMPOAMOR", hora: "08:00", arbitro: "Salva" },
+{ local: "C.E. Bigues i Riells", visitante: "A.V. L'Ametlla del Vallés", golesLocal: 3, golesVisitante: 16, campo: "MPAL BIGUES", hora: "08:15", arbitro: "Congost" },
+{ local: "C.F. Barberá", visitante: "A.V. Pallejá", golesLocal: 4, golesVisitante: 1, campo: "MPAL BARBERA", hora: "08:00", arbitro: "Julio" },
+{ local: "C.F. Can Parellada", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: 6, golesVisitante: 3, campo: "CAN PARELLADA", hora: "08:15", arbitro: "Edu" },
+{ local: "C.F. Cerdanyola", visitante: "C.F. Sant Feliu de Codines", golesLocal: 4, golesVisitante: 1, campo: "MPAL FONTETAS", hora: "08:15", arbitro: "Salva" },
+{ local: "C.E. Sentmenat", visitante: "U.E. Castellar", golesLocal: 2, golesVisitante: 5, campo: "MPAL SENTMENAT", hora: "18:30", arbitro: "Fabregas" },
+{ local: "A.V. Ripollet", visitante: "U.D.A. Gramanet", golesLocal: 3, golesVisitante: 1, campo: "MPAL RIPOLLET", hora: "08:00", arbitro: "Molina" },
+{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "Penya Decano", golesLocal: 3, golesVisitante: 2, campo: "MPAL SANTA EULALIA", hora: "18:30", arbitro: "Puibert" }
+], descanso: "U.E. Canovelles" },
+{ jornada: 2, fecha: "27/09/2026", suspendida: false, partidos: [
+{ local: "V.C.F. Ripollet", visitante: "C.E. Santa Eulàlia de Ronçana", golesLocal: 3, golesVisitante: 5, campo: "MPAL RIPOLLET", hora: "08:00", arbitro: "Puibert" },
+{ local: "A.V. L'Ametlla del Vallés", visitante: "U.E. Sabadellenca", golesLocal: 4, golesVisitante: 4, campo: "MPAL L'AMETLLA", hora: "08:30", arbitro: "Lleixa" },
+{ local: "A.V. Pallejá", visitante: "C.E. Bigues i Riells", golesLocal: 5, golesVisitante: 1, campo: "MPAL PALLEJA", hora: "08:15", arbitro: "Duran" },
+{ local: "U.E. Canovelles", visitante: "C.F. Barberá", golesLocal: 1, golesVisitante: 4, campo: "MPAL CANOVELLES", hora: "08:00", arbitro: "Edu" },
+{ local: "C.F. Sant Feliu de Codines", visitante: "C.F. Can Parellada", golesLocal: 2, golesVisitante: 3, campo: "MPAL SANT FELIU", hora: "08:00", arbitro: "Exposito" },
+{ local: "U.E. Castellar", visitante: "C.F. Cerdanyola", golesLocal: 3, golesVisitante: 2, campo: "MPAL CASTELLAR", hora: "08:15", arbitro: "Fabregas" },
+{ local: "U.D.A. Gramanet", visitante: "C.E. Sentmenat", golesLocal: 2, golesVisitante: 2, campo: "MPAL GRAMANET", hora: "08:00", arbitro: "Congost" },
+{ local: "Penya Decano", visitante: "A.V. Ripollet", golesLocal: 6, golesVisitante: 3, campo: "MPAL LA FERRERIA", hora: "08:00", arbitro: "Molina" }
+], descanso: "E.F.B Palau Solitá i Plegamans" },
+{ jornada: 3, fecha: "04/10/2026", suspendida: true, partidos: [
+{ local: "V.C.F. Ripollet", visitante: "A.V. L'Ametlla del Vallés", golesLocal: null, golesVisitante: null, campo: "MPAL RIPOLLET", hora: "08:00" },
+{ local: "U.E. Sabadellenca", visitante: "A.V. Pallejá", golesLocal: null, golesVisitante: null, campo: "CAMPOAMOR", hora: "08:00" },
+{ local: "C.E. Bigues i Riells", visitante: "U.E. Canovelles", golesLocal: null, golesVisitante: null, campo: "MPAL BIGUES", hora: "08:15" },
+{ local: "C.F. Barberá", visitante: "E.F.B Palau Solitá i Plegamans", golesLocal: null, golesVisitante: null, campo: "MPAL BARBERA", hora: "08:00" },
+{ local: "C.F. Can Parellada", visitante: "U.E. Castellar", golesLocal: null, golesVisitante: null, campo: "CAN PARELLADA", hora: "08:15" },
+{ local: "C.F. Cerdanyola", visitante: "U.D.A. Gramanet", golesLocal: null, golesVisitante: null, campo: "MPAL FONTETAS", hora: "08:15" },
+{ local: "C.E. Sentmenat", visitante: "Penya Decano", golesLocal: null, golesVisitante: null, campo: "MPAL SENTMENAT", hora: "08:30" },
+{ local: "C.E. Santa Eulàlia de Ronçana", visitante: "A.V. Ripollet", golesLocal: null, golesVisitante: null, campo: "MPAL SANTA EULALIA", hora: "08:00" }
+], descanso: "C.F. Sant Feliu de Codines" }
+];
 var contraseñasEquipos = {
 "C.F. Barberá": "barbera26",
 "C.F. Can Parellada": "canparellada26",
