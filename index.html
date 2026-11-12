@@ -1755,6 +1755,7 @@ html += '<div class="modal-score" style="color:#a3b8af;">VS</div>';
 }
 html += '<div class="modal-info">Jornada ' + numJornada + ' · ' + jornada.fecha + '</div>';
 html += '</div>';
+
 if (!acta) {
 html += '<div class="modal-acta-pendiente">';
 html += '<div class="icono">⏳</div>';
@@ -1762,47 +1763,86 @@ html += '<h3>Acta pendiente</h3>';
 html += '<p>El árbitro aún no ha rellenado el acta de este partido.</p>';
 html += '</div>';
 } else {
+// Función auxiliar para renderizar un jugador
+function renderJugador(j, equipoNombre) {
+var linea = '<div class="modal-jugador">';
+linea += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
+var fotoUrl = getFotoJugador(j.nombre, equipoNombre);
+var fotoHtml = fotoUrl ? '<img src="' + fotoUrl + '" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;" onerror="this.style.display=\'none\'">' : '';
+linea += '<div class="modal-nombre" style="display:flex; align-items:center;">' + fotoHtml + j.nombre + '</div>';
+var eventos = '';
+// Goles
+if (j.goles && j.goles > 0) {
+if (j.goles <= 3) {
+for (var g = 0; g < j.goles; g++) eventos += '⚽';
+} else {
+eventos += '⚽x' + j.goles;
+}
+}
+// Tarjetas
+if (j.tarjetas && j.tarjetas.length > 0) {
+j.tarjetas.forEach(function(t) {
+if (t.tipo === 'roja') {
+eventos += '<span class="modal-tarjeta roja" title="Roja ' + (t.minuto ? t.minuto + "'" : '') + (t.motivo ? ' - ' + t.motivo : '') + '"></span>';
+} else if (t.tipo === 'doble_amarilla') {
+eventos += '<span class="modal-tarjeta amarilla"></span><span class="modal-tarjeta amarilla"></span>';
+} else if (t.tipo === 'amarilla') {
+eventos += '<span class="modal-tarjeta amarilla" title="Amarilla ' + (t.minuto ? t.minuto + "'" : '') + (t.motivo ? ' - ' + t.motivo : '') + '"></span>';
+}
+});
+}
+linea += '<div class="modal-goles">' + eventos + '</div>';
+linea += '</div>';
+return linea;
+}
+
+// Función auxiliar para renderizar lista de jugadores
+function renderListaJugadores(jugadores, equipoNombre) {
+if (!jugadores || jugadores.length === 0) {
+return '<div style="color:#a3b8af; padding:10px; text-align:center;">Sin datos</div>';
+}
+var htmlInterno = '';
+jugadores.forEach(function(j) {
+htmlInterno += renderJugador(j, equipoNombre);
+});
+return htmlInterno;
+}
+
+// ===== EQUIPO LOCAL =====
 html += '<div class="modal-team">';
 html += '<div class="modal-team-title local">🟢 LOCAL: ' + getNombreCorto(partido.local) + '</div>';
-if (acta.local && acta.local.jugadores && acta.local.jugadores.length > 0) {
-acta.local.jugadores.forEach(function(j) {
-html += '<div class="modal-jugador">';
-html += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
-var fotoUrl = getFotoJugador(j.nombre, partido.local);
-var fotoHtml = fotoUrl ? '<img src="' + fotoUrl + '" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;" onerror="this.style.display=\'none\'">' : '';
-html += '<div class="modal-nombre" style="display:flex; align-items:center;">' + fotoHtml + j.nombre + '</div>';
-var eventos = '';
-for (var g = 0; g < (j.goles || 0); g++) eventos += '⚽';
-for (var a = 0; a < (j.amarillas || 0); a++) eventos += '<span class="modal-tarjeta amarilla"></span>';
-for (var r = 0; r < (j.rojas || 0); r++) eventos += '<span class="modal-tarjeta roja"></span>';
-html += '<div class="modal-goles">' + eventos + '</div>';
-html += '</div>';
-});
-} else {
-html += '<div style="color:#a3b8af; padding:10px; text-align:center;">Sin datos</div>';
+
+// Titulares local
+var titularesLocal = (acta.local && acta.local.jugadores) ? acta.local.jugadores.filter(function(j) { return j.condicion === 'titular'; }) : [];
+html += '<div style="color:#2ecc71; font-size:0.8rem; font-weight:bold; padding:5px 12px;">TITULARES (' + titularesLocal.length + ')</div>';
+html += renderListaJugadores(titularesLocal, partido.local);
+
+// Suplentes local
+var suplentsLocal = (acta.local && acta.local.jugadores) ? acta.local.jugadores.filter(function(j) { return j.condicion === 'suplent'; }) : [];
+if (suplentsLocal.length > 0) {
+html += '<div style="color:#3498db; font-size:0.8rem; font-weight:bold; padding:5px 12px; margin-top:10px;">SUPLENTS (' + suplentsLocal.length + ')</div>';
+html += renderListaJugadores(suplentsLocal, partido.local);
 }
 html += '</div>';
+
+// ===== EQUIPO VISITANTE =====
 html += '<div class="modal-team">';
 html += '<div class="modal-team-title visitante">🔴 VISITANTE: ' + getNombreCorto(partido.visitante) + '</div>';
-if (acta.visitante && acta.visitante.jugadores && acta.visitante.jugadores.length > 0) {
-acta.visitante.jugadores.forEach(function(j) {
-html += '<div class="modal-jugador">';
-html += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
-var fotoUrl = getFotoJugador(j.nombre, partido.visitante);
-var fotoHtml = fotoUrl ? '<img src="' + fotoUrl + '" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;" onerror="this.style.display=\'none\'">' : '';
-html += '<div class="modal-nombre" style="display:flex; align-items:center;">' + fotoHtml + j.nombre + '</div>';
-var eventos = '';
-for (var g = 0; g < (j.goles || 0); g++) eventos += '⚽';
-for (var a = 0; a < (j.amarillas || 0); a++) eventos += '<span class="modal-tarjeta amarilla"></span>';
-for (var r = 0; r < (j.rojas || 0); r++) eventos += '<span class="modal-tarjeta roja"></span>';
-html += '<div class="modal-goles">' + eventos + '</div>';
-html += '</div>';
-});
-} else {
-html += '<div style="color:#a3b8af; padding:10px; text-align:center;">Sin datos</div>';
+
+// Titulares visitante
+var titularesVisitant = (acta.visitante && acta.visitante.jugadores) ? acta.visitante.jugadores.filter(function(j) { return j.condicion === 'titular'; }) : [];
+html += '<div style="color:#2ecc71; font-size:0.8rem; font-weight:bold; padding:5px 12px;">TITULARES (' + titularesVisitant.length + ')</div>';
+html += renderListaJugadores(titularesVisitant, partido.visitante);
+
+// Suplentes visitante
+var suplentsVisitant = (acta.visitante && acta.visitante.jugadores) ? acta.visitante.jugadores.filter(function(j) { return j.condicion === 'suplent'; }) : [];
+if (suplentsVisitant.length > 0) {
+html += '<div style="color:#3498db; font-size:0.8rem; font-weight:bold; padding:5px 12px; margin-top:10px;">SUPLENTS (' + suplentsVisitant.length + ')</div>';
+html += renderListaJugadores(suplentsVisitant, partido.visitante);
 }
 html += '</div>';
 }
+
 html += '<div class="modal-footer">';
 html += '<div class="modal-arbitro">';
 if (arbNombre) html += '👤 Árbitro: <strong>' + arbNombre + '</strong><br>';
@@ -1811,6 +1851,7 @@ if (horaPartido) html += ' · 🕒 ' + horaPartido;
 html += '</div>';
 html += '<button class="btn-pdf" disabled>📄 Descargar acta en PDF (próximamente)</button>';
 html += '</div>';
+
 document.getElementById('modal-acta-contenido').innerHTML = html;
 document.getElementById('modal-acta').classList.add('active');
 document.body.style.overflow = 'hidden';
