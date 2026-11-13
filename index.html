@@ -23,16 +23,16 @@ header { display: flex; justify-content: center; margin-bottom: 20px; }
 .section { display: none; }
 .section.active { display: block; }
 table { width: 100%; border-collapse: collapse; background-color: #11291e; border-radius: 12px; overflow: hidden; }
-th { background-color: #173827; padding: 12px; text-align: center; }
-td { padding: 12px; border-bottom: 1px solid #1f4733; text-align: center; }
-.team { text-align: left; padding-left: 15px; }
-.team-info { display: flex; align-items: center; gap: 10px; }
-.team-info span { white-space: nowrap; font-weight: 600; }
-.team-info img { flex-shrink: 0; }
-.team { min-width: 130px; }
-#tabla-cr td:nth-child(8), #tabla-cr td:nth-child(9) { white-space: nowrap; font-size: 0.9rem; }
-.team-logo { width: 44px; height: 44px; object-fit: contain; background: #ffffff; border-radius: 10px; padding: 2px; flex-shrink: 0; }
-.pts { font-weight: bold; color: #2ecc71; }
+function renderJugadorModal(j, equipoNombre) {
+var linea = '<div class="modal-jugador">';
+linea += '<div class="modal-dorsal">' + (j.dorsal || '-') + '</div>';
+var fotoUrls = getFotoJugador(j.nombre, equipoNombre);
+var fotoHtml = '';
+if (fotoUrls) {
+fotoHtml = '<img class="modal-foto" src="' + fotoUrls.jpg + '" onerror="this.src=\'' + fotoUrls.png + '\'; this.onerror=function(){this.style.display=\'none\';}">';
+}
+linea += fotoHtml;
+linea += '<div class="modal-nombre">' + j.nombre + '</div>';
 .badge-form { display: inline-block; width: 22px; height: 22px; line-height: 22px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin: 0 2px; }
 .win { background-color: #27ae60; }
 .draw { background-color: #f39c12; }
