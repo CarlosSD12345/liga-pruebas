@@ -1578,8 +1578,8 @@ html += '<div class="modal-acta-pendiente"><div class="icono">⏳</div><h3>Acta 
 } else {
 // Pestañas
 html += '<div class="modal-tabs">';
-html += '<button class="modal-tab-btn local active" onclick="cambiarPestanaActa(\'local\')">🟢 ' + getNombreCorto(partido.local) + '</button>';
-html += '<button class="modal-tab-btn visitante" onclick="cambiarPestanaActa(\'visitante\')">🔴 ' + getNombreCorto(partido.visitante) + '</button>';
+html += '<button class="modal-tab-btn local active" onclick="cambiarPestanaActa(\'local\')"><img src="escudos/' + getImgEquipo(partido.local) + '" style="width:24px;height:24px;border-radius:50%;background:#fff;padding:2px;object-fit:contain;"> ' + getNombreCorto(partido.local) + '</button>';
+html += '<button class="modal-tab-btn visitante" onclick="cambiarPestanaActa(\'visitante\')"><img src="escudos/' + getImgEquipo(partido.visitante) + '" style="width:24px;height:24px;border-radius:50%;background:#fff;padding:2px;object-fit:contain;"> ' + getNombreCorto(partido.visitante) + '</button>';
 html += '</div>';
 
 // Contenido LOCAL
