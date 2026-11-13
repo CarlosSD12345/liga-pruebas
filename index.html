@@ -41,7 +41,6 @@ td { padding: 12px; border-bottom: 1px solid #1f4733; text-align: center; }
 .suspended { background-color: #3498db; }
 .rest { background-color: #9b59b6; }
 .col-forma { white-space: nowrap; min-width: 90px; }
-.selector-container { margin-bottom: 20px; text-align: center; }
 #admin-selector-jornada, #goleador-jornada, #goleador-partido, #login-equipo, #login-equipo-delegados { background-color: #11291e; color: white; border: 1px solid #2ecc71; padding: 12px 20px; border-radius: 8px; font-size: 1rem; font-weight: bold; width: 100%; max-width: 350px; cursor: pointer; }
 .jornadas-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-bottom: 20px; }
 .jornadas-scroll::-webkit-scrollbar { display: none; }
@@ -56,7 +55,7 @@ td { padding: 12px; border-bottom: 1px solid #1f4733; text-align: center; }
 .match-team.visitante { justify-content: flex-start; text-align: left; }
 .match-team img { width: 44px; height: 44px; object-fit: contain; background: #fff; border-radius: 8px; padding: 2px; flex-shrink: 0; }
 .match-team span { font-size: 0.8rem; font-weight: 600; line-height: 1.25; flex: 1; min-width: 0; }
-.match-score { background-color: #173827; padding: 10px 14px; border-radius: 8px; font-weight: bold; font-size: 1.3rem; color: #2ecc71; min-width: 70px; text-align: center; flex-shrink: 0; }
+.match-score { background-color: #173827; padding: 10px 14px; border-radius: 8px; font-weight: bold; font-size: 1.3rem; color: #2ecc71; min-width: 70px; text-align: center; flex-shrink: 0; cursor: pointer; }
 .match-score.vs { color: #a3b8af; font-size: 0.9rem; }
 .match-score.suspended-match { color: #3498db; font-size: 0.9rem; }
 .match-info { font-size: 0.75rem; color: #a3b8af; text-align: center; border-top: 1px solid #1f4733; padding-top: 8px; }
@@ -266,23 +265,13 @@ var jugadoresDB = {};
 var actas = {};
 var cuerpoTecnicoDB = {};
 var contraseñasEquipos = {
-"C.F. Barberá": "barbera26",
-"C.F. Can Parellada": "canparellada26",
-"U.E. Castellar": "castellar26",
-"C.E. Santa Eulàlia de Ronçana": "santaeulalia26",
-"A.V. L'Ametlla del Vallés": "lametlla26",
-"U.E. Sabadellenca": "sabadellenca26",
-"C.F. Cerdanyola": "cerdanyola26",
-"Penya Decano": "penyadecano26",
-"A.V. Pallejá": "palleja26",
-"A.V. Ripollet": "avripollet26",
-"U.D.A. Gramanet": "gramanet26",
-"C.E. Sentmenat": "sentmenat26",
-"C.F. Sant Feliu de Codines": "santfeliu26",
-"E.F.B Palau Solitá i Plegamans": "palauplegamans26",
-"U.E. Canovelles": "canovelles26",
-"V.C.F. Ripollet": "vcfripollet26",
-"C.E. Bigues i Riells": "bigues26"
+"C.F. Barberá": "barbera26", "C.F. Can Parellada": "canparellada26", "U.E. Castellar": "castellar26",
+"C.E. Santa Eulàlia de Ronçana": "santaeulalia26", "A.V. L'Ametlla del Vallés": "lametlla26",
+"U.E. Sabadellenca": "sabadellenca26", "C.F. Cerdanyola": "cerdanyola26", "Penya Decano": "penyadecano26",
+"A.V. Pallejá": "palleja26", "A.V. Ripollet": "avripollet26", "U.D.A. Gramanet": "gramanet26",
+"C.E. Sentmenat": "sentmenat26", "C.F. Sant Feliu de Codines": "santfeliu26",
+"E.F.B Palau Solitá i Plegamans": "palauplegamans26", "U.E. Canovelles": "canovelles26",
+"V.C.F. Ripollet": "vcfripollet26", "C.E. Bigues i Riells": "bigues26"
 };
 var listaArbitros = ["Duran", "Molina", "Humanes", "Portoles", "Utrera", "Julio", "Congost", "Fabregas", "Puibert", "Salva", "Lleixa", "Edu", "Exposito"];
 var calendario = [
@@ -1471,9 +1460,7 @@ body: JSON.stringify({ message: 'Actualizar jugadores', content: b64Jug, sha: da
 });
 alert('✅ Actualizado');
 renderizarPropuestasAdmin();
-} else if (r && r.message) {
-throw new Error(r.message);
-}
+} else if (r && r.message) { throw new Error(r.message); }
 })
 .catch(function(e) { alert('❌ ' + e.message); });
 }
@@ -2054,17 +2041,19 @@ linea += fotoHtml;
 linea += '<div class="modal-nombre">' + j.nombre + '</div>';
 var eventos = '';
 if (j.goles && j.goles > 0) {
-for (var g = 0; g < j.goles; g++) eventos += '⚽';
+eventos += '⚽x' + j.goles;
 }
 if (j.tarjetas && j.tarjetas.length > 0) {
 j.tarjetas.forEach(function(t) {
 var minutoTexto = t.minuto ? t.minuto + "'" : '';
-var motivoTexto = t.motivo ? ' - ' + t.motivo : '';
 var motivoLimpio = t.motivo ? t.motivo.replace(/^\d+-\s*/, '') : '';
-var motivoTextoLimpio = motivoLimpio ? ' - ' + motivoLimpio : '';
-if (t.tipo === 'roja') eventos += '<span class="modal-tarjeta roja"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + motivoTextoLimpio + '</span>';
-else if (t.tipo === 'doble_amarilla') eventos += '<span class="modal-tarjeta amarilla"></span><span class="modal-tarjeta amarilla"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + '</span>';
-else if (t.tipo === 'amarilla') eventos += '<span class="modal-tarjeta amarilla"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + motivoTextoLimpio + '</span>';
+var motivoTexto = motivoLimpio ? ' - ' + motivoLimpio : '';
+if (t.tipo === 'roja') {
+eventos += '<span class="modal-tarjeta roja"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + motivoTexto + '</span>';
+} else if (t.tipo === 'doble_amarilla') {
+eventos += '<span class="modal-tarjeta amarilla"></span><span class="modal-tarjeta amarilla"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + '</span>';
+} else if (t.tipo === 'amarilla') {
+eventos += '<span class="modal-tarjeta amarilla"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + motivoTexto + '</span>';
 }
 });
 }
