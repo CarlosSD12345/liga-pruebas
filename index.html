@@ -2054,7 +2054,7 @@ linea += fotoHtml;
 linea += '<div class="modal-nombre">' + j.nombre + '</div>';
 var eventos = '';
 if (j.goles && j.goles > 0) {
-eventos += '⚽x' + j.goles;
+for (var g = 0; g < j.goles; g++) eventos += '⚽';
 }
 if (j.tarjetas && j.tarjetas.length > 0) {
 j.tarjetas.forEach(function(t) {
