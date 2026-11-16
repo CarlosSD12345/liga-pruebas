@@ -1357,6 +1357,15 @@
         "fecha": "2026-11-16"
       }
     ],
+    "1": [
+      {
+        "equipo": "C.F. Sant Feliu de Codines",
+        "jugador": "Ricard",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-16"
+      }
+    ],
     "2": [
       {
         "equipo": "A.V. L'Ametlla del Vallés",
@@ -1422,6 +1431,29 @@
         "goles": 1,
         "estado": "aprobado",
         "fecha": "2026-11-15"
+      },
+      {
+        "equipo": "Penya Decano",
+        "jugador": "Humberto",
+        "goles": 1,
+        "estado": "aprobado",
+        "fecha": "2026-11-16"
+      }
+    ],
+    "5": [
+      {
+        "equipo": "A.V. Ripollet",
+        "jugador": "Vlad",
+        "goles": 2,
+        "estado": "aprobado",
+        "fecha": "2026-11-16"
+      },
+      {
+        "equipo": "C.E. Bigues i Riells",
+        "jugador": "Kamis",
+        "goles": 3,
+        "estado": "aprobado",
+        "fecha": "2026-11-16"
       }
     ],
     "6": [
