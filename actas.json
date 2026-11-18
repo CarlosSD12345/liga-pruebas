@@ -303,50 +303,57 @@
           "tarjetas": []
         },
         {
-          "dorsal": 7,
-          "nombre": "Cristian Rosero Tobau",
-          "goles": 0,
-          "condicion": "titular",
-          "tarjetas": []
-        },
-        {
-          "dorsal": 5,
-          "nombre": "Diego Fco Morinigo Aguilera",
-          "goles": 0,
-          "condicion": "titular",
-          "tarjetas": []
-        },
-        {
-          "dorsal": 9,
-          "nombre": "Francesc Diassis Soriano Araez",
-          "goles": 0,
-          "condicion": "titular",
-          "tarjetas": []
-        },
-        {
-          "dorsal": 6,
-          "nombre": "Jorge Luis Mujica Mejia",
-          "goles": 0,
-          "condicion": "titular",
-          "tarjetas": []
-        },
-        {
-          "dorsal": 11,
-          "nombre": "Julián Peña Agudelo",
-          "goles": 0,
-          "condicion": "titular",
-          "tarjetas": []
-        },
-        {
-          "dorsal": 81,
-          "nombre": "Karim Badio Abdou",
-          "goles": 0,
-          "condicion": "titular",
-          "tarjetas": []
-        },
-        {
           "dorsal": 10,
           "nombre": "Lamine Darry",
+          "goles": 0,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 17,
+          "nombre": "Lassana Diaby Diaby",
+          "goles": 0,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 18,
+          "nombre": "Mamadou Kamassokho Kamassokho",
+          "goles": 3,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 2,
+          "nombre": "Manuel Alcaide Sánchez",
+          "goles": 0,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 3,
+          "nombre": "Manuel Perez Domínguez",
+          "goles": 0,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 1,
+          "nombre": "Mario Ramon Cellato Andrade",
+          "goles": 0,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 4,
+          "nombre": "Roger Vic Canillas",
+          "goles": 0,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": null,
+          "nombre": "Sergio Jiménez Segovia",
           "goles": 0,
           "condicion": "titular",
           "tarjetas": []
@@ -359,36 +366,57 @@
           "tarjetas": []
         },
         {
-          "dorsal": 18,
-          "nombre": "Lassana Diaby Diaby",
+          "dorsal": 7,
+          "nombre": "Cristian Rosero Tobau",
           "goles": 0,
           "condicion": "suplent",
           "tarjetas": []
         },
         {
-          "dorsal": 2,
-          "nombre": "Manuel Alcaide Sánchez",
+          "dorsal": 5,
+          "nombre": "Diego Fco Morinigo Aguilera",
           "goles": 0,
           "condicion": "suplent",
           "tarjetas": []
         },
         {
-          "dorsal": 3,
-          "nombre": "Manuel Perez Domínguez",
+          "dorsal": 9,
+          "nombre": "Francesc Diassis Soriano Araez",
           "goles": 0,
           "condicion": "suplent",
           "tarjetas": []
         },
         {
-          "dorsal": 1,
-          "nombre": "Mario Ramon Cellato Andrade",
+          "dorsal": 6,
+          "nombre": "Jorge Luis Mujica Mejia",
           "goles": 0,
           "condicion": "suplent",
           "tarjetas": []
         },
         {
-          "dorsal": 4,
-          "nombre": "Roger Vic Canillas",
+          "dorsal": 11,
+          "nombre": "Julián Peña Agudelo",
+          "goles": 0,
+          "condicion": "suplent",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 81,
+          "nombre": "Karim Badio Abdou",
+          "goles": 0,
+          "condicion": "suplent",
+          "tarjetas": []
+        },
+        {
+          "dorsal": null,
+          "nombre": "Xavier Rodríguez García",
+          "goles": 0,
+          "condicion": "suplent",
+          "tarjetas": []
+        },
+        {
+          "dorsal": null,
+          "nombre": "Lorgio Cespedes Rojas",
           "goles": 0,
           "condicion": "suplent",
           "tarjetas": []
@@ -407,13 +435,6 @@
         {
           "dorsal": 22,
           "nombre": "David Arjona Valiente",
-          "goles": 0,
-          "condicion": "titular",
-          "tarjetas": []
-        },
-        {
-          "dorsal": 10,
-          "nombre": "Fco Jose Fuset Casado",
           "goles": 0,
           "condicion": "titular",
           "tarjetas": []
@@ -475,6 +496,20 @@
           "tarjetas": []
         },
         {
+          "dorsal": 11,
+          "nombre": "Roberto Marti Cironi Renda",
+          "goles": 0,
+          "condicion": "titular",
+          "tarjetas": []
+        },
+        {
+          "dorsal": 10,
+          "nombre": "Fco Jose Fuset Casado",
+          "goles": 0,
+          "condicion": "suplent",
+          "tarjetas": []
+        },
+        {
           "dorsal": 5,
           "nombre": "Pedro Soria Pardo",
           "goles": 0,
@@ -532,6 +567,6 @@
         }
       ]
     },
-    "fechaImportacion": "2026-11-18T13:40:36.348Z"
+    "fechaImportacion": "2026-11-18T14:56:52.559Z"
   }
 }
