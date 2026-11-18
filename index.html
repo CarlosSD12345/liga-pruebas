@@ -1020,9 +1020,9 @@ if (linea.indexOf('VISITANTE -') !== -1 || linea.indexOf('👕 *VISITANTE') !== 
 if (linea.indexOf('*TITULARES:*') !== -1 || linea.indexOf('TITULARES:') !== -1) { subseccionActual = 'titular'; continue; }
 if (linea.indexOf('*SUPLENTS:*') !== -1 || linea.indexOf('SUPLENTS:') !== -1) { subseccionActual = 'suplent'; continue; }
 if (linea.indexOf('•') !== -1 && seccionActual && subseccionActual) {
-var matchJugador = linea.match(/•\s*(\d+)\s+(.+?)(?:\s*⚽|\s*$)/);
+var matchJugador = linea.match(/•\s*(?:(\d+)\s+)?(.+?)(?:\s*⚽|\s*$)/);
 if (matchJugador) {
-var dorsal = parseInt(matchJugador[1]);
+var dorsal = matchJugador[1] ? parseInt(matchJugador[1]) : null;
 var nombre = matchJugador[2].trim();
 var goles = 0;
 var tarjetas = [];
