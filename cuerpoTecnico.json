@@ -14,5 +14,17 @@
     "delegado": [
       "Yo mismo"
     ]
+  },
+  "C.E. Bigues i Riells": {
+    "entrenador": [],
+    "delegado": []
+  },
+  "A.V. Ripollet": {
+    "entrenador": [
+      "Fco Jose Fuset Casado"
+    ],
+    "delegado": [
+      "Pedro Soria Pardo"
+    ]
   }
 }
