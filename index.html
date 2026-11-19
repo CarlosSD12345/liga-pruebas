@@ -2118,7 +2118,6 @@ renderizarClasificacionReal();
 initCalendario();
 cargarPropuestasPublicas();
 });
-
 function mostrarDashboardArbitros() {
 document.getElementById('admin-seccion-resultados').style.display = 'none';
 document.getElementById('admin-seccion-propuestas').style.display = 'none';
@@ -2126,7 +2125,6 @@ document.getElementById('modal-importar-whatsapp').style.display = 'none';
 document.getElementById('modal-importar-acta').style.display = 'none';
 document.getElementById('admin-seccion-arbitros').style.display = 'block';
 
-var statsArbitros = {};
 var statsArbitrosEquipos = {};
 
 for (var j = 0; j < calendario.length; j++) {
@@ -2156,12 +2154,7 @@ if (susp || gl === null || gv === null) return;
 var arbNombre = (resP.arbitro !== undefined && resP.arbitro !== null) ? resP.arbitro : p.arbitro;
 if (!arbNombre) return;
 
-if (!statsArbitros[arbNombre]) {
-statsArbitros[arbNombre] = { nombre: arbNombre, partidos: 0 };
-}
 if (!statsArbitrosEquipos[arbNombre]) statsArbitrosEquipos[arbNombre] = {};
-
-statsArbitros[arbNombre].partidos++;
 
 var equipoLocal = p.local;
 if (!statsArbitrosEquipos[arbNombre][equipoLocal]) {
@@ -2172,8 +2165,10 @@ statsArbitrosEquipos[arbNombre][equipoLocal]++;
 }
 
 var listaArbitros = [];
-for (var nombre in statsArbitros) {
-listaArbitros.push(statsArbitros[nombre]);
+for (var nombre in statsArbitrosEquipos) {
+var total = 0;
+for (var eq in statsArbitrosEquipos[nombre]) total += statsArbitrosEquipos[nombre][eq];
+listaArbitros.push({ nombre: nombre, partidos: total });
 }
 listaArbitros.sort(function(a, b) {
 if (b.partidos !== a.partidos) return b.partidos - a.partidos;
@@ -2181,27 +2176,6 @@ return a.nombre.localeCompare(b.nombre);
 });
 
 var html = '';
-
-html += '<div style="margin-bottom:20px;">';
-html += '<h4 style="color:#2ecc71; margin-bottom:10px;">🏆 Ranking de Árbitros (por partidos arbitrados)</h4>';
-html += '<table style="width:100%; border-collapse:collapse; background-color:#11291e; border-radius:8px; overflow:hidden;">';
-html += '<thead><tr style="background-color:#173827;"><th style="padding:10px; text-align:center;">#</th><th style="padding:10px; text-align:left;">Árbitro</th><th style="padding:10px; text-align:center;">Partidos</th></tr></thead>';
-html += '<tbody>';
-
-listaArbitros.forEach(function(arb, i) {
-var bg = (i % 2 === 0) ? '#0b1d15' : '#11291e';
-html += '<tr style="background-color:' + bg + ';">';
-html += '<td style="padding:10px; text-align:center; font-weight:bold; color:#2ecc71;">' + (i+1) + '</td>';
-html += '<td style="padding:10px; font-weight:600;">' + arb.nombre + '</td>';
-html += '<td style="padding:10px; text-align:center; font-weight:bold;">' + arb.partidos + '</td>';
-html += '</tr>';
-});
-
-html += '</tbody></table></div>';
-
-html += '<div>';
-html += '<h4 style="color:#2ecc71; margin-bottom:10px;">📍 Equipos locales donde ha arbitrado cada árbitro</h4>';
-
 listaArbitros.forEach(function(arb) {
 var equiposLocales = statsArbitrosEquipos[arb.nombre] || {};
 var equiposArray = [];
@@ -2226,8 +2200,6 @@ html += '</div>';
 }
 html += '</div>';
 });
-
-html += '</div>';
 
 document.getElementById('dashboard-arbitros-contenido').innerHTML = html;
 }
