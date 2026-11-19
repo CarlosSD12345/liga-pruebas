@@ -2216,10 +2216,6 @@ var gv = (resP.golesVisitante !== undefined && resP.golesVisitante !== null) ? r
 var arbNombre = (resP.arbitro !== undefined && resP.arbitro !== null) ? resP.arbitro : partido.arbitro;
 var campoPartido = (resP.campo !== undefined && resP.campo !== null) ? resP.campo : partido.campo;
 var horaPartido = (resP.hora !== undefined && resP.hora !== null) ? resP.hora : partido.hora;
-var amL = (resP.amarillasLocal !== undefined && resP.amarillasLocal !== null) ? resP.amarillasLocal : 0;
-var amV = (resP.amarillasVisitante !== undefined && resP.amarillasVisitante !== null) ? resP.amarillasVisitante : 0;
-var roL = (resP.rojasLocal !== undefined && resP.rojasLocal !== null) ? resP.rojasLocal : 0;
-var roV = (resP.rojasVisitante !== undefined && resP.rojasVisitante !== null) ? resP.rojasVisitante : 0;
 
 var claveActa = String(numJornada) + '_' + String(idxPartido);
 var acta = actas[claveActa] || null;
@@ -2230,6 +2226,14 @@ var titularesLocal = acta ? (acta.local ? acta.local.jugadores.filter(function(j
 var suplentesLocal = acta ? (acta.local ? acta.local.jugadores.filter(function(j) { return j.condicion === 'suplent'; }) : []) : [];
 var titularesVisitante = acta ? (acta.visitante ? acta.visitante.jugadores.filter(function(j) { return j.condicion === 'titular'; }) : []) : [];
 var suplentesVisitante = acta ? (acta.visitante ? acta.visitante.jugadores.filter(function(j) { return j.condicion === 'suplent'; }) : []) : [];
+
+// Observaciones: del acta o "Sin observaciones" por defecto
+var observaciones = '';
+if (acta && acta.observaciones && acta.observaciones.trim() !== '') {
+observaciones = acta.observaciones.trim();
+} else {
+observaciones = 'Sin observaciones';
+}
 
 function renderTablaJugadores(jugadores) {
 if (jugadores.length === 0) return '<tr><td colspan="4" style="text-align:center; color:#999;">Sin datos</td></tr>';
@@ -2267,7 +2271,7 @@ return html;
 
 var theadJugadores = '<thead><tr><th style="width:14%;">Dorsal</th><th style="width:44%;">Nombre</th><th style="width:12%; text-align:center;">Goles</th><th style="width:30%; text-align:center;">Tarjetas</th></tr></thead>';
 
-var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Acta - ' + getNombreCorto(partido.local) + ' vs ' + getNombreCorto(partido.visitante) + '</title>';
+var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Acta - ' + partido.local + ' vs ' + partido.visitante + '</title>';
 html += '<style>';
 html += 'body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 20px; color: #000; }';
 html += 'h1 { text-align: center; color: #1a5f2a; border-bottom: 3px solid #1a5f2a; padding-bottom: 10px; }';
@@ -2287,6 +2291,7 @@ html += '.firma-linea { display: inline-block; border-top: 1px solid #000; width
 html += '@media print { body { margin: 0; padding: 10px; } .no-print { display: none; } }';
 html += '.btn-print { background: #1a5f2a; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px 5px; }';
 html += '.btn-close { background: #e74c3c; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px 5px; }';
+html += '.observaciones-box { background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #1a5f2a; font-style: italic; }';
 html += '</style></head><body>';
 
 html += '<div class="no-print" style="text-align:center; margin-bottom:20px;">';
@@ -2315,7 +2320,7 @@ html += '<div class="dos-columnas">';
 // COLUMNA LOCAL
 html += '<div>';
 var imgLocal = getImgEquipo(partido.local);
-html += '<h3 style="color:#1a5f2a; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgLocal + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + getNombreCorto(partido.local).toUpperCase() + '</h3>';
+html += '<h3 style="color:#1a5f2a; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgLocal + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.local.toUpperCase() + '</h3>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px;">TITULARES</h4>';
 html += '<table>' + theadJugadores + '<tbody>' + renderTablaJugadores(titularesLocal) + '</tbody></table>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px; margin-top:20px;">SUPLENTES</h4>';
@@ -2326,7 +2331,7 @@ html += '</div>';
 // COLUMNA VISITANTE
 html += '<div>';
 var imgVisitante = getImgEquipo(partido.visitante);
-html += '<h3 style="color:#c0392b; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + getNombreCorto(partido.visitante).toUpperCase() + '</h3>';
+html += '<h3 style="color:#c0392b; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.visitante.toUpperCase() + '</h3>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px;">TITULARES</h4>';
 html += '<table>' + theadJugadores + '<tbody>' + renderTablaJugadores(titularesVisitante) + '</tbody></table>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px; margin-top:20px;">SUPLENTES</h4>';
@@ -2336,13 +2341,9 @@ html += '</div>';
 
 html += '</div>';
 
-// RESUMEN DE TARJETAS
-html += '<h2>🟨🟥 RESUMEN DE TARJETAS</h2>';
-html += '<div class="info-partido">';
-html += '<p><strong>🟨 Amarillas:</strong> ' + getNombreCorto(partido.local) + ' [' + amL + '] · ' + getNombreCorto(partido.visitante) + ' [' + amV + ']</p>';
-html += '<p><strong>🟥 Rojas:</strong> ' + getNombreCorto(partido.local) + ' [' + roL + '] · ' + getNombreCorto(partido.visitante) + ' [' + roV + ']</p>';
-html += '<p><strong>Total tarjetas:</strong> ' + (amL + amV + roL + roV) + '</p>';
-html += '</div>';
+// OBSERVACIONES (en lugar del resumen de tarjetas)
+html += '<h2>📝 OBSERVACIONES</h2>';
+html += '<div class="observaciones-box">' + observaciones + '</div>';
 
 html += '<div class="firma">';
 html += '<p>Firma del árbitro:</p>';
