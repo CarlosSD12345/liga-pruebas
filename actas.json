@@ -10,12 +10,12 @@
     "campo": "MPAL FONTETAS",
     "hora": "08:15",
     "cuerpoTecnicoLocal": {
-      "entrenador": "Carlos Sánchez",
-      "delegado": "Yo mismo"
+      "entrenador": "",
+      "delegado": ""
     },
     "cuerpoTecnicoVisitante": {
-      "entrenador": "Carlos Sanchez",
-      "delegado": "Yo mismo"
+      "entrenador": "",
+      "delegado": ""
     },
     "local": {
       "jugadores": [
@@ -247,6 +247,13 @@
           "tarjetas": []
         },
         {
+          "dorsal": 22,
+          "nombre": "Vladimir Céspedes Delgadillo",
+          "goles": 0,
+          "condicion": "suplent",
+          "tarjetas": []
+        },
+        {
           "dorsal": 10,
           "nombre": "Ángel Espinosa Cornelo",
           "goles": 0,
@@ -262,7 +269,8 @@
         }
       ]
     },
-    "fechaImportacion": "2026-11-12T19:44:01.864Z"
+    "observaciones": "*\nEn observación este mensaje es de prueba para ver cómo queda en el acta.",
+    "fechaImportacion": "2026-11-19T21:41:16.972Z"
   },
   "9_5": {
     "jornada": 9,
