@@ -2330,7 +2330,8 @@ html += '</div>';
 
 // COLUMNA VISITANTE
 html += '<div>';
-html += '<h3 style="color:#c0392b;">🔴 ' + getNombreCorto(partido.visitante).toUpperCase() + '</h3>';
+var imgVisitante = getImgEquipo(partido.visitante);
+html += '<h3 style="color:#c0392b; display:flex; align-items:center; gap:10px;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + getNombreCorto(partido.visitante).toUpperCase() + '</h3>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px;">TITULARES</h4>';
 html += '<table><thead><tr><th style="width:40px;">#</th><th>Nombre</th><th style="width:60px; text-align:center;">Goles</th><th style="width:80px; text-align:center;">Tarjetas</th></tr></thead><tbody>';
 html += renderTablaJugadores(titularesVisitante);
