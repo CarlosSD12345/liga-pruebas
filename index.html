@@ -2032,7 +2032,7 @@ if (arbNombre) html += '👤 Árbitro: <strong>' + arbNombre + '</strong><br>';
 if (campoPartido) html += '📍 Campo: <strong>' + campoPartido + '</strong>';
 if (horaPartido) html += ' · 🕒 ' + horaPartido;
 html += '</div>';
-html += '<button class="btn-pdf" disabled>📄 Descargar acta en PDF (próximamente)</button>';
+html += '<button class="btn-pdf" onclick="generarPDFActa(' + numJornada + ',' + idxPartido + ')" style="background-color:#27ae60; cursor:pointer;">📄 Descargar acta en PDF</button>';
 html += '</div>';
 document.getElementById('modal-acta-contenido').innerHTML = html;
 document.getElementById('modal-acta').classList.add('active');
