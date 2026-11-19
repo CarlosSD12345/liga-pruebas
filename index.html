@@ -2241,7 +2241,6 @@ var suplentesLocal = acta ? (acta.local ? acta.local.jugadores.filter(function(j
 var titularesVisitante = acta ? (acta.visitante ? acta.visitante.jugadores.filter(function(j) { return j.condicion === 'titular'; }) : []) : [];
 var suplentesVisitante = acta ? (acta.visitante ? acta.visitante.jugadores.filter(function(j) { return j.condicion === 'suplent'; }) : []) : [];
 
-// Observaciones: del acta o "Sin observaciones" por defecto
 var observaciones = '';
 if (acta && acta.observaciones && acta.observaciones.trim() !== '') {
 observaciones = acta.observaciones.trim();
@@ -2303,20 +2302,22 @@ html += '.dos-columnas > div { flex: 1; min-width: 0; }';
 html += '.firma { margin-top: 50px; text-align: right; }';
 html += '.firma-linea { display: inline-block; border-top: 1px solid #000; width: 200px; padding-top: 5px; }';
 html += '@media print { ';
-html += 'body { margin: 0; padding: 8px; font-size: 11px; } ';
+html += '@page { margin: 8mm; size: A4; } ';
+html += 'body { margin: 0; padding: 5px; font-size: 10px; } ';
 html += '.no-print { display: none !important; } ';
-html += 'h2 { margin-top: 10px; margin-bottom: 5px; font-size: 16px; } ';
-html += 'h3 { font-size: 13px; margin: 8px 0 4px 0; } ';
-html += 'h4 { font-size: 11px; margin: 6px 0 3px 0; } ';
-html += 'table { font-size: 10px; } ';
-html += 'td { padding: 3px 4px; } ';
-html += 'th { padding: 4px 4px; font-size: 10px; } ';
-html += '.info-partido { padding: 8px; margin: 8px 0; } ';
-html += '.marcador { font-size: 1.5em; margin: 10px 0; } ';
-html += '.dos-columnas { gap: 12px; } ';
-html += '.observaciones-box { padding: 8px; margin: 8px 0; } ';
-html += '.firma { margin-top: 20px; } ';
+html += 'h2 { margin-top: 6px; margin-bottom: 3px; font-size: 14px; } ';
+html += 'h3 { font-size: 11px; margin: 5px 0 3px 0; } ';
+html += 'h4 { font-size: 9px; margin: 4px 0 2px 0; } ';
+html += 'table { font-size: 9px; margin: 3px 0; } ';
+html += 'td { padding: 2px 3px; } ';
+html += 'th { padding: 3px 3px; font-size: 9px; } ';
+html += '.info-partido { padding: 5px; margin: 5px 0; font-size: 9px; } ';
+html += '.marcador { font-size: 1.2em; margin: 5px 0; } ';
+html += '.dos-columnas { gap: 8px; } ';
+html += '.observaciones-box { padding: 5px; margin: 5px 0; font-size: 9px; } ';
+html += '.firma { margin-top: 10px; } ';
 html += 'img { -webkit-print-color-adjust: exact; print-color-adjust: exact; } ';
+html += 'table, tr, td, th { page-break-inside: avoid; } ';
 html += '} ';
 html += '.btn-print { background: #1a5f2a; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px 5px; }';
 html += '.btn-close { background: #e74c3c; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px 5px; }';
@@ -2328,7 +2329,6 @@ html += '<button class="btn-print" onclick="window.print()">🖨️ Imprimir / G
 html += '<button class="btn-close" onclick="window.close()">✕ Cerrar</button>';
 html += '</div>';
 
-// CABECERA CON LOGO sobre fondo verde
 html += '<div style="background-color:#1a5f2a; padding:20px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">';
 html += '<img src="https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/escudos/logo_liga.png" alt="Logo Liga" style="height:90px; background:#1a5f2a;">';
 html += '</div>';
@@ -2346,7 +2346,6 @@ html += '</div>';
 
 html += '<div class="dos-columnas">';
 
-// COLUMNA LOCAL
 html += '<div>';
 var imgLocal = getImgEquipo(partido.local);
 html += '<h3 style="color:#1a5f2a; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgLocal + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.local.toUpperCase() + '</h3>';
@@ -2357,7 +2356,6 @@ html += '<table>' + theadJugadores + '<tbody>' + renderTablaJugadores(suplentesL
 html += renderCuerpoTecnico(ctLocal);
 html += '</div>';
 
-// COLUMNA VISITANTE
 html += '<div>';
 var imgVisitante = getImgEquipo(partido.visitante);
 html += '<h3 style="color:#c0392b; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.visitante.toUpperCase() + '</h3>';
@@ -2370,7 +2368,6 @@ html += '</div>';
 
 html += '</div>';
 
-// OBSERVACIONES (en lugar del resumen de tarjetas)
 html += '<h2>📝 OBSERVACIONES</h2>';
 html += '<div class="observaciones-box">' + observaciones + '</div>';
 
