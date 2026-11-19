@@ -2240,9 +2240,10 @@ var golesNum = (j.goles && j.goles > 0) ? j.goles : '';
 var tarjetasHtml = '';
 if (j.tarjetas && j.tarjetas.length > 0) {
 j.tarjetas.forEach(function(t) {
-if (t.tipo === 'roja') tarjetasHtml += '🟥';
-else if (t.tipo === 'doble_amarilla') tarjetasHtml += '🟨🟨';
-else if (t.tipo === 'amarilla') tarjetasHtml += '🟨';
+var minutoStr = t.minuto ? '(min ' + t.minuto + ") " : "";
+if (t.tipo === 'roja') tarjetasHtml += minutoStr + '🟥';
+else if (t.tipo === 'doble_amarilla') tarjetasHtml += minutoStr + '🟨🟨';
+else if (t.tipo === 'amarilla') tarjetasHtml += minutoStr + '🟨';
 });
 }
 html += '<tr>';
@@ -2263,6 +2264,8 @@ html += '<tr><td style="padding:6px 8px; font-weight:bold; border:1px solid #ddd
 html += '</table>';
 return html;
 }
+
+var theadJugadores = '<thead><tr><th style="width:14%;">Dorsal</th><th style="width:44%;">Nombre</th><th style="width:12%; text-align:center;">Goles</th><th style="width:30%; text-align:center;">Tarjetas</th></tr></thead>';
 
 var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Acta - ' + getNombreCorto(partido.local) + ' vs ' + getNombreCorto(partido.visitante) + '</title>';
 html += '<style>';
@@ -2291,9 +2294,9 @@ html += '<button class="btn-print" onclick="window.print()">🖨️ Imprimir / G
 html += '<button class="btn-close" onclick="window.close()">✕ Cerrar</button>';
 html += '</div>';
 
-// CABECERA CON ESCUDO sobre fondo verde de la liga
-html += '<div style="background-color:#0b1d15; padding:20px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">';
-html += '<img src="https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/escudos/logo_liga.png" alt="Logo Liga" style="height:90px; background:#0b1d15;">';
+// CABECERA CON LOGO sobre fondo verde
+html += '<div style="background-color:#1a5f2a; padding:20px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">';
+html += '<img src="https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/escudos/logo_liga.png" alt="Logo Liga" style="height:90px; background:#1a5f2a;">';
 html += '</div>';
 html += '<h2 style="text-align:center; border:none;">ACTA DEL PARTIDO</h2>';
 
@@ -2307,14 +2310,12 @@ html += '<div class="marcador">';
 html += getNombreCorto(partido.local) + ' ' + (gl !== null ? gl : '-') + ' - ' + (gv !== null ? gv : '-') + ' ' + getNombreCorto(partido.visitante);
 html += '</div>';
 
-var theadJugadores = '<thead><tr><th style="width:14%;">Dorsal</th><th style="width:44%;">Nombre</th><th style="width:12%; text-align:center;">Goles</th><th style="width:30%; text-align:center;">Tarjetas</th></tr></thead>';
-
 html += '<div class="dos-columnas">';
 
 // COLUMNA LOCAL
 html += '<div>';
 var imgLocal = getImgEquipo(partido.local);
-html += '<h3 style="color:#1a5f2a; display:flex; align-items:center; gap:10px;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgLocal + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + getNombreCorto(partido.local).toUpperCase() + '</h3>';
+html += '<h3 style="color:#1a5f2a; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgLocal + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + getNombreCorto(partido.local).toUpperCase() + '</h3>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px;">TITULARES</h4>';
 html += '<table>' + theadJugadores + '<tbody>' + renderTablaJugadores(titularesLocal) + '</tbody></table>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px; margin-top:20px;">SUPLENTES</h4>';
@@ -2325,7 +2326,7 @@ html += '</div>';
 // COLUMNA VISITANTE
 html += '<div>';
 var imgVisitante = getImgEquipo(partido.visitante);
-html += '<h3 style="color:#c0392b; display:flex; align-items:center; gap:10px;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + getNombreCorto(partido.visitante).toUpperCase() + '</h3>';
+html += '<h3 style="color:#c0392b; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + getNombreCorto(partido.visitante).toUpperCase() + '</h3>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px;">TITULARES</h4>';
 html += '<table>' + theadJugadores + '<tbody>' + renderTablaJugadores(titularesVisitante) + '</tbody></table>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px; margin-top:20px;">SUPLENTES</h4>';
