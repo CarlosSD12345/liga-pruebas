@@ -1259,6 +1259,13 @@ jugadoresVisitante.push(jugador);
 }
 }
 var claveActa = String(numJornada) + '_' + String(idxPartido);
+// Capturar observaciones (busca "OBSERVACIONES:" o "OBSERVACIONS:")
+var observaciones = '';
+var matchObs = texto.match(/(?:OBSERVACIONES|OBSERVACIONS)[:\s]*\n?([\s\S]*?)(?=\n\n[A-Z]|$)/i);
+if (matchObs) {
+observaciones = matchObs[1].trim();
+}
+
 var acta = {
 jornada: numJornada,
 partido: idxPartido,
@@ -1273,6 +1280,7 @@ cuerpoTecnicoLocal: cuerpoTecnicoLocal,
 cuerpoTecnicoVisitante: cuerpoTecnicoVisitante,
 local: { jugadores: jugadoresLocal },
 visitante: { jugadores: jugadoresVisitante },
+observaciones: observaciones,
 fechaImportacion: new Date().toISOString()
 };
 resultadoDiv.style.display = 'block';
