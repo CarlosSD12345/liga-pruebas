@@ -2068,14 +2068,15 @@ if (j.goles && j.goles > 0) {
 for (var g = 0; g < j.goles; g++) eventos += '⚽';
 }
 if (j.tarjetas && j.tarjetas.length > 0) {
-j.tarjetas.forEach(function(t) {
+j.tarjetas.forEach(function(t, idx) {
+if (idx > 0) eventos += ' · ';
 var minutoTexto = t.minuto ? t.minuto + "'" : '';
-var motivoLimpio = t.motivo ? t.motivo.replace(/^\d+-\s*/, '') : '';
-var motivoTexto = motivoLimpio ? ' - ' + motivoLimpio : '';
+var numMot = numeroMotivo(t.motivo);
+var motivoTexto = numMot ? ' - ' + numMot : '';
 if (t.tipo === 'roja') {
 eventos += '<span class="modal-tarjeta roja"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + motivoTexto + '</span>';
 } else if (t.tipo === 'doble_amarilla') {
-eventos += '<span class="modal-tarjeta amarilla"></span><span class="modal-tarjeta amarilla"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + '</span>';
+eventos += '<span class="modal-tarjeta amarilla"></span><span class="modal-tarjeta amarilla"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + motivoTexto + '</span>';
 } else if (t.tipo === 'amarilla') {
 eventos += '<span class="modal-tarjeta amarilla"></span> <span style="color:white; font-weight:bold;">' + minutoTexto + motivoTexto + '</span>';
 }
