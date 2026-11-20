@@ -2267,12 +2267,12 @@ var dorsal = j.dorsal !== null && j.dorsal !== undefined ? j.dorsal : '-';
 var golesNum = (j.goles && j.goles > 0) ? j.goles : '';
 var tarjetasHtml = '';
 if (j.tarjetas && j.tarjetas.length > 0) {
-j.tarjetas.forEach(function(t) {
+j.tarjetas.forEach(function(t, idx) {
+if (idx > 0) tarjetasHtml += ' ';
 var minutoStr = t.minuto ? 'min ' + t.minuto : '';
 var numMotivo = numeroMotivo(t.motivo);
-var motivoStr = numMotivo ? ' - ' + numMotivo : '';
-var infoStr = (minutoStr || motivoStr) ? '(' + minutoStr + motivoStr + ')' : '';
-if (tarjetasHtml !== '') tarjetasHtml += ' ';
+var motivoStr = numMotivo ? '-' + numMotivo : '';
+var infoStr = (minutoStr || motivoStr) ? '(' + minutoStr + (motivoStr ? ' ' + motivoStr : '') + ')' : '';
 if (t.tipo === 'roja') tarjetasHtml += '<span style="font-size:7px;">' + infoStr + '</span>🟥';
 else if (t.tipo === 'doble_amarilla') tarjetasHtml += '<span style="font-size:7px;">' + infoStr + '</span>🟨🟨';
 else if (t.tipo === 'amarilla') tarjetasHtml += '<span style="font-size:7px;">' + infoStr + '</span>🟨';
