@@ -2265,7 +2265,7 @@ else if (t.tipo === 'amarilla') tarjetasHtml += minutoStr + '🟨';
 }
 html += '<tr>';
 html += '<td style="text-align:center; font-weight:bold;">' + dorsal + '</td>';
-html += '<td>' + j.nombre + '</td>';
+html += '<td><span class="nombre-jugador" title="' + j.nombre + '">' + j.nombre + '</span></td>';
 html += '<td style="text-align:center; font-weight:bold;">' + golesNum + '</td>';
 html += '<td style="text-align:center;">' + tarjetasHtml + '</td>';
 html += '</tr>';
@@ -2282,7 +2282,7 @@ html += '</table>';
 return html;
 }
 
-var theadJugadores = '<thead><tr><th style="width:14%;">Dorsal</th><th style="width:44%;">Nombre</th><th style="width:12%; text-align:center;">Goles</th><th style="width:30%; text-align:center;">Tarjetas</th></tr></thead>';
+var theadJugadores = '<thead><tr><th style="width:10%;">Dorsal</th><th style="width:52%;">Nombre</th><th style="width:10%; text-align:center;">Goles</th><th style="width:28%; text-align:center;">Tarjetas</th></tr></thead>';
 
 var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Acta - ' + partido.local + ' vs ' + partido.visitante + '</title>';
 html += '<style>';
@@ -2303,7 +2303,7 @@ html += '.firma { margin-top: 50px; text-align: right; }';
 html += '.firma-linea { display: inline-block; border-top: 1px solid #000; width: 200px; padding-top: 5px; }';
 html += '@media print { ';
 html += '@page { margin: 5mm; size: A4; } ';
-html += 'body { margin: 0; padding: 3px; font-size: 9px; } ';
+html += 'body { margin: 0; padding: 3px; font-size: 8.5px; } ';
 html += '.no-print { display: none !important; } ';
 html += 'h2 { margin-top: 4px; margin-bottom: 2px; font-size: 13px; } ';
 html += 'h3 { font-size: 10px; margin: 4px 0 2px 0; } ';
@@ -2318,6 +2318,7 @@ html += '.observaciones-box { padding: 4px; margin: 4px 0; font-size: 8px; } ';
 html += '.firma { margin-top: 8px; } ';
 html += 'img { -webkit-print-color-adjust: exact; print-color-adjust: exact; } ';
 html += 'table, tr, td, th { page-break-inside: avoid; } ';
+html += '.nombre-jugador { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block; } ';
 html += '} ';
 html += '.btn-print { background: #1a5f2a; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px 5px; }';
 html += '.btn-close { background: #e74c3c; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px 5px; }';
@@ -2330,7 +2331,7 @@ html += '<button class="btn-close" onclick="window.close()">✕ Cerrar</button>'
 html += '</div>';
 
 html += '<div style="background-color:#1a5f2a; padding:12px; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; margin-top:5px;">';
-html += '<img src="https://raw.githubusercontent.com/CarlosSD12345/liga-pruebas/main/escudos/logo_liga.png" alt="Logo Liga" style="height:75px; background:#1a5f2a;">';
+html += '<img src="https://raw.githubusercontent.com/CarlosSD12345/liga-veteranos-valles/main/escudos/logo_liga.png" alt="Logo Liga" style="height:75px; background:#1a5f2a;">';
 html += '</div>';
 html += '<h2 style="text-align:center; border:none;">ACTA DEL PARTIDO</h2>';
 
@@ -2348,7 +2349,7 @@ html += '<div class="dos-columnas">';
 
 html += '<div>';
 var imgLocal = getImgEquipo(partido.local);
-html += '<h3 style="color:#1a5f2a; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgLocal + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.local.toUpperCase() + '</h3>';
+html += '<h3 style="color:#1a5f2a; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-veteranos-valles/escudos/' + imgLocal + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.local.toUpperCase() + '</h3>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px;">TITULARES</h4>';
 html += '<table>' + theadJugadores + '<tbody>' + renderTablaJugadores(titularesLocal) + '</tbody></table>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px; margin-top:20px;">SUPLENTES</h4>';
@@ -2358,7 +2359,7 @@ html += '</div>';
 
 html += '<div>';
 var imgVisitante = getImgEquipo(partido.visitante);
-html += '<h3 style="color:#c0392b; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-pruebas/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.visitante.toUpperCase() + '</h3>';
+html += '<h3 style="color:#c0392b; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;"><img src="https://carlossd12345.github.io/liga-veteranos-valles/escudos/' + imgVisitante + '" style="width:32px; height:32px; object-fit:contain; background:#fff; border-radius:50%; padding:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"> ' + partido.visitante.toUpperCase() + '</h3>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px;">TITULARES</h4>';
 html += '<table>' + theadJugadores + '<tbody>' + renderTablaJugadores(titularesVisitante) + '</tbody></table>';
 html += '<h4 style="color:#1a5f2a; border-bottom:2px solid #1a5f2a; padding-bottom:5px; margin-top:20px;">SUPLENTES</h4>';
