@@ -2401,6 +2401,40 @@ var ventana = window.open('', '_blank');
 ventana.document.write(html);
 ventana.document.close();
 }
+function actualizarContadorVisitas() {
+var token = localStorage.getItem('github_token') || '';
+fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/contador.json?t=' + Date.now(), {
+headers: token ? { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' } : { 'Accept': 'application/vnd.github.v3+json' }
+})
+.then(function(r) {
+if (r.status === 404) return null;
+return r.json();
+})
+.then(function(data) {
+if (!data || !data.content) return;
+var contador = 0;
+try {
+contador = JSON.parse(decodeURIComponent(escape(atob(data.content)))).visitas || 0;
+} catch(e) { contador = 0; }
+var yaContado = sessionStorage.getItem('visita_contada');
+if (!yaContado) {
+contador++;
+sessionStorage.setItem('visita_contada', '1');
+if (token) {
+var b64 = btoa(unescape(encodeURIComponent(JSON.stringify({visitas: contador}))));
+fetch('https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/contador.json', {
+method: 'PUT',
+headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+body: JSON.stringify({ message: 'Contador +1', content: b64, sha: data.sha })
+}).catch(function(){});
+}
+}
+var el = document.getElementById('contador-visitas');
+if (el) el.textContent = contador.toLocaleString('es-ES');
+})
+.catch(function(){});
+}
+actualizarContadorVisitas();
 </script>
 </body>
 </html>
