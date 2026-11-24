@@ -1551,6 +1551,12 @@ html += '<input type="text" id="ca-' + index + '" value="' + campoActual + '" pl
 html += '<span style="color:#a3b8af; font-size:0.75rem;">🕒 Hora:</span>';
 html += '<input type="text" id="ho-' + index + '" value="' + horaActual + '" placeholder="08:00" style="width:80px; padding:5px; border-radius:4px; border:1px solid #2ecc71; background:#11291e; color:white; font-size:13px; text-align:center;">';
 html += '</div>';
+var fechaActual = (resP.fecha !== undefined && resP.fecha !== null) ? resP.fecha : '';
+html += '<div style="display:flex; align-items:center; gap:8px; margin-top:5px; justify-content:center; flex-wrap:wrap;">';
+html += '<span style="color:#a3b8af; font-size:0.75rem;">📅 Fecha (opcional):</span>';
+html += '<input type="date" id="fe-' + index + '" value="' + fechaActual + '" style="padding:5px; border-radius:4px; border:1px solid #2ecc71; background:#11291e; color:white; font-size:13px;">';
+html += '<span style="color:#7f8c8d; font-size:0.7rem;">(Si se deja vacío, usa la de la jornada)</span>';
+html += '</div>';
 html += construirSelectArbitros('ar-' + index, arb);
 html += '<label style="color:#3498db; font-size:0.8rem; cursor:pointer;"><input type="checkbox" id="sp-' + index + '" ' + checked + '> ⏸️ Susp.</label>';
 html += '</div></div>';
