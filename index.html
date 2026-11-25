@@ -2459,14 +2459,50 @@ function renderizarEquipos() {
   grid.innerHTML = html;
 }
 
+function getCarpetasFotos(nombreCompleto) {
+  var mapa = {
+    'C.F. Cerdanyola': 'CF-Cerdanyola',
+    'C.F. Can Parellada': 'CF-Can-Parellada',
+    'A.V. Ripollet': 'AV-Ripollet',
+    'C.E. Bigues i Riells': 'CE-Bigues'
+  };
+  return mapa[nombreCompleto] || null;
+}
+
+function cargarPlantillaEquipo(nombreCompleto, callback) {
+  var carpeta = getCarpetasFotos(nombreCompleto);
+  if (!carpeta) {
+    callback([]);
+    return;
+  }
+  var url = 'https://api.github.com/repos/CarlosSD12345/liga-pruebas/contents/fotos-jugadores/' + carpeta + '?t=' + Date.now();
+  fetch(url)
+  .then(function(r) {
+    if (r.status === 404) { callback([]); return; }
+    return r.json();
+  })
+  .then(function(files) {
+    if (!Array.isArray(files)) { callback([]); return; }
+    var nombres = [];
+    files.forEach(function(f) {
+      if (f.name && (f.name.toLowerCase().endsWith('.jpg') || f.name.toLowerCase().endsWith('.png'))) {
+        var nombre = f.name.replace(/\.(jpg|png)$/i, '');
+        nombres.push(decodeURIComponent(nombre));
+      }
+    });
+    nombres.sort();
+    callback(nombres);
+  })
+  .catch(function() { callback([]); });
+}
+
 function mostrarFichaEquipo(nombreCompleto) {
   var eq = equipos.find(function(e) { return e.nombreCompleto === nombreCompleto; });
   if (!eq) return;
-  
+
   var datos = datosEquipos[nombreCompleto] || { campo: "Por definir", maps: "#" };
   var ct = cuerpoTecnicoDB[nombreCompleto] || { entrenador: [], delegado: [] };
-  var jugadores = jugadoresDB[nombreCompleto] || [];
-  
+
   var partidos = [];
   calendario.forEach(function(j) {
     j.partidos.forEach(function(p, idx) {
@@ -2519,28 +2555,9 @@ function mostrarFichaEquipo(nombreCompleto) {
   }
   html += '</div>';
 
-  html += '<div class="ficha-seccion">';
-  html += '<h3>⚽ PLANTILLA (' + jugadores.length + ')</h3>';
-  if (jugadores.length > 0) {
-    jugadores.forEach(function(j) {
-      var nombre = typeof j === 'string' ? j : j.nombre;
-      var dorsal = (typeof j === 'object' && j.dorsal) ? j.dorsal : '';
-      var fotoUrls = getFotoJugador(nombre, nombreCompleto);
-      var fotoHtml = '';
-      if (fotoUrls) {
-        fotoHtml = '<img class="ficha-jugador-foto" src="' + fotoUrls.jpg + '" onerror="this.src=\'' + fotoUrls.png + '\'; this.onerror=function(){this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';}"><div class="ficha-jugador-iniciales" style="display:none;">' + nombre.split(' ').map(function(n){return n[0];}).join('').substring(0,2).toUpperCase() + '</div>';
-      } else {
-        var iniciales = nombre.split(' ').map(function(n){return n[0];}).join('').substring(0,2).toUpperCase();
-        fotoHtml = '<div class="ficha-jugador-iniciales">' + iniciales + '</div>';
-      }
-      html += '<div class="ficha-jugador">';
-      html += fotoHtml;
-      html += '<span class="ficha-jugador-nombre">' + (dorsal ? dorsal + ' - ' : '') + nombre + '</span>';
-      html += '</div>';
-    });
-  } else {
-    html += '<p style="color:#a3b8af; font-size:0.9rem;">Sin jugadores registrados aún.</p>';
-  }
+  html += '<div class="ficha-seccion" id="ficha-plantilla-seccion">';
+  html += '<h3>⚽ PLANTILLA</h3>';
+  html += '<p style="color:#a3b8af; font-size:0.9rem; text-align:center; padding:20px;">⏳ Cargando plantilla...</p>';
   html += '</div>';
 
   html += '<div class="ficha-seccion">';
@@ -2561,11 +2578,34 @@ function mostrarFichaEquipo(nombreCompleto) {
   document.getElementById('ficha-contenido').innerHTML = html;
   document.getElementById('equipos-grid').style.display = 'none';
   document.getElementById('ficha-equipo').style.display = 'block';
-}
 
-function volverAGridEquipos() {
-  document.getElementById('ficha-equipo').style.display = 'none';
-  document.getElementById('equipos-grid').style.display = 'grid';
+  // Cargar plantilla desde GitHub
+  cargarPlantillaEquipo(nombreCompleto, function(jugadores) {
+    var plantillaDiv = document.getElementById('ficha-plantilla-seccion');
+    if (!plantillaDiv) return;
+    var plantHtml = '<h3>⚽ PLANTILLA';
+    if (jugadores.length > 0) plantHtml += ' (' + jugadores.length + ')';
+    plantHtml += '</h3>';
+    if (jugadores.length > 0) {
+      jugadores.forEach(function(nombre) {
+        var fotoUrls = getFotoJugador(nombre, nombreCompleto);
+        var fotoHtml = '';
+        if (fotoUrls) {
+          fotoHtml = '<img class="ficha-jugador-foto" src="' + fotoUrls.jpg + '" onerror="this.src=\'' + fotoUrls.png + '\'; this.onerror=function(){this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';}"><div class="ficha-jugador-iniciales" style="display:none;">' + nombre.split(' ').map(function(n){return n[0];}).join('').substring(0,2).toUpperCase() + '</div>';
+        } else {
+          var iniciales = nombre.split(' ').map(function(n){return n[0];}).join('').substring(0,2).toUpperCase();
+          fotoHtml = '<div class="ficha-jugador-iniciales">' + iniciales + '</div>';
+        }
+        plantHtml += '<div class="ficha-jugador">';
+        plantHtml += fotoHtml;
+        plantHtml += '<span class="ficha-jugador-nombre">' + nombre + '</span>';
+        plantHtml += '</div>';
+      });
+    } else {
+      plantHtml += '<p style="color:#a3b8af; font-size:0.9rem;">Plantilla en proceso. Las fotos se irán añadiendo pronto.</p>';
+    }
+    plantillaDiv.innerHTML = plantHtml;
+  });
 }
 </script>
 </body>
