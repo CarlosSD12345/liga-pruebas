@@ -2515,7 +2515,7 @@ function mostrarFichaEquipo(nombreCompleto) {
         var rival = esLocal ? p.visitante : p.local;
         var marcador = (gl !== null && gv !== null) ? (esLocal ? gl + ' - ' + gv : gv + ' - ' + gl) : 'VS';
         var clase = (gl !== null && gv !== null) ? 'jugado' : 'pendiente';
-        partidos.push({ fecha: j.fecha, rival: rival, marcador: marcador, clase: clase });
+        partidos.push({ fecha: j.fecha, rival: rival, marcador: marcador, clase: clase, esLocal: esLocal, jornada: j.jornada, hora: p.hora || '' });
       }
     });
   });
