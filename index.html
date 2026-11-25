@@ -2545,22 +2545,12 @@ function mostrarFichaEquipo(nombreCompleto) {
   html += '<h3>📅 PARTIDOS</h3>';
   if (partidos.length > 0) {
     partidos.forEach(function(p) {
-  var eqLocal = p.esLocal ? nombreCompleto : p.rival;
-  var eqVisitante = p.esLocal ? p.rival : nombreCompleto;
-  var imgLocal = getImgEquipo(eqLocal);
-  var imgVisitante = getImgEquipo(eqVisitante);
-  var nombreLocalCorto = getNombreCorto(eqLocal);
-  var nombreVisitanteCorto = getNombreCorto(eqVisitante);
-  html += '<div class="ficha-partido-nuevo">';
-  html += '<div class="ficha-partido-jornada">J.' + p.jornada + '</div>';
-  html += '<div class="ficha-partido-contenido">';
-  html += '<div class="ficha-partido-equipo local"><span>' + nombreLocalCorto + '</span><img src="escudos/' + imgLocal + '"></div>';
-  html += '<div class="ficha-partido-marcador ' + p.clase + '">' + p.marcador + '</div>';
-  html += '<div class="ficha-partido-equipo visitante"><img src="escudos/' + imgVisitante + '"><span>' + nombreVisitanteCorto + '</span></div>';
-  html += '</div>';
-  html += '<div class="ficha-partido-fecha">' + p.fecha + (p.hora ? ' · ' + p.hora : '') + '</div>';
-  html += '</div>';
-});
+      html += '<div class="ficha-partido">';
+      html += '<span class="ficha-partido-fecha">' + p.fecha + '</span>';
+      html += '<span class="ficha-partido-equipos">' + p.rival + '</span>';
+      html += '<span class="ficha-partido-resultado ' + p.clase + '">' + p.marcador + '</span>';
+      html += '</div>';
+    });
   } else {
     html += '<p style="color:#a3b8af; font-size:0.9rem;">Sin partidos en el calendario.</p>';
   }
