@@ -2579,9 +2579,9 @@ function mostrarFichaEquipo(nombreCompleto) {
   html += '<div class="ficha-partido-nuevo">';
   html += '<div class="ficha-partido-jornada">J.' + p.jornada + '</div>';
   html += '<div class="ficha-partido-contenido">';
-  html += '<div class="ficha-partido-equipo local"><span>' + nombreLocalCorto + '</span><img src="escudos/' + imgLocal + '"></div>';
-  html += '<div class="ficha-partido-marcador ' + p.clase + '">' + p.marcador + '</div>';
-  html += '<div class="ficha-partido-equipo visitante"><img src="escudos/' + imgVisitante + '"><span>' + nombreVisitanteCorto + '</span></div>';
+  html += '<div class="ficha-partido-equipo local"><img src="escudos/' + imgLocal + '"><span>' + nombreLocalCorto + '</span></div>';
+html += '<div class="ficha-partido-marcador ' + p.clase + '">' + p.marcador + '</div>';
+html += '<div class="ficha-partido-equipo visitante"><span>' + nombreVisitanteCorto + '</span><img src="escudos/' + imgVisitante + '"></div>';
   html += '</div>';
   html += '<div class="ficha-partido-fecha">' + p.fecha + (p.hora ? ' · ' + p.hora : '') + '</div>';
   html += '</div>';
