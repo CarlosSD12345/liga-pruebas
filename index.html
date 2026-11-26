@@ -2519,8 +2519,18 @@ function mostrarFichaEquipo(nombreCompleto) {
         var gv = (resP.golesVisitante !== undefined && resP.golesVisitante !== null) ? resP.golesVisitante : p.golesVisitante;
         var esLocal = (p.local === nombreCompleto);
         var rival = esLocal ? p.visitante : p.local;
-        var marcador = (gl !== null && gv !== null) ? (esLocal ? gl + ' - ' + gv : gv + ' - ' + gl) : 'VS';
-        var clase = (gl !== null && gv !== null) ? 'jugado' : 'pendiente';
+        var marcador = '';
+var clase = '';
+if (j.suspendida) {
+  marcador = 'SUSP.';
+  clase = 'susp';
+} else if (gl !== null && gv !== null) {
+  marcador = esLocal ? gl + ' - ' + gv : gv + ' - ' + gl;
+  clase = 'jugado';
+} else {
+  marcador = 'VS';
+  clase = 'pendiente';
+}
         partidos.push({ fecha: j.fecha, rival: rival, marcador: marcador, clase: clase, esLocal: esLocal, jornada: j.jornada, hora: p.hora || '', suspendida: j.suspendida || false });
       }
     });
