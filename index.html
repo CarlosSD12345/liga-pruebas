@@ -2634,6 +2634,11 @@ html += '<div class="ficha-partido-equipo visitante"><span>' + nombreVisitanteCo
     plantillaDiv.innerHTML = plantHtml;
   });
 }
+function volverAGridEquipos() {
+  document.getElementById('ficha-equipo').style.display = 'none';
+  document.getElementById('equipos-grid').style.display = 'grid';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 </body>
 </html>
