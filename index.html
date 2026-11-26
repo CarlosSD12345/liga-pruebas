@@ -2466,7 +2466,8 @@ function renderizarEquipos() {
   if (grid.children.length > 0) return;
   var html = '';
   equipos.forEach(function(eq) {
-    html += '<div class="equipo-card" onclick="mostrarFichaEquipo(\'' + eq.nombreCompleto + '\')">';
+    var nombreEscapado = eq.nombreCompleto.replace(/'/g, "\\'");
+html += '<div class="equipo-card" onclick="mostrarFichaEquipo(\'' + nombreEscapado + '\')">';
     html += '<img src="escudos/' + eq.img + '" alt="' + eq.nombre + '">';
     html += '<h3>' + eq.nombreCompleto + '</h3>';
     html += '</div>';
