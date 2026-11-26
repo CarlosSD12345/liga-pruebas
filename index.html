@@ -2597,6 +2597,15 @@ if (datos.responsable || datos.tlf) {
 }
 html += '</div>';
 html += '<div class="ficha-seccion">';
+html += '<h3>👕 EQUIPACIÓN</h3>';
+var imgEquipacion = equipacionEquipos[nombreCompleto];
+if (imgEquipacion) {
+  html += '<img src="equipaciones/' + imgEquipacion + '" alt="Equipación ' + nombreCompleto + '" class="ficha-equipacion-img" onerror="this.parentElement.style.display=\'none\';">';
+} else {
+  html += '<p style="color:#a3b8af; font-size:0.9rem;">Sin imagen de equipación.</p>';
+}
+html += '</div>';
+html += '<div class="ficha-seccion">';
 html += '<h3>👥 CUERPO TÉCNICO</h3>';
   if (ct.entrenador && ct.entrenador.length > 0) {
     ct.entrenador.forEach(function(ent) {
