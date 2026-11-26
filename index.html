@@ -2526,10 +2526,10 @@ function mostrarFichaEquipo(nombreCompleto) {
     });
   });
   partidos.sort(function(a, b) {
-    if (a.clase === 'pendiente' && b.clase === 'jugado') return -1;
-    if (a.clase === 'jugado' && b.clase === 'pendiente') return 1;
-    return 0;
-  });
+  if (a.clase === 'jugado' && b.clase === 'pendiente') return -1;
+  if (a.clase === 'pendiente' && b.clase === 'jugado') return 1;
+  return 0;
+});
 
   var html = '<div class="ficha-header">';
   html += '<img src="escudos/' + eq.img + '" alt="' + eq.nombre + '">';
